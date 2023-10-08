@@ -27,6 +27,7 @@ public class Elements_Select : MonoBehaviour
         this.gameObject.SetActive(false);
         Time.timeScale = 1;
 
+
     }
 
     public void WaterClass()
@@ -36,6 +37,7 @@ public class Elements_Select : MonoBehaviour
         StatusManager._instance.Magician(stat);
         this.gameObject.SetActive(false);
         Time.timeScale = 1;
+
     }
 
     public void WindClass()

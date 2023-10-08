@@ -5,41 +5,42 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public Player player;
-    public GameObject ShopUI;
-    bool shopopen;
     public Text goldText;
-
+    public Slider HPslider;
+    public Canvas PlayerUICanvas;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        HPslider.value = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && shopopen == false)
-        {
-            Time.timeScale = 0;
-            ShopUI.SetActive(true);
-            shopopen = true;
-        }
-
-        else if(Input.GetKeyDown(KeyCode.Escape)&&shopopen==true)
-        {
-            Time.timeScale = 1;
-            ShopUI.SetActive(false);
-            shopopen = false;
-        }
-
+        
         printGold();
+
+        if (Time.timeScale == 1)
+        {
+            PlayerUICanvas.gameObject.SetActive(true);
+            HandleHP();
+        }
     }
+
+
 
     void printGold()
     {
         int gold = player.gold;
 
         goldText.text = "°ñµå : "+gold.ToString();
+    }
+
+    void HandleHP()
+    {
+        Status status=player.gameObject.GetComponent<Status>();
+        HPslider.value = status.CurHp / status.MaxHp;
+
     }
 }

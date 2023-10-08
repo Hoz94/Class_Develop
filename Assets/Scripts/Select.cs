@@ -25,6 +25,7 @@ public class Select : MonoBehaviour
         StatusManager._instance.Soldier(stat);
         this.gameObject.SetActive(false);
         Time.timeScale = 1;
+
     }
 
     public void WorriorSelect()
@@ -34,6 +35,7 @@ public class Select : MonoBehaviour
         StatusManager._instance.Worrior(stat);
         this.gameObject.SetActive(false);
         Time.timeScale = 1;
+        
 
     }
 

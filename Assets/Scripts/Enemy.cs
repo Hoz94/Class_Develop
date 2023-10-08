@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     Transform player;
     public int MaxHP = 50;
     public int HP = 50;
-    public int Atk = 1;
+    public float Atk = 1;
     NavMeshAgent nvAgent;
     private Vector3 dir;
     Animator _ani;
@@ -127,13 +127,12 @@ public class Enemy : MonoBehaviour
         nvAgent.acceleration = 0;
         nvAgent.angularSpeed = 0;
         
-        yield return new WaitForSeconds(1.0f);
-        this.gameObject.SetActive(false);
+        yield return new WaitForSeconds(1.5f);
         cc.enabled = true;
         HP = MaxHP;
         isDead = false;
         _ani.SetBool("isRun", true);
-
+        this.gameObject.SetActive(false);
     }
     public void OnHit() // 기본공격
     {

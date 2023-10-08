@@ -7,8 +7,8 @@ public struct playerstats
 {
     int Atk;
     float Spd;
-    int CurHp;
-    int MaxHp;
+    float CurHp;
+    float MaxHp;
 };
 
 public class StatusManager : MonoBehaviour
@@ -37,24 +37,24 @@ public class StatusManager : MonoBehaviour
     public void Soldier(Status status)
     {
         status.Atk = 10;
-        status.CurHp = 100;
-        status.MaxHp = 100;
+        status.CurHp = 100f;
+        status.MaxHp = 100f;
         status.Spd = 6f;
     }
 
     public void Worrior(Status status) 
     {
         status.Atk = 20;
-        status.CurHp = 90;
-        status.MaxHp = 90;
+        status.CurHp = 90f;
+        status.MaxHp = 90f;
         status.Spd = 5f;
     }
 
     public void Magician(Status status) 
     {
         status.Atk = 50;
-        status.CurHp = 60;
-        status.MaxHp = 60;
+        status.CurHp = 60f;
+        status.MaxHp = 60f;
         status.Spd = 4f;
     }
 }
