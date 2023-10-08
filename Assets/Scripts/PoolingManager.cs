@@ -27,7 +27,6 @@ public class PoolingManager : MonoBehaviour
     public List<GameObject> SwordPool = new List<GameObject>();
     public GameObject SwordPrefab;
     int MaxSword = 20;
-    float cooltime = 1f;
 
 
     private void Awake()
