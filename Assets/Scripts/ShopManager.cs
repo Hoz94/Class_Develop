@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class ShopManager : MonoBehaviour
 {
+    public Text CurGoldText;
     public Player player;
     public GameObject ShopUI;
     bool shopopen;
@@ -15,21 +17,25 @@ public class ShopManager : MonoBehaviour
     public Text NotEnoughTipText;
     public Text EnoughTipText;
     public float BtnCooltime = 0f;
-    int SoldierSkill1 = 0;
-    int SoldierSkill2 = 0;
-    int SoldierSkill3 = 0;
-    int WorriorSkill1 = 0;
-    int WorriorSkill2 = 0;
-    int WorriorSkill3 = 0;
-    int FireMagicianSkill1 = 0;
-    int FireMagicianSkill2 = 0;
-    int FireMagicianSkill3 = 0;
-    int WaterMagicianSkill1 = 0;
-    int WaterMagicianSkill2 = 0;
-    int WaterMagicianSkill3 = 0;
-    int WindMagicianSkill1 = 0;
-    int WindMagicianSkill2 = 0;
-    int WindMagicianSkill3 = 0;
+    public int SoldierSkill1 = 0;
+    public int SoldierSkill2 = 0;
+    public int SoldierSkill3 = 0;
+    public int WorriorSkill1 = 0;
+    public int WorriorSkill2 = 0;
+    public int WorriorSkill3 = 0;
+    public int FireMagicianSkill1 = 0;
+    public int FireMagicianSkill2 = 0;
+    public int FireMagicianSkill3 = 0;
+    public int WaterMagicianSkill1 = 0;
+    public int WaterMagicianSkill2 = 0;
+    public int WaterMagicianSkill3 = 0;
+    public int WindMagicianSkill1 = 0;
+    public int WindMagicianSkill2 = 0;
+    public int WindMagicianSkill3 = 0;
+    public int Skill1UpgradeGold = 3000;
+    public int Skill2UpgradeGold = 3000;
+    public int Skill3UpgradeGold = 3000;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +67,8 @@ public class ShopManager : MonoBehaviour
             GambleUI.SetActive(false);
             shopopen = false;
         } // 상점 닫기
+
+       
     }
 
     public void onclickStatsButton() //스탯 탭
@@ -79,23 +87,23 @@ public class ShopManager : MonoBehaviour
         GambleUI.SetActive(false);
     }
 
-    public void onclickEnemyButton()
+    public void onclickEnemyButton() //몬스터 탭
     {
         StatsUI.SetActive(false);
         SKillsUI.SetActive(false);
         EnemyUI.SetActive(true);
         GambleUI.SetActive(false);
-    } //몬스터 탭
+    } 
 
-    public void onclickGamebleButton()
+    public void onclickGamebleButton() // 도박 탭
     {
         StatsUI.SetActive(false);
         SKillsUI.SetActive(false);
         EnemyUI.SetActive(false);
         GambleUI.SetActive(true);
-    } // 도박 탭
+    } 
 
-    public void onclickTipButton()
+    public void onclickTipButton() // 팁 탭
     {
         if (BtnCooltime <= 0f)
         {
@@ -112,40 +120,39 @@ public class ShopManager : MonoBehaviour
             }
             BtnCooltime = 1.7f;
         }
-    } // 팁 탭
+    } 
 
-    IEnumerator NotEnoughTipCo()
+    IEnumerator NotEnoughTipCo() // 팁 줄 때 잔액에 따른 텍스트 없애는 쿨타임
     {
         yield return new WaitForSecondsRealtime(1.5f);
         NotEnoughTipText.gameObject.SetActive(false);
-    } // 팁 줄 때 잔액에 따른 텍스트 없애는 쿨타임
-
-    IEnumerator EnoughTipCo()
+    } 
+    IEnumerator EnoughTipCo() // 팁 줄 때 잔액에 따른 텍스트 없애는 쿨타임
     {
         yield return new WaitForSecondsRealtime(1.5f);
         EnoughTipText.gameObject.SetActive(false);
-    } // 팁 줄 때 잔액에 따른 텍스트 없애는 쿨타임
+    } 
 
     
-    public void onclickAtkBtn()
+    public void onclickAtkBtn() // 기본 공격 증가 
     {
         Status status = player.gameObject.GetComponent<Status>();
         status.Atk += 10;
-    } // 기본 공격 증가 
+    } 
 
-    public void onclickWalkSpdBtn()
+    public void onclickWalkSpdBtn() // 이속 증가
     {
         Status status = player.gameObject.GetComponent<Status>();
         status.Spd += 1;
-    } // 이속 증가
+    } 
 
-    public void onclickMaxHpBtn()
+    public void onclickMaxHpBtn() // 최대 체력 증가
     {
         Status status = player.gameObject.GetComponent<Status>();
         status.MaxHp += 30;
-    } // 최대 체력 증가
+    } 
 
-    public void onclickHpPotionBtn() 
+    public void onclickHpPotionBtn() // 물약 포션
     {
         Status status = player.gameObject.GetComponent<Status>();
         if (status.CurHp <= status.MaxHp)
@@ -156,32 +163,48 @@ public class ShopManager : MonoBehaviour
                 status.CurHp = status.MaxHp;
             }
         }
-    } // 물약 포션
+    } 
 
     public void onclickSkill1Btn() // 스킬 1 버튼
     {
         
         if(player.tag=="Soldier")
         {
-            if(SoldierSkill1==0)
+            if (player.gold >= Skill1UpgradeGold)
             {
-                
+                if (SoldierSkill1 == 0)
+                {
+                    player.gold -= Skill1UpgradeGold;
+                    SoldierSkill1++;
+                }
+
+                else if (SoldierSkill1 == 1)
+                {
+                    player.gold -= Skill1UpgradeGold;
+                    SoldierSkill1++;
+                }
+
+                else if (SoldierSkill1 == 2)
+                {
+                    player.gold -= Skill1UpgradeGold;
+                    SoldierSkill1++;
+                }
+
+                else if (SoldierSkill1 <= 3)
+                {
+                    return;
+                }
             }
 
-            if(SoldierSkill1==1) 
+            else if(player.gold<= Skill1UpgradeGold) 
             {
-                
-            }
-
-            if(SoldierSkill1==2)
-            {
-
+                return;
             }
         }
 
         if(player.tag=="Worrior")
         {
-
+            
         }
 
         if(player.tag=="FireMagician")
@@ -202,57 +225,11 @@ public class ShopManager : MonoBehaviour
 
     public void onclickSkill2Btn() // 스킬 2 버튼
     {
-        if (player.tag == "Soldier")
-        {
-
-        }
-
-        if (player.tag == "Worrior")
-        {
-
-        }
-
-        if (player.tag == "FireMagician")
-        {
-
-        }
-
-        if (player.tag == "WaterMagician")
-        {
-
-        }
-
-        if (player.tag == "WindMagician")
-        {
-
-        }
+        
     }
 
     public void onclickSkill3Btn() // 스킬 3 버튼
     {
-        if (player.tag == "Soldier")
-        {
 
-        }
-
-        if (player.tag == "Worrior")
-        {
-
-        }
-
-        if (player.tag == "FireMagician")
-        {
-
-        }
-
-        if (player.tag == "WaterMagician")
-        {
-
-        }
-
-        if (player.tag == "WindMagician")
-        {
-
-        }
     }
 }

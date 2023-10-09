@@ -7972,6 +7972,24 @@ MonoBehaviour:
   NotEnoughTipText: {fileID: 47098504}
   EnoughTipText: {fileID: 1182481984}
   BtnCooltime: 2
+  SoldierSkill1: 0
+  SoldierSkill2: 0
+  SoldierSkill3: 0
+  WorriorSkill1: 0
+  WorriorSkill2: 0
+  WorriorSkill3: 0
+  FireMagicianSkill1: 0
+  FireMagicianSkill2: 0
+  FireMagicianSkill3: 0
+  WaterMagicianSkill1: 0
+  WaterMagicianSkill2: 0
+  WaterMagicianSkill3: 0
+  WindMagicianSkill1: 0
+  WindMagicianSkill2: 0
+  WindMagicianSkill3: 0
+  Skill1UpgradeGold: 3000
+  Skill2UpgradeGold: 3000
+  Skill3UpgradeGold: 3000
 --- !u!1 &1520017868
 GameObject:
   m_ObjectHideFlags: 0

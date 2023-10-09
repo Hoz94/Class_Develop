@@ -43,7 +43,7 @@ public class Skill : MonoBehaviour
 
     }
 
-    void SpecialSkill()
+    void SpecialSkill() // 각 태그별 필살기
     {
         if (player.tag == "Soldier")
         {
@@ -185,11 +185,12 @@ public class Skill : MonoBehaviour
             {
                 Skill3Time = 0f;
             }
+            
         }
     }
 
 
-    void SkillCoolTime()
+    void SkillCoolTime() // 스킬 쿨타임
     {
         if (SpecialSkillTime <= SpecialSkillCool)
         {
