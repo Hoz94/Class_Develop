@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class SkillDamage : MonoBehaviour
 {
-    public int SpecialSkillDamage = 300;
-    public int ActiveSkillDamage = 60;
+    public int SkillDMG = 100;
 
 
     // Start is called before the first frame update

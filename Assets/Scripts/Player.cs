@@ -75,4 +75,9 @@ public class Player : MonoBehaviour
         gold += getgold;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject.name);
+    }
+
 }

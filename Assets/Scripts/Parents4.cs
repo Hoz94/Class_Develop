@@ -43,14 +43,7 @@ public class Parents4 : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         if (enemy != null)
         {
-            if (SD != null)
-            {
-                enemy.OnHit(SD.SpecialSkillDamage);
-            }
-            else
-            {
-                enemy.OnHit(SD.ActiveSkillDamage);
-            }
+            enemy.OnHit(SD.SkillDMG);
         }
     }
 }

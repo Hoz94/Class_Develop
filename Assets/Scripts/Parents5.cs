@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Parents3 : MonoBehaviour
+public class Parents5 : MonoBehaviour
 {
     SkillDamage SD;
     public GameObject parentsSkills;
@@ -14,7 +14,7 @@ public class Parents3 : MonoBehaviour
     {
         if (parentsSkills == null)
         {
-            parentsSkills = transform.parent.transform.parent.transform.parent.gameObject;
+            parentsSkills = transform.parent.transform.parent.transform.parent.transform.parent.transform.parent.gameObject;
         }
 
         if (SD == null && parentsSkills != null)

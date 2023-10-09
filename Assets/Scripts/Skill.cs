@@ -15,10 +15,18 @@ public class Skill : MonoBehaviour
     public GameObject WaterMagicianSpecialSkillPrefab;
     public GameObject WindMagicianSpecialSkillPrefab;
     
-    [Header ("군인 액티브스킬 프리팹")]
-    public GameObject SoldierSkill1Prefab;
-    public GameObject SoldierSkill2Prefab;
-    public GameObject SoldierSkill3Prefab;
+    [Header ("군인 1번 액티브스킬 프리팹")]
+    public GameObject SoldierSkill1Prefab1;
+    public GameObject SoldierSkill1Prefab2;
+    public GameObject SoldierSkill1Prefab3;
+    [Header("군인 2번 액티브스킬 프리팹")]
+    public GameObject SoldierSkill2Prefab1;
+    public GameObject SoldierSkill2Prefab2;
+    public GameObject SoldierSkill2Prefab3;
+    [Header("군인 3번 액티브스킬 프리팹")]
+    public GameObject SoldierSkill3Prefab1;
+    public GameObject SoldierSkill3Prefab2;
+    public GameObject SoldierSkill3Prefab3;
     [Header("검사 액티브스킬 프리팹")]
     public GameObject WorriorSkill1Prefab;
     public GameObject WorriorSkill2Prefab;
@@ -36,6 +44,7 @@ public class Skill : MonoBehaviour
     public GameObject WindMagicianSkill2Prefab;
     public GameObject WindMagicianSkill3Prefab;
 
+    [Header ("스킬 쿨타임")]
     public float SpecialSkillCool = 15f; // 필살기 쿨타임
     public float SpecialSkillTime = 0f;
     public float Skill1Cool = 5f; // 1번스킬 쿨타임
@@ -126,24 +135,23 @@ public class Skill : MonoBehaviour
 
     void ActiveSkill()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1)&&Skill1Cool==Skill1Time) // 1번을 눌렀을 때
+        if(Input.GetKeyDown(KeyCode.Alpha1)&&Skill1Cool==Skill1Time) // 1번 눌렀을 때
         {
-            Debug.Log(shopManager.SoldierSkill1);
             if (player.tag == "Soldier")
             {
                 if(shopManager.SoldierSkill1==1)
                 {
-                    SkillInput=Instantiate(SoldierSkill1Prefab, skillpos.transform.position, transform.rotation);
+                    SkillInput=Instantiate(SoldierSkill1Prefab1, transform.position, transform.rotation);
                 }
 
                 if(shopManager.SoldierSkill1==2)
                 {
-                    SkillInput = Instantiate(SoldierSkill2Prefab, skillpos.transform.position, skillpos.transform.rotation);
+                    SkillInput = Instantiate(SoldierSkill1Prefab2, transform.position, transform.rotation);
                 }
 
                 if (shopManager.SoldierSkill1 == 3)
                 {
-                    SkillInput = Instantiate(SoldierSkill3Prefab, skillpos.transform.position, transform.rotation);
+                    SkillInput = Instantiate(SoldierSkill1Prefab3, transform.position, transform.rotation);
                 }
                 Skill1Time = 0f;
             }
@@ -167,12 +175,26 @@ public class Skill : MonoBehaviour
             {
                 Skill1Time = 0f;
             }
-        }
+        } // 1번을 눌렀을 때
 
         if (Input.GetKeyDown(KeyCode.Alpha2) && Skill2Cool == Skill2Time) // 2번을 눌렀을 때
         {
             if (player.tag == "Soldier")
             {
+                if (shopManager.SoldierSkill2 == 1)
+                {
+                    SkillInput = Instantiate(SoldierSkill2Prefab1, transform.position, transform.rotation);
+                }
+
+                if (shopManager.SoldierSkill2 == 2)
+                {
+                    SkillInput = Instantiate(SoldierSkill2Prefab2, transform.position, transform.rotation);
+                }
+
+                if (shopManager.SoldierSkill2 == 3)
+                {
+                    SkillInput = Instantiate(SoldierSkill2Prefab3, transform.position, transform.rotation);
+                }
                 Skill2Time = 0f;
             }
 
@@ -195,12 +217,27 @@ public class Skill : MonoBehaviour
             {
                 Skill2Time = 0f;
             }
-        }
+        }// 2번 눌렀을 때
 
         if (Input.GetKeyDown(KeyCode.Alpha3) && Skill3Cool == Skill3Time) // 3번을 눌렀을 때
         {
             if (player.tag == "Soldier")
             {
+                if (shopManager.SoldierSkill3 == 1)
+                {
+                    SkillInput = Instantiate(SoldierSkill3Prefab1, transform.position, transform.rotation);
+                }
+
+/*                if (shopManager.SoldierSkill3 == 2)
+                {
+                    SkillInput = Instantiate(SoldierSkill3Prefab2, transform.position, transform.rotation);
+                }*/
+
+                if (shopManager.SoldierSkill3 == 3)
+                {
+                    SkillInput = Instantiate(SoldierSkill3Prefab3, transform.position, transform.rotation);
+                    SkillInput.GetComponent<Rigidbody>().AddForce(transform.forward * 500f);
+                }
                 Skill3Time = 0f;
             }
 

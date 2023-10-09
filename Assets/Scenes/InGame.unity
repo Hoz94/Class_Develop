@@ -329,9 +329,15 @@ MonoBehaviour:
   FireMagicianSpecialSkillPrefab: {fileID: 871230760554578038, guid: dd32edaa1de015a4ebee86288ceb4081, type: 3}
   WaterMagicianSpecialSkillPrefab: {fileID: 194817603891535026, guid: 14a0f89549022ce489ad5a886cd3f8e9, type: 3}
   WindMagicianSpecialSkillPrefab: {fileID: 6354191709117940274, guid: 1aa709ca474efa84c88af3d285df5132, type: 3}
-  SoldierSkill1Prefab: {fileID: 1899820180164686636, guid: c0b41951368b3214b8f502e5a31d1640, type: 3}
-  SoldierSkill2Prefab: {fileID: 3352037085242716816, guid: 5f581f59cd947244fb318833e9f5028f, type: 3}
-  SoldierSkill3Prefab: {fileID: 6597932298756112774, guid: 8141d18bc44ff6c40a68c70358ea3121, type: 3}
+  SoldierSkill1Prefab1: {fileID: 3352037085242716816, guid: 5f581f59cd947244fb318833e9f5028f, type: 3}
+  SoldierSkill1Prefab2: {fileID: 3976647566952146198, guid: 1154e4ee316a8794f8d30ddb5169d983, type: 3}
+  SoldierSkill1Prefab3: {fileID: 6597932298756112774, guid: 8141d18bc44ff6c40a68c70358ea3121, type: 3}
+  SoldierSkill2Prefab1: {fileID: 2038959624261430991, guid: 2e28e14bfcbc9c446af40a9bcde870e6, type: 3}
+  SoldierSkill2Prefab2: {fileID: 4334855989389678110, guid: 2000df3655743ab419e9d9936841d3ad, type: 3}
+  SoldierSkill2Prefab3: {fileID: 7960040246655339056, guid: 4ac99d5e4ce775b45a7c6a6be5d55f58, type: 3}
+  SoldierSkill3Prefab1: {fileID: 4392200634563080770, guid: b274f4ded4efa8c488e85b4c82b331b0, type: 3}
+  SoldierSkill3Prefab2: {fileID: 0}
+  SoldierSkill3Prefab3: {fileID: 7628701638803835190, guid: 706e57b000adf534798cb5b4f32e2a4d, type: 3}
   WorriorSkill1Prefab: {fileID: 0}
   WorriorSkill2Prefab: {fileID: 0}
   WorriorSkill3Prefab: {fileID: 0}
@@ -5553,7 +5559,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1518044706}
         m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
-        m_MethodName: onclickAtkBtn
+        m_MethodName: onclickSkill2Btn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8004,9 +8010,7 @@ MonoBehaviour:
   WindMagicianSkill1: 0
   WindMagicianSkill2: 0
   WindMagicianSkill3: 0
-  Skill1UpgradeGold: 3000
-  Skill2UpgradeGold: 3000
-  Skill3UpgradeGold: 3000
+  SkillUpgradeGold: 3000
 --- !u!1 &1520017868
 GameObject:
   m_ObjectHideFlags: 0
@@ -11008,7 +11012,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1518044706}
         m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
-        m_MethodName: onclickAtkBtn
+        m_MethodName: onclickSkill3Btn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

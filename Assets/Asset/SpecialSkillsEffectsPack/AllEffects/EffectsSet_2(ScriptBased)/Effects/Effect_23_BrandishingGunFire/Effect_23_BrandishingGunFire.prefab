@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6597932298756112775}
+  - component: {fileID: -2789633492422531682}
   m_Layer: 0
   m_Name: Effect_23_BrandishingGunFire
   m_TagString: Untagged
@@ -23,15 +24,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6597932298756112774}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6597932298777415385}
   - {fileID: 6597932298843622613}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-2789633492422531682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6597932298756112774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6a39c8d1795dc4dafdbdcf222db540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillDMG: 100
 --- !u!1 &6597932298777415383
 GameObject:
   m_ObjectHideFlags: 0
@@ -56,12 +71,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6597932298777415383}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6597932298756112775}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6597932298777415384
 MonoBehaviour:
@@ -84,6 +100,7 @@ MonoBehaviour:
   m_randomPos: {x: 0, y: 0, z: 0}
   m_randomRot: {x: 10, y: 180, z: 0}
   m_randomScale: {x: 0, y: 0, z: 0}
+  isObjectAttachToParent: 1
 --- !u!1 &6597932298843622612
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,12 +125,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6597932298843622612}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6597932298756112775}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6597932298843622614
 MonoBehaviour:
@@ -136,3 +154,4 @@ MonoBehaviour:
   m_randomPos: {x: 0, y: 0, z: 0}
   m_randomRot: {x: 10, y: 180, z: 0}
   m_randomScale: {x: 0, y: 0, z: 0}
+  isObjectAttachToParent: 1

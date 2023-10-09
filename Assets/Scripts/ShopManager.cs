@@ -37,9 +37,7 @@ public class ShopManager : MonoBehaviour
     public int WindMagicianSkill1 = 0;
     public int WindMagicianSkill2 = 0;
     public int WindMagicianSkill3 = 0;
-    public int Skill1UpgradeGold = 3000;
-    public int Skill2UpgradeGold = 3000;
-    public int Skill3UpgradeGold = 3000;
+    public int SkillUpgradeGold = 3000;
 
     // Update is called once per frame
     void Update()
@@ -65,7 +63,7 @@ public class ShopManager : MonoBehaviour
             GambleUI.SetActive(false);
             shopopen = false;
         } // 상점 닫기
-        
+
     }
 
     public void onclickStatsButton() //스탯 탭
@@ -90,7 +88,7 @@ public class ShopManager : MonoBehaviour
         SKillsUI.SetActive(false);
         EnemyUI.SetActive(true);
         GambleUI.SetActive(false);
-    } 
+    }
 
     public void onclickGamebleButton() // 도박 탭
     {
@@ -98,7 +96,7 @@ public class ShopManager : MonoBehaviour
         SKillsUI.SetActive(false);
         EnemyUI.SetActive(false);
         GambleUI.SetActive(true);
-    } 
+    }
 
     public void onclickTipButton() // 팁 탭
     {
@@ -117,37 +115,37 @@ public class ShopManager : MonoBehaviour
             }
             BtnCooltime = 1.7f;
         }
-    } 
+    }
 
     IEnumerator NotEnoughTipCo() // 팁 줄 때 잔액에 따른 텍스트 없애는 쿨타임
     {
         yield return new WaitForSecondsRealtime(1.5f);
         NotEnoughTipText.gameObject.SetActive(false);
-    } 
+    }
     IEnumerator EnoughTipCo() // 팁 줄 때 잔액에 따른 텍스트 없애는 쿨타임
     {
         yield return new WaitForSecondsRealtime(1.5f);
         EnoughTipText.gameObject.SetActive(false);
-    } 
+    }
 
-    
+
     public void onclickAtkBtn() // 기본 공격 증가 
     {
         Status status = player.gameObject.GetComponent<Status>();
         status.Atk += 10;
-    } 
+    }
 
     public void onclickWalkSpdBtn() // 이속 증가
     {
         Status status = player.gameObject.GetComponent<Status>();
         status.Spd += 1;
-    } 
+    }
 
     public void onclickMaxHpBtn() // 최대 체력 증가
     {
         Status status = player.gameObject.GetComponent<Status>();
         status.MaxHp += 30;
-    } 
+    }
 
     public void onclickHpPotionBtn() // 물약 포션
     {
@@ -155,36 +153,34 @@ public class ShopManager : MonoBehaviour
         if (status.CurHp <= status.MaxHp)
         {
             status.CurHp += 10;
-            if(status.CurHp > status.MaxHp)
+            if (status.CurHp > status.MaxHp)
             {
                 status.CurHp = status.MaxHp;
             }
         }
-    } 
+    }
 
     public void onclickSkill1Btn() // 스킬 1 버튼
     {
-        
-        if(player.tag=="Soldier")
+        if (player.tag == "Soldier")
         {
-            Debug.Log(SoldierSkill1);
-            if (player.gold >= Skill1UpgradeGold)
+            if (player.gold >= SkillUpgradeGold)
             {
                 if (SoldierSkill1 == 0)
                 {
-                    player.gold -= Skill1UpgradeGold;
+                    player.gold -= SkillUpgradeGold;
                     SoldierSkill1++;
                 }
 
                 else if (SoldierSkill1 == 1)
                 {
-                    player.gold -= Skill1UpgradeGold;
+                    player.gold -= SkillUpgradeGold;
                     SoldierSkill1++;
                 }
 
                 else if (SoldierSkill1 == 2)
                 {
-                    player.gold -= Skill1UpgradeGold;
+                    player.gold -= SkillUpgradeGold;
                     SoldierSkill1++;
                 }
 
@@ -194,7 +190,7 @@ public class ShopManager : MonoBehaviour
                 }
             }
 
-            else if(player.gold<= Skill1UpgradeGold) 
+            else if (player.gold <= SkillUpgradeGold)
             {
                 return;
             }
@@ -202,23 +198,23 @@ public class ShopManager : MonoBehaviour
 
         if (player.tag == "Worrior")
         {
-            if (player.gold >= Skill1UpgradeGold)
+            if (player.gold >= SkillUpgradeGold)
             {
                 if (WorriorSkill1 == 0)
                 {
-                    player.gold -= Skill1UpgradeGold;
+                    player.gold -= SkillUpgradeGold;
                     WorriorSkill1++;
                 }
 
                 else if (WorriorSkill1 == 1)
                 {
-                    player.gold -= Skill1UpgradeGold;
+                    player.gold -= SkillUpgradeGold;
                     WorriorSkill1++;
                 }
 
                 else if (WorriorSkill1 == 2)
                 {
-                    player.gold -= Skill1UpgradeGold;
+                    player.gold -= SkillUpgradeGold;
                     WorriorSkill1++;
                 }
 
@@ -228,7 +224,7 @@ public class ShopManager : MonoBehaviour
                 }
             }
 
-            else if (player.gold <= Skill1UpgradeGold)
+            else if (player.gold <= SkillUpgradeGold)
             {
                 return;
             }
@@ -236,23 +232,23 @@ public class ShopManager : MonoBehaviour
 
         if (player.tag == "FireMagician")
         {
-            if (player.gold >= Skill1UpgradeGold)
+            if (player.gold >= SkillUpgradeGold)
             {
                 if (FireMagicianSkill1 == 0)
                 {
-                    player.gold -= Skill1UpgradeGold;
+                    player.gold -= SkillUpgradeGold;
                     FireMagicianSkill1++;
                 }
 
                 else if (FireMagicianSkill1 == 1)
                 {
-                    player.gold -= Skill1UpgradeGold;
+                    player.gold -= SkillUpgradeGold;
                     FireMagicianSkill1++;
                 }
 
                 else if (FireMagicianSkill1 == 2)
                 {
-                    player.gold -= Skill1UpgradeGold;
+                    player.gold -= SkillUpgradeGold;
                     FireMagicianSkill1++;
                 }
 
@@ -262,7 +258,7 @@ public class ShopManager : MonoBehaviour
                 }
             }
 
-            else if (player.gold <= Skill1UpgradeGold)
+            else if (player.gold <= SkillUpgradeGold)
             {
                 return;
             }
@@ -270,23 +266,23 @@ public class ShopManager : MonoBehaviour
 
         if (player.tag == "WaterMagician")
         {
-            if (player.gold >= Skill1UpgradeGold)
+            if (player.gold >= SkillUpgradeGold)
             {
                 if (WaterMagicianSkill1 == 0)
                 {
-                    player.gold -= Skill1UpgradeGold;
+                    player.gold -= SkillUpgradeGold;
                     WaterMagicianSkill1++;
                 }
 
                 else if (WaterMagicianSkill1 == 1)
                 {
-                    player.gold -= Skill1UpgradeGold;
+                    player.gold -= SkillUpgradeGold;
                     WaterMagicianSkill1++;
                 }
 
                 else if (WaterMagicianSkill1 == 2)
                 {
-                    player.gold -= Skill1UpgradeGold;
+                    player.gold -= SkillUpgradeGold;
                     WaterMagicianSkill1++;
                 }
 
@@ -296,31 +292,31 @@ public class ShopManager : MonoBehaviour
                 }
             }
 
-            else if (player.gold <= Skill1UpgradeGold)
+            else if (player.gold <= SkillUpgradeGold)
             {
                 return;
             }
         }
 
-        if (player.tag == "WindMagician")
+        if (player.tag == "WindMagician")       
         {
-            if (player.gold >= Skill1UpgradeGold)
+            if (player.gold >= SkillUpgradeGold)
             {
                 if (WindMagicianSkill1 == 0)
                 {
-                    player.gold -= Skill1UpgradeGold;
+                    player.gold -= SkillUpgradeGold;
                     WindMagicianSkill1++;
                 }
 
                 else if (WindMagicianSkill1 == 1)
                 {
-                    player.gold -= Skill1UpgradeGold;
+                    player.gold -= SkillUpgradeGold;
                     WindMagicianSkill1++;
                 }
 
                 else if (WindMagicianSkill1 == 2)
                 {
-                    player.gold -= Skill1UpgradeGold;
+                    player.gold -= SkillUpgradeGold;
                     WindMagicianSkill1++;
                 }
 
@@ -330,10 +326,154 @@ public class ShopManager : MonoBehaviour
                 }
             }
 
-            else if (player.gold <= Skill1UpgradeGold)
+            else if (player.gold <= SkillUpgradeGold)
             {
                 return;
             }
         }
     }
+
+    public void onclickSkill2Btn()
+    {
+        if (player.tag == "Soldier")
+        {
+            if (player.gold >= SkillUpgradeGold)
+            {
+                if (SoldierSkill2 == 0)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    SoldierSkill2++;
+                }
+
+                else if (SoldierSkill2 == 1)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    SoldierSkill2++;
+                }
+
+                else if (SoldierSkill2 == 2)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    SoldierSkill2++;
+                }
+
+                else if (SoldierSkill2 <= 3)
+                {
+                    return;
+                }
+            }
+
+            else if (player.gold <= SkillUpgradeGold)
+            {
+                return;
+            }
+        }
+
+        if (player.tag == "Worrior")
+        {
+            if (player.gold >= SkillUpgradeGold)
+            {
+                if (WorriorSkill2 == 0)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    WorriorSkill1++;
+                }
+
+                else if (WorriorSkill2 == 1)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    WorriorSkill1++;
+                }
+
+                else if (WorriorSkill2 == 2)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    WorriorSkill1++;
+                }
+
+                else if (WorriorSkill2 <= 3)
+                {
+                    return;
+                }
+            }
+
+            else if (player.gold <= SkillUpgradeGold)
+            {
+                return;
+            }
+        }
+    }
+
+    public void onclickSkill3Btn()
+    {
+        if (player.tag == "Soldier")
+        {
+            if (player.gold >= SkillUpgradeGold)
+            {
+                if (SoldierSkill3 == 0)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    SoldierSkill3++;
+                }
+
+                else if (SoldierSkill3 == 1)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    SoldierSkill3++;
+                }
+
+                else if (SoldierSkill3 == 2)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    SoldierSkill3++;
+                }
+
+                else if (SoldierSkill3 <= 3)
+                {
+                    return;
+                }
+            }
+
+            else if (player.gold <= SkillUpgradeGold)
+            {
+                return;
+            }
+        }
+
+        if (player.tag == "Worrior")
+        {
+            if (player.gold >= SkillUpgradeGold)
+            {
+                if (WorriorSkill2 == 0)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    WorriorSkill1++;
+                }
+
+                else if (WorriorSkill2 == 1)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    WorriorSkill1++;
+                }
+
+                else if (WorriorSkill2 == 2)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    WorriorSkill1++;
+                }
+
+                else if (WorriorSkill2 <= 3)
+                {
+                    return;
+                }
+            }
+
+            else if (player.gold <= SkillUpgradeGold)
+            {
+                return;
+            }
+        }
+    }
+
+
 }
