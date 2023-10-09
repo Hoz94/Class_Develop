@@ -4,17 +4,40 @@ using UnityEngine;
 
 public class Skill : MonoBehaviour
 {
+    public ShopManager shopManager;
     Player player;
     public Transform skillpos; // 스킬이 나가는 위치
-    public GameObject SoldierSkillPrefab;
-    public GameObject WorriorSkillPrefab;
-    public GameObject FireMagicianSkillPrefab;
-    public GameObject WaterMagicianSkillPrefab;
-    public GameObject WindMagicianSkillPrefab;
     public GameObject SkillInput; // 인스턴스한것을 저장하는 오브젝트
+    [Header ("각 직업별 필살기 프리팹")]
+    public GameObject SoldierSpecialSkillPrefab;
+    public GameObject WorriorSpecialSkillPrefab;
+    public GameObject FireMagicianSpecialSkillPrefab;
+    public GameObject WaterMagicianSpecialSkillPrefab;
+    public GameObject WindMagicianSpecialSkillPrefab;
+    
+    [Header ("군인 액티브스킬 프리팹")]
+    public GameObject SoldierSkill1Prefab;
+    public GameObject SoldierSkill2Prefab;
+    public GameObject SoldierSkill3Prefab;
+    [Header("검사 액티브스킬 프리팹")]
+    public GameObject WorriorSkill1Prefab;
+    public GameObject WorriorSkill2Prefab;
+    public GameObject WorriorSkill3Prefab;
+    [Header("불법사 액티브스킬 프리팹")]
+    public GameObject FireMagicianSkill1Prefab;
+    public GameObject FireMagicianSkill2Prefab;
+    public GameObject FireMagicianSkill3Prefab;
+    [Header("물법사 액티브스킬 프리팹")]
+    public GameObject WaterMagicianSkill1Prefab;
+    public GameObject WaterMagicianSkill2Prefab;
+    public GameObject WaterMagicianSkill3Prefab;
+    [Header("바람법사 액티브스킬 프리팹")]
+    public GameObject WindMagicianSkill1Prefab;
+    public GameObject WindMagicianSkill2Prefab;
+    public GameObject WindMagicianSkill3Prefab;
 
     public float SpecialSkillCool = 15f; // 필살기 쿨타임
-    public float SpecialSkillTime = 30f;
+    public float SpecialSkillTime = 0f;
     public float Skill1Cool = 5f; // 1번스킬 쿨타임
     public float Skill2Cool = 8f; // 2번스킬 쿨타임
     public float Skill3Cool = 9f; // 3번스킬 쿨타임
@@ -43,14 +66,14 @@ public class Skill : MonoBehaviour
 
     }
 
-    void SpecialSkill() // 각 태그별 필살기
+    void SpecialSkill() // 각 직업별 필살기
     {
         if (player.tag == "Soldier")
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 SpecialSkillTime = 0f;
-                SkillInput = Instantiate(SoldierSkillPrefab, transform.position, transform.rotation);
+                SkillInput = Instantiate(SoldierSpecialSkillPrefab, transform.position, transform.rotation);
                 SkillInput.GetComponent<Rigidbody>().AddForce(transform.forward * 500f);
                 Destroy(SkillInput, 15f);
                 
@@ -62,7 +85,7 @@ public class Skill : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 SpecialSkillTime = 0f;
-                SkillInput = Instantiate(WorriorSkillPrefab, transform.position, transform.rotation);
+                SkillInput = Instantiate(WorriorSpecialSkillPrefab, transform.position, transform.rotation);
                 Destroy(SkillInput, 15f);
             }
         }
@@ -72,7 +95,7 @@ public class Skill : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 SpecialSkillTime = 0f;
-                SkillInput = Instantiate(FireMagicianSkillPrefab, transform.position, transform.rotation);
+                SkillInput = Instantiate(FireMagicianSpecialSkillPrefab, transform.position, transform.rotation);
                 Destroy(SkillInput, 15f);
             }
         }
@@ -82,7 +105,7 @@ public class Skill : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 SpecialSkillTime = 0f;
-                SkillInput = Instantiate(WaterMagicianSkillPrefab, transform.position, transform.rotation);
+                SkillInput = Instantiate(WaterMagicianSpecialSkillPrefab, transform.position, transform.rotation);
                 SkillInput.GetComponent<Rigidbody>().AddForce(transform.forward * 1000f);
                 Destroy(SkillInput, 15f);
             }
@@ -93,7 +116,7 @@ public class Skill : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 SpecialSkillTime = 0f;
-                SkillInput = Instantiate(WindMagicianSkillPrefab, skillpos.transform.position, transform.rotation);
+                SkillInput = Instantiate(WindMagicianSpecialSkillPrefab, skillpos.transform.position, transform.rotation);
                 Destroy(SkillInput, 15f);
             }
         }
@@ -105,8 +128,23 @@ public class Skill : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Alpha1)&&Skill1Cool==Skill1Time) // 1번을 눌렀을 때
         {
+            Debug.Log(shopManager.SoldierSkill1);
             if (player.tag == "Soldier")
             {
+                if(shopManager.SoldierSkill1==1)
+                {
+                    SkillInput=Instantiate(SoldierSkill1Prefab, skillpos.transform.position, transform.rotation);
+                }
+
+                if(shopManager.SoldierSkill1==2)
+                {
+                    SkillInput = Instantiate(SoldierSkill2Prefab, skillpos.transform.position, skillpos.transform.rotation);
+                }
+
+                if (shopManager.SoldierSkill1 == 3)
+                {
+                    SkillInput = Instantiate(SoldierSkill3Prefab, skillpos.transform.position, transform.rotation);
+                }
                 Skill1Time = 0f;
             }
 

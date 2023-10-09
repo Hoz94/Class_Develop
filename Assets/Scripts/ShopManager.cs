@@ -1,22 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
-    public Text CurGoldText;
     public Player player;
     public GameObject ShopUI;
+
     bool shopopen;
+
     public GameObject StatsUI;
     public GameObject SKillsUI;
     public GameObject EnemyUI;
     public GameObject GambleUI;
+
     public Text NotEnoughTipText;
     public Text EnoughTipText;
+    public Text CurGoldText;
+
     public float BtnCooltime = 0f;
+
+
     public int SoldierSkill1 = 0;
     public int SoldierSkill2 = 0;
     public int SoldierSkill3 = 0;
@@ -36,12 +41,6 @@ public class ShopManager : MonoBehaviour
     public int Skill2UpgradeGold = 3000;
     public int Skill3UpgradeGold = 3000;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -56,7 +55,6 @@ public class ShopManager : MonoBehaviour
             GambleUI.SetActive(false);
             shopopen = true;
         } // 상점 열기
-
         else if (Input.GetKeyDown(KeyCode.Escape) && shopopen == true)
         {
             Time.timeScale = 1;
@@ -67,8 +65,7 @@ public class ShopManager : MonoBehaviour
             GambleUI.SetActive(false);
             shopopen = false;
         } // 상점 닫기
-
-       
+        
     }
 
     public void onclickStatsButton() //스탯 탭
@@ -170,6 +167,7 @@ public class ShopManager : MonoBehaviour
         
         if(player.tag=="Soldier")
         {
+            Debug.Log(SoldierSkill1);
             if (player.gold >= Skill1UpgradeGold)
             {
                 if (SoldierSkill1 == 0)
@@ -202,34 +200,140 @@ public class ShopManager : MonoBehaviour
             }
         }
 
-        if(player.tag=="Worrior")
+        if (player.tag == "Worrior")
         {
-            
+            if (player.gold >= Skill1UpgradeGold)
+            {
+                if (WorriorSkill1 == 0)
+                {
+                    player.gold -= Skill1UpgradeGold;
+                    WorriorSkill1++;
+                }
+
+                else if (WorriorSkill1 == 1)
+                {
+                    player.gold -= Skill1UpgradeGold;
+                    WorriorSkill1++;
+                }
+
+                else if (WorriorSkill1 == 2)
+                {
+                    player.gold -= Skill1UpgradeGold;
+                    WorriorSkill1++;
+                }
+
+                else if (WorriorSkill1 <= 3)
+                {
+                    return;
+                }
+            }
+
+            else if (player.gold <= Skill1UpgradeGold)
+            {
+                return;
+            }
         }
 
-        if(player.tag=="FireMagician")
+        if (player.tag == "FireMagician")
         {
+            if (player.gold >= Skill1UpgradeGold)
+            {
+                if (FireMagicianSkill1 == 0)
+                {
+                    player.gold -= Skill1UpgradeGold;
+                    FireMagicianSkill1++;
+                }
 
+                else if (FireMagicianSkill1 == 1)
+                {
+                    player.gold -= Skill1UpgradeGold;
+                    FireMagicianSkill1++;
+                }
+
+                else if (FireMagicianSkill1 == 2)
+                {
+                    player.gold -= Skill1UpgradeGold;
+                    FireMagicianSkill1++;
+                }
+
+                else if (FireMagicianSkill1 <= 3)
+                {
+                    return;
+                }
+            }
+
+            else if (player.gold <= Skill1UpgradeGold)
+            {
+                return;
+            }
         }
 
-        if(player.tag=="WaterMagician")
+        if (player.tag == "WaterMagician")
         {
+            if (player.gold >= Skill1UpgradeGold)
+            {
+                if (WaterMagicianSkill1 == 0)
+                {
+                    player.gold -= Skill1UpgradeGold;
+                    WaterMagicianSkill1++;
+                }
 
+                else if (WaterMagicianSkill1 == 1)
+                {
+                    player.gold -= Skill1UpgradeGold;
+                    WaterMagicianSkill1++;
+                }
+
+                else if (WaterMagicianSkill1 == 2)
+                {
+                    player.gold -= Skill1UpgradeGold;
+                    WaterMagicianSkill1++;
+                }
+
+                else if (WaterMagicianSkill1 <= 3)
+                {
+                    return;
+                }
+            }
+
+            else if (player.gold <= Skill1UpgradeGold)
+            {
+                return;
+            }
         }
 
-        if(player.tag=="WindMagician")
+        if (player.tag == "WindMagician")
         {
+            if (player.gold >= Skill1UpgradeGold)
+            {
+                if (WindMagicianSkill1 == 0)
+                {
+                    player.gold -= Skill1UpgradeGold;
+                    WindMagicianSkill1++;
+                }
 
+                else if (WindMagicianSkill1 == 1)
+                {
+                    player.gold -= Skill1UpgradeGold;
+                    WindMagicianSkill1++;
+                }
+
+                else if (WindMagicianSkill1 == 2)
+                {
+                    player.gold -= Skill1UpgradeGold;
+                    WindMagicianSkill1++;
+                }
+
+                else if (WindMagicianSkill1 <= 3)
+                {
+                    return;
+                }
+            }
+
+            else if (player.gold <= Skill1UpgradeGold)
+            {
+                return;
+            }
         }
-    }
-
-    public void onclickSkill2Btn() // 스킬 2 버튼
-    {
-        
-    }
-
-    public void onclickSkill3Btn() // 스킬 3 버튼
-    {
-
     }
 }

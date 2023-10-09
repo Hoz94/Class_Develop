@@ -41,7 +41,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 871230760458282262}
   serializedVersion: 8
-  lengthInSec: 4
+  lengthInSec: 3
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -4999,8 +4999,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b6a39c8d1795dc4dafdbdcf222db540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpecialSkillDamage: 50
-  ActiveSkillDamage: 10
+  SpecialSkillDamage: 300
+  ActiveSkillDamage: 60
 --- !u!1 &871230760714906516
 GameObject:
   m_ObjectHideFlags: 0
@@ -5042,7 +5042,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 871230760714906516}
   serializedVersion: 8
-  lengthInSec: 4
+  lengthInSec: 3
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -9940,7 +9940,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 871230761125658872}
   serializedVersion: 8
-  lengthInSec: 4
+  lengthInSec: 3
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0

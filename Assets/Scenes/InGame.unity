@@ -321,13 +321,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9a59221188f88e44b6a34d66916e861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shopManager: {fileID: 1518044706}
   skillpos: {fileID: 1650225106}
-  SoldierSkillPrefab: {fileID: 458491794854500806, guid: 18ca98e31fa03ee488df5dcb5db13ff6, type: 3}
-  WorriorSkillPrefab: {fileID: 2134000535842535392, guid: 8967753c297c3124d98b0c7df5216ac2, type: 3}
-  FireMagicianSkillPrefab: {fileID: 871230760554578038, guid: dd32edaa1de015a4ebee86288ceb4081, type: 3}
-  WaterMagicianSkillPrefab: {fileID: 194817603891535026, guid: 14a0f89549022ce489ad5a886cd3f8e9, type: 3}
-  WindMagicianSkillPrefab: {fileID: 6354191709117940274, guid: 1aa709ca474efa84c88af3d285df5132, type: 3}
   SkillInput: {fileID: 0}
+  SoldierSpecialSkillPrefab: {fileID: 458491794854500806, guid: 18ca98e31fa03ee488df5dcb5db13ff6, type: 3}
+  WorriorSpecialSkillPrefab: {fileID: 2134000535842535392, guid: 8967753c297c3124d98b0c7df5216ac2, type: 3}
+  FireMagicianSpecialSkillPrefab: {fileID: 871230760554578038, guid: dd32edaa1de015a4ebee86288ceb4081, type: 3}
+  WaterMagicianSpecialSkillPrefab: {fileID: 194817603891535026, guid: 14a0f89549022ce489ad5a886cd3f8e9, type: 3}
+  WindMagicianSpecialSkillPrefab: {fileID: 6354191709117940274, guid: 1aa709ca474efa84c88af3d285df5132, type: 3}
+  SoldierSkill1Prefab: {fileID: 1899820180164686636, guid: c0b41951368b3214b8f502e5a31d1640, type: 3}
+  SoldierSkill2Prefab: {fileID: 3352037085242716816, guid: 5f581f59cd947244fb318833e9f5028f, type: 3}
+  SoldierSkill3Prefab: {fileID: 6597932298756112774, guid: 8141d18bc44ff6c40a68c70358ea3121, type: 3}
+  WorriorSkill1Prefab: {fileID: 0}
+  WorriorSkill2Prefab: {fileID: 0}
+  WorriorSkill3Prefab: {fileID: 0}
+  FireMagicianSkill1Prefab: {fileID: 0}
+  FireMagicianSkill2Prefab: {fileID: 0}
+  FireMagicianSkill3Prefab: {fileID: 0}
+  WaterMagicianSkill1Prefab: {fileID: 0}
+  WaterMagicianSkill2Prefab: {fileID: 0}
+  WaterMagicianSkill3Prefab: {fileID: 0}
+  WindMagicianSkill1Prefab: {fileID: 0}
+  WindMagicianSkill2Prefab: {fileID: 0}
+  WindMagicianSkill3Prefab: {fileID: 0}
   SpecialSkillCool: 15
   SpecialSkillTime: 15
   Skill1Cool: 5
@@ -1941,7 +1957,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &347054448
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7971,6 +7987,7 @@ MonoBehaviour:
   GambleUI: {fileID: 424572454}
   NotEnoughTipText: {fileID: 47098504}
   EnoughTipText: {fileID: 1182481984}
+  CurGoldText: {fileID: 0}
   BtnCooltime: 2
   SoldierSkill1: 0
   SoldierSkill2: 0

@@ -2,22 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParticleObject : MonoBehaviour
+public class Parents3 : MonoBehaviour
 {
     SkillDamage SD;
     public GameObject parentsSkills;
     // Start is called before the first frame update
 
-    
+
     // Update is called once per frame
     void Update()
     {
         if (parentsSkills == null)
         {
-            parentsSkills = transform.parent.transform.parent.transform.parent.transform.parent.gameObject;
+            parentsSkills = transform.parent.transform.parent.transform.parent.gameObject;
         }
 
-        if (SD == null&&parentsSkills!=null) 
+        if (SD == null && parentsSkills != null)
         {
             SD = parentsSkills.GetComponent<SkillDamage>();
         }
@@ -27,7 +27,7 @@ public class ParticleObject : MonoBehaviour
     {
         Enemy enemy = other.GetComponent<Enemy>();
         StartCoroutine(Timeco(enemy));
-        
+
         /*if (enemy != null) 
         {
             *//*if (SD == null)
@@ -38,7 +38,7 @@ public class ParticleObject : MonoBehaviour
         }*/
     }
 
-    IEnumerator Timeco(Enemy enemy) 
+    IEnumerator Timeco(Enemy enemy)
     {
         yield return new WaitForSeconds(0.1f);
         if (enemy != null)

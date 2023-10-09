@@ -39620,8 +39620,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b6a39c8d1795dc4dafdbdcf222db540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpecialSkillDamage: 50
-  ActiveSkillDamage: 10
+  SpecialSkillDamage: 300
+  ActiveSkillDamage: 60
 --- !u!1 &458491794900870975
 GameObject:
   m_ObjectHideFlags: 0
