@@ -7,7 +7,7 @@ public class SpawnEnemies : MonoBehaviour
 
     public PoolingManager poolingManager;
     public Transform[] spawnPoints; // 몬스터를 스폰할 위치 배열
-    public float spawnInterval = 0.2f; // 몬스터 스폰 간격
+    public float spawnInterval = 0.5f; // 몬스터 스폰 간격
 
     private float spawnTimer = 0f;
 

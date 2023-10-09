@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkillDamage : MonoBehaviour
 {
-    public int SpecialSkillDamage = 10;
+    public int SpecialSkillDamage = 50;
     public int ActiveSkillDamage = 10;
 
 

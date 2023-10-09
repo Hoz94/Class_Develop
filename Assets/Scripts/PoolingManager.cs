@@ -11,7 +11,7 @@ public class PoolingManager : MonoBehaviour
     [Header("일반몹 오브젝트풀링")]
     public List<GameObject> Enemypool = new List<GameObject>();
     public GameObject EnemyPrefab;
-    int MaxEnemies = 300;
+    int MaxEnemies = 1500;
 
     [Header("총알 오브젝트풀링")]
     public List<GameObject> BulletPool = new List<GameObject>();
