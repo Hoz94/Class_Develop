@@ -336,7 +336,7 @@ MonoBehaviour:
   SoldierSkill2Prefab2: {fileID: 4334855989389678110, guid: 2000df3655743ab419e9d9936841d3ad, type: 3}
   SoldierSkill2Prefab3: {fileID: 7960040246655339056, guid: 4ac99d5e4ce775b45a7c6a6be5d55f58, type: 3}
   SoldierSkill3Prefab1: {fileID: 4392200634563080770, guid: b274f4ded4efa8c488e85b4c82b331b0, type: 3}
-  SoldierSkill3Prefab2: {fileID: 0}
+  SoldierSkill3Prefab2: {fileID: 3167749161086329177, guid: 42a4342fe9f25594a9e8850b2a846b74, type: 3}
   SoldierSkill3Prefab3: {fileID: 7628701638803835190, guid: 706e57b000adf534798cb5b4f32e2a4d, type: 3}
   WorriorSkill1Prefab: {fileID: 0}
   WorriorSkill2Prefab: {fileID: 0}
@@ -350,8 +350,8 @@ MonoBehaviour:
   WindMagicianSkill1Prefab: {fileID: 0}
   WindMagicianSkill2Prefab: {fileID: 0}
   WindMagicianSkill3Prefab: {fileID: 0}
-  SpecialSkillCool: 15
-  SpecialSkillTime: 15
+  SpecialSkillCool: 30
+  SpecialSkillTime: 30
   Skill1Cool: 5
   Skill2Cool: 8
   Skill3Cool: 9

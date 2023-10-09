@@ -18,7 +18,9 @@ effect_18
 필살기
 <군인>
 필살기effect_10
-개틀링사격 : effect_20 -> effect_24 >effect_23
-공중지원 : effect_22 ->effect_23->effect_46(cybercarrier)
+개틀링사격 :  multiple shot->effect45 MultipleLaserCanon
+->effect_23 Brandshing Gunfire
+공중지원 : effect_22HoloAirInvade ->effect_23BomberAirraid->effect_46(cybercarrier)
 포사격 : effect35(RuinousOperation)->effect40(AerialBombing)->effec13(DangerClose)
+
 

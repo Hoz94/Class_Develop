@@ -45,8 +45,8 @@ public class Skill : MonoBehaviour
     public GameObject WindMagicianSkill3Prefab;
 
     [Header ("스킬 쿨타임")]
-    public float SpecialSkillCool = 15f; // 필살기 쿨타임
-    public float SpecialSkillTime = 0f;
+    public float SpecialSkillCool = 30f; // 필살기 쿨타임
+    public float SpecialSkillTime = 30f;
     public float Skill1Cool = 5f; // 1번스킬 쿨타임
     public float Skill2Cool = 8f; // 2번스킬 쿨타임
     public float Skill3Cool = 9f; // 3번스킬 쿨타임
@@ -142,16 +142,19 @@ public class Skill : MonoBehaviour
                 if(shopManager.SoldierSkill1==1)
                 {
                     SkillInput=Instantiate(SoldierSkill1Prefab1, transform.position, transform.rotation);
+                    Destroy(SkillInput, 4.5f);
                 }
 
                 if(shopManager.SoldierSkill1==2)
                 {
                     SkillInput = Instantiate(SoldierSkill1Prefab2, transform.position, transform.rotation);
+                    Destroy(SkillInput, 4.5f);
                 }
 
                 if (shopManager.SoldierSkill1 == 3)
                 {
                     SkillInput = Instantiate(SoldierSkill1Prefab3, transform.position, transform.rotation);
+                    Destroy(SkillInput, 4.5f);
                 }
                 Skill1Time = 0f;
             }
@@ -184,16 +187,20 @@ public class Skill : MonoBehaviour
                 if (shopManager.SoldierSkill2 == 1)
                 {
                     SkillInput = Instantiate(SoldierSkill2Prefab1, transform.position, transform.rotation);
+                    Destroy(SkillInput, 7.5f);
                 }
 
                 if (shopManager.SoldierSkill2 == 2)
                 {
                     SkillInput = Instantiate(SoldierSkill2Prefab2, transform.position, transform.rotation);
+                    Destroy(SkillInput, 7.5f);
                 }
 
                 if (shopManager.SoldierSkill2 == 3)
                 {
                     SkillInput = Instantiate(SoldierSkill2Prefab3, transform.position, transform.rotation);
+                    Destroy(SkillInput, 7.5f);
+                    
                 }
                 Skill2Time = 0f;
             }
@@ -226,17 +233,22 @@ public class Skill : MonoBehaviour
                 if (shopManager.SoldierSkill3 == 1)
                 {
                     SkillInput = Instantiate(SoldierSkill3Prefab1, transform.position, transform.rotation);
+                    SkillInput.GetComponent<Rigidbody>().AddForce(transform.forward * 1000f);
+                    Destroy(SkillInput, 8.5f);
+
                 }
 
-/*                if (shopManager.SoldierSkill3 == 2)
+                if (shopManager.SoldierSkill3 == 2)
                 {
                     SkillInput = Instantiate(SoldierSkill3Prefab2, transform.position, transform.rotation);
-                }*/
+                    Destroy(SkillInput, 8.5f);
+                }
 
                 if (shopManager.SoldierSkill3 == 3)
                 {
                     SkillInput = Instantiate(SoldierSkill3Prefab3, transform.position, transform.rotation);
                     SkillInput.GetComponent<Rigidbody>().AddForce(transform.forward * 500f);
+                    Destroy(SkillInput, 8.5f);
                 }
                 Skill3Time = 0f;
             }
