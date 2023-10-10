@@ -338,18 +338,42 @@ MonoBehaviour:
   SoldierSkill3Prefab1: {fileID: 4392200634563080770, guid: b274f4ded4efa8c488e85b4c82b331b0, type: 3}
   SoldierSkill3Prefab2: {fileID: 3167749161086329177, guid: 42a4342fe9f25594a9e8850b2a846b74, type: 3}
   SoldierSkill3Prefab3: {fileID: 7628701638803835190, guid: 706e57b000adf534798cb5b4f32e2a4d, type: 3}
-  WorriorSkill1Prefab: {fileID: 0}
-  WorriorSkill2Prefab: {fileID: 0}
-  WorriorSkill3Prefab: {fileID: 0}
-  FireMagicianSkill1Prefab: {fileID: 0}
-  FireMagicianSkill2Prefab: {fileID: 0}
-  FireMagicianSkill3Prefab: {fileID: 0}
-  WaterMagicianSkill1Prefab: {fileID: 0}
-  WaterMagicianSkill2Prefab: {fileID: 0}
-  WaterMagicianSkill3Prefab: {fileID: 0}
-  WindMagicianSkill1Prefab: {fileID: 0}
-  WindMagicianSkill2Prefab: {fileID: 0}
-  WindMagicianSkill3Prefab: {fileID: 0}
+  WorriorSkill1Prefab1: {fileID: 7196101468527216612, guid: c2062d22467ff114d9ba7d123794a75d, type: 3}
+  WorriorSkill1Prefab2: {fileID: 6392853023695160095, guid: b5c4b656bdf482840b4e6c8d9c27af45, type: 3}
+  WorriorSkill1Prefab3: {fileID: 6234818455853893159, guid: 96c30f207bdbb3243abb88e8d5255d1e, type: 3}
+  WorriorSkill2Prefab1: {fileID: 4143118989675900537, guid: a676e7bb180358548975914090477b01, type: 3}
+  WorriorSkill2Prefab2: {fileID: 8268945509411666694, guid: d42ae25bd6c40c246ae5195d2a0537e1, type: 3}
+  WorriorSkill2Prefab3: {fileID: 4412877183661391353, guid: 75f84997587b43c4089dc5c6b7702d32, type: 3}
+  WorriorSkill3Prefab1: {fileID: 8440170721088204535, guid: 26e8937d9ba3cbf46b594149089fc088, type: 3}
+  WorriorSkill3Prefab2: {fileID: 3527912838208871524, guid: 66c21d72a7c581f40828fd8612103bbd, type: 3}
+  WorriorSkill3Prefab3: {fileID: 0}
+  FireMagicianSkill1Prefab1: {fileID: 0}
+  FireMagicianSkill1Prefab2: {fileID: 0}
+  FireMagicianSkill1Prefab3: {fileID: 0}
+  FireMagicianSkill2Prefab1: {fileID: 0}
+  FireMagicianSkill2Prefab2: {fileID: 0}
+  FireMagicianSkill2Prefab3: {fileID: 0}
+  FireMagicianSkill3Prefab1: {fileID: 0}
+  FireMagicianSkill3Prefab2: {fileID: 0}
+  FireMagicianSkill3Prefab3: {fileID: 0}
+  WaterMagicianSkill1Prefab1: {fileID: 0}
+  WaterMagicianSkill1Prefab2: {fileID: 0}
+  WaterMagicianSkill1Prefab3: {fileID: 0}
+  WaterMagicianSkill2Prefab1: {fileID: 0}
+  WaterMagicianSkill2Prefab2: {fileID: 0}
+  WaterMagicianSkill2Prefab3: {fileID: 0}
+  WaterMagicianSkill3Prefab1: {fileID: 0}
+  WaterMagicianSkill3Prefab2: {fileID: 0}
+  WaterMagicianSkill3Prefab3: {fileID: 0}
+  WindMagicianSkill1Prefab1: {fileID: 0}
+  WindMagicianSkill1Prefab2: {fileID: 0}
+  WindMagicianSkill1Prefab3: {fileID: 0}
+  WindMagicianSkill2Prefab1: {fileID: 0}
+  WindMagicianSkill2Prefab2: {fileID: 0}
+  WindMagicianSkill2Prefab3: {fileID: 0}
+  WindMagicianSkill3Prefab1: {fileID: 0}
+  WindMagicianSkill3Prefab2: {fileID: 0}
+  WindMagicianSkill3Prefab3: {fileID: 0}
   SpecialSkillCool: 30
   SpecialSkillTime: 30
   Skill1Cool: 5
@@ -358,6 +382,9 @@ MonoBehaviour:
   Skill1Time: 5
   Skill2Time: 8
   Skill3Time: 9
+  Skill1DeleteTime: 5
+  Skill2DeleteTime: 5
+  Skill3DeleteTime: 5
 --- !u!1 &37910900
 GameObject:
   m_ObjectHideFlags: 0
@@ -8859,6 +8886,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1650225106}
+  - component: {fileID: 1650225107}
   m_Layer: 0
   m_Name: SpecialSkillPos
   m_TagString: Untagged
@@ -8881,6 +8909,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6172252}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &1650225107
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650225105}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &1729422516
 GameObject:
   m_ObjectHideFlags: 0

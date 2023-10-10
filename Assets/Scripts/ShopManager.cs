@@ -376,19 +376,19 @@ public class ShopManager : MonoBehaviour
                 if (WorriorSkill2 == 0)
                 {
                     player.gold -= SkillUpgradeGold;
-                    WorriorSkill1++;
+                    WorriorSkill2++;
                 }
 
                 else if (WorriorSkill2 == 1)
                 {
                     player.gold -= SkillUpgradeGold;
-                    WorriorSkill1++;
+                    WorriorSkill2++;
                 }
 
                 else if (WorriorSkill2 == 2)
                 {
                     player.gold -= SkillUpgradeGold;
-                    WorriorSkill1++;
+                    WorriorSkill2++;
                 }
 
                 else if (WorriorSkill2 <= 3)
@@ -444,25 +444,25 @@ public class ShopManager : MonoBehaviour
         {
             if (player.gold >= SkillUpgradeGold)
             {
-                if (WorriorSkill2 == 0)
+                if (WorriorSkill3 == 0)
                 {
                     player.gold -= SkillUpgradeGold;
-                    WorriorSkill1++;
+                    WorriorSkill3++;
                 }
 
-                else if (WorriorSkill2 == 1)
+                else if (WorriorSkill3 == 1)
                 {
                     player.gold -= SkillUpgradeGold;
-                    WorriorSkill1++;
+                    WorriorSkill3++;
                 }
 
-                else if (WorriorSkill2 == 2)
+                else if (WorriorSkill3 == 2)
                 {
                     player.gold -= SkillUpgradeGold;
-                    WorriorSkill1++;
+                    WorriorSkill3++;
                 }
 
-                else if (WorriorSkill2 <= 3)
+                else if (WorriorSkill3 <= 3)
                 {
                     return;
                 }

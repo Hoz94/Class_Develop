@@ -46,6 +46,8 @@ public class ObjectMove : MonoBehaviour
     void HitObj(RaycastHit hit)
     {
         m_makedObject = Instantiate(m_hitObject, hit.point, Quaternion.LookRotation(hit.normal)).gameObject;
+        ParentsBind p = m_makedObject.GetComponent<ParentsBind>();
+        p.SD = GetComponent<SkillDamage>();
         Destroy(m_makedObject, DestroyTime2);
     }
 

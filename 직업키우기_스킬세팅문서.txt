@@ -1,14 +1,9 @@
-<검사>
-필살기effect11(EternalSlashDance)
-가르기 effect08(GroundSlash)->Effect06(MassiveSlash)->effect11(EternalSlashDance)
-검기 : effect07(DimentionCutter)->effect30(SwordForce)->effect11(powerofMystic)
-가르기 effect30(talonScratch)->effect11(FlameButterfly)->effect11(madnessofdarkness)
 <물법사>
 필살기 effect_25
 스킬 1 : effect47(preciseshot)->effect26(IceRing)->effect50(deathwave)
 스킬 2 : effect41(MultipleArrow)->effect39(AnnihilationBeam)->effect38(PulseShot)
 스킬 3 : effect46(CyberOrbitalGunFire)->effect43(DarkDimensionAttack)->effect46(sateliteBeamCannon)
-<불법사> 
+<불법사>
 필살기effect26(HellofFire)
 effect_21
 effect_26
@@ -20,7 +15,16 @@ effect_18
 필살기effect_10
 개틀링사격 :  multiple shot->effect45 MultipleLaserCanon
 ->effect_23 Brandshing Gunfire
-공중지원 : effect_22HoloAirInvade ->effect_23BomberAirraid->effect_46(cybercarrier)
 포사격 : effect35(RuinousOperation)->effect40(AerialBombing)->effec13(DangerClose)
+공중지원 : effect_22HoloAirInvade ->effect_23BomberAirraid->effect_46(cybercarrier)
 
+
+<검사>
+필살기effect11(EternalSlashDance)
+가르기 effect25 CriticalSlash->effect08(GroundSlash)->effect29 MuscleArts
+검기 : effect07(DimentionCutter)->effect30(SwordForce)->effect11(powerofMystic)
+가르기 effect30(talonScratch)->effect11(FlameButterfly)->effect11(madnessofdarkness)
+
+
+effect11 ShiningSlashDance로 대체 3번 2번스킬
 
