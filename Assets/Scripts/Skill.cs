@@ -87,7 +87,7 @@ public class Skill : MonoBehaviour
 
     [Header("1,2,3레벨 별 삭제변수")]
     public float Skill1DeleteTime = 5f;
-    public float Skill2DeleteTime = 9f;
+    public float Skill2DeleteTime = 9.5f;
     public float Skill3DeleteTime = 14f;
     // Start is called before the first frame update
     void Start()
@@ -118,7 +118,7 @@ public class Skill : MonoBehaviour
             {
                 SpecialSkillTime = 0f;
                 SkillInput = Instantiate(SoldierSpecialSkillPrefab, transform.position, transform.rotation);
-                SkillInput.GetComponent<Rigidbody>().AddForce(transform.forward * 500f);
+/*                SkillInput.GetComponent<Rigidbody>().AddForce(transform.forward * 500f);*/
                 Destroy(SkillInput, 15f);
                 
             }
@@ -229,6 +229,25 @@ public class Skill : MonoBehaviour
             // 물법
             if (player.tag == "WaterMagician")
             {
+                if (shopManager.WaterMagicianSkill1 == 1)
+                {
+                    SkillInput = Instantiate(WaterMagicianSkill1Prefab1, transform.position, transform.rotation);
+                    Destroy(SkillInput, Skill1DeleteTime);
+                }
+
+                if (shopManager.WaterMagicianSkill1 == 2)
+                {
+                    SkillInput = Instantiate(WaterMagicianSkill1Prefab2, transform.position, transform.rotation);
+                    SkillInput.GetComponent<Rigidbody>().AddForce(transform.forward * 1000f);
+                    Destroy(SkillInput, Skill1DeleteTime);
+                }
+
+                if (shopManager.WaterMagicianSkill1 == 3)
+                {
+                    SkillInput = Instantiate(WaterMagicianSkill1Prefab3, transform.position, transform.rotation);
+                    SkillInput.GetComponent<Rigidbody>().AddForce(transform.forward * 1000f);
+                    Destroy(SkillInput, Skill1DeleteTime);
+                }
                 Skill1Time = 0f;
             }
 
@@ -298,6 +317,23 @@ public class Skill : MonoBehaviour
             // 물법
             if (player.tag == "WaterMagician")
             {
+                if (shopManager.WaterMagicianSkill2 == 1)
+                {
+                    SkillInput = Instantiate(WaterMagicianSkill2Prefab1, transform.position, transform.rotation);
+                    Destroy(SkillInput, Skill2DeleteTime);
+                }
+
+                if (shopManager.WaterMagicianSkill2 == 2)
+                {
+                    SkillInput = Instantiate(WaterMagicianSkill2Prefab2, transform.position, transform.rotation);
+                    Destroy(SkillInput, Skill2DeleteTime);
+                }
+
+                if (shopManager.WaterMagicianSkill2 == 3)
+                {
+                    SkillInput = Instantiate(WaterMagicianSkill2Prefab3, transform.position, transform.rotation);
+                    Destroy(SkillInput, 9.5f);
+                }
                 Skill2Time = 0f;
             }
             // 바람법
@@ -348,13 +384,13 @@ public class Skill : MonoBehaviour
                 if (shopManager.WorriorSkill3 == 2)
                 {
                     SkillInput = Instantiate(WorriorSkill3Prefab2, transform.position, transform.rotation);
-                    Destroy(SkillInput, Skill3DeleteTime);
+                    Destroy(SkillInput, 1f);
                 }
 
                 if (shopManager.WorriorSkill3 == 3)
                 {
                     SkillInput = Instantiate(WorriorSkill3Prefab3, transform.position, transform.rotation);
-                    Destroy(SkillInput, Skill3DeleteTime);
+                    Destroy(SkillInput, 1.2f);
                 }
                 Skill3Time = 0f;
             }
@@ -368,6 +404,7 @@ public class Skill : MonoBehaviour
             // 물법
             if (player.tag == "WaterMagician")
             {
+
                 Skill3Time = 0f;
             }
 

@@ -79,5 +79,4 @@ public class Player : MonoBehaviour
     {
         Debug.Log(collision.gameObject.name);
     }
-
 }

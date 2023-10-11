@@ -346,7 +346,7 @@ MonoBehaviour:
   WorriorSkill2Prefab3: {fileID: 4412877183661391353, guid: 75f84997587b43c4089dc5c6b7702d32, type: 3}
   WorriorSkill3Prefab1: {fileID: 8440170721088204535, guid: 26e8937d9ba3cbf46b594149089fc088, type: 3}
   WorriorSkill3Prefab2: {fileID: 3527912838208871524, guid: 66c21d72a7c581f40828fd8612103bbd, type: 3}
-  WorriorSkill3Prefab3: {fileID: 0}
+  WorriorSkill3Prefab3: {fileID: 57889927359416303, guid: de435b13515a9bd4caab746f55b8eb55, type: 3}
   FireMagicianSkill1Prefab1: {fileID: 0}
   FireMagicianSkill1Prefab2: {fileID: 0}
   FireMagicianSkill1Prefab3: {fileID: 0}
@@ -356,12 +356,12 @@ MonoBehaviour:
   FireMagicianSkill3Prefab1: {fileID: 0}
   FireMagicianSkill3Prefab2: {fileID: 0}
   FireMagicianSkill3Prefab3: {fileID: 0}
-  WaterMagicianSkill1Prefab1: {fileID: 0}
-  WaterMagicianSkill1Prefab2: {fileID: 0}
-  WaterMagicianSkill1Prefab3: {fileID: 0}
-  WaterMagicianSkill2Prefab1: {fileID: 0}
-  WaterMagicianSkill2Prefab2: {fileID: 0}
-  WaterMagicianSkill2Prefab3: {fileID: 0}
+  WaterMagicianSkill1Prefab1: {fileID: 6069143791621258020, guid: 521dce82787287b4a88fc3c600f9ef53, type: 3}
+  WaterMagicianSkill1Prefab2: {fileID: 1871041086231115576, guid: 57876b174f0cda54c8ad1b02373c6432, type: 3}
+  WaterMagicianSkill1Prefab3: {fileID: 1992029900475280859, guid: 4dfb534a3a08e5d49bd0b6362fbedce1, type: 3}
+  WaterMagicianSkill2Prefab1: {fileID: 3604243883325192077, guid: 927626e07678c50489e1f8787d46f335, type: 3}
+  WaterMagicianSkill2Prefab2: {fileID: 2280925449003687311, guid: e9e21d88bb89b5246be3b621334555eb, type: 3}
+  WaterMagicianSkill2Prefab3: {fileID: 2309121833319074514, guid: 873551b8744bc804893a229c446918e5, type: 3}
   WaterMagicianSkill3Prefab1: {fileID: 0}
   WaterMagicianSkill3Prefab2: {fileID: 0}
   WaterMagicianSkill3Prefab3: {fileID: 0}
@@ -377,11 +377,11 @@ MonoBehaviour:
   SpecialSkillCool: 30
   SpecialSkillTime: 30
   Skill1Cool: 5
-  Skill2Cool: 8
-  Skill3Cool: 9
+  Skill2Cool: 10
+  Skill3Cool: 15
   Skill1Time: 5
-  Skill2Time: 8
-  Skill3Time: 9
+  Skill2Time: 10
+  Skill3Time: 15
   Skill1DeleteTime: 5
   Skill2DeleteTime: 5
   Skill3DeleteTime: 5
@@ -703,6 +703,85 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 48962392}
+  m_CullTransparentMesh: 1
+--- !u!1 &61093302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 61093303}
+  - component: {fileID: 61093305}
+  - component: {fileID: 61093304}
+  m_Layer: 5
+  m_Name: CurGold
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &61093303
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61093302}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2146274099}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -145, y: -43}
+  m_SizeDelta: {x: 435.4348, y: 89.8656}
+  m_Pivot: {x: 1, y: 1}
+--- !u!114 &61093304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61093302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 50
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 100
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\uD604\uC7AC \uACE8\uB4DC : "
+--- !u!222 &61093305
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61093302}
   m_CullTransparentMesh: 1
 --- !u!1 &63823786
 GameObject:
@@ -2432,7 +2511,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uD328\uAC00\uB9DD\uC2E0\uC758 \uC9C0\uB984\uAE38"
+  m_Text: "\uB450\uADFC\uB450\uADFC \uB85C\uB610"
 --- !u!222 &459569904
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8020,7 +8099,7 @@ MonoBehaviour:
   GambleUI: {fileID: 424572454}
   NotEnoughTipText: {fileID: 47098504}
   EnoughTipText: {fileID: 1182481984}
-  CurGoldText: {fileID: 0}
+  CurGoldText: {fileID: 61093304}
   BtnCooltime: 2
   SoldierSkill1: 0
   SoldierSkill2: 0
@@ -11346,6 +11425,7 @@ RectTransform:
   - {fileID: 526873042}
   - {fileID: 47098503}
   - {fileID: 1182481983}
+  - {fileID: 61093303}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

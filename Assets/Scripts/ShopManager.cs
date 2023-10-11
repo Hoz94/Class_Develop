@@ -19,6 +19,7 @@ public class ShopManager : MonoBehaviour
     public Text EnoughTipText;
     public Text CurGoldText;
 
+
     public float BtnCooltime = 0f;
 
 
@@ -64,6 +65,14 @@ public class ShopManager : MonoBehaviour
             shopopen = false;
         } // ªÛ¡° ¥›±‚
 
+        ViewGold();
+        
+    }
+
+    public void ViewGold()
+    {
+        Player p = player.GetComponent<Player>();
+        CurGoldText.text = "∞ÒµÂ : " + p.gold.ToString();
     }
 
     public void onclickStatsButton() //Ω∫≈» ≈«
@@ -335,6 +344,7 @@ public class ShopManager : MonoBehaviour
 
     public void onclickSkill2Btn()
     {
+        // ±∫¿Œ
         if (player.tag == "Soldier")
         {
             if (player.gold >= SkillUpgradeGold)
@@ -369,6 +379,7 @@ public class ShopManager : MonoBehaviour
             }
         }
 
+        // ∞ÀªÁ
         if (player.tag == "Worrior")
         {
             if (player.gold >= SkillUpgradeGold)
@@ -402,6 +413,41 @@ public class ShopManager : MonoBehaviour
                 return;
             }
         }
+        // π∞π˝
+        if (player.tag == "WaterMagician")
+        {
+            if (player.gold >= SkillUpgradeGold)
+            {
+                if (WaterMagicianSkill2 == 0)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    WaterMagicianSkill2++;
+                }
+
+                else if (WaterMagicianSkill2 == 1)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    WaterMagicianSkill2++;
+                }
+
+                else if (WaterMagicianSkill2 == 2)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    WaterMagicianSkill2++;
+                }
+
+                else if (WaterMagicianSkill2 <= 3)
+                {
+                    return;
+                }
+            }
+
+            else if (player.gold <= SkillUpgradeGold)
+            {
+                return;
+            }
+        }
+        
     }
 
     public void onclickSkill3Btn()

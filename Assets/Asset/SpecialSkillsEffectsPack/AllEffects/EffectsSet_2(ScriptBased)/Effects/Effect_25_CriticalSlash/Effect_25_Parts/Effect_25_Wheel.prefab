@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 191457129449566214}
   - component: {fileID: 3423207213419394272}
   - component: {fileID: 2272083135042519781}
+  - component: {fileID: 8298274217716376907}
   m_Layer: 0
   m_Name: Effect_25_Particle
   m_TagString: Untagged
@@ -4840,6 +4841,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &8298274217716376907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527449809591762311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdc6333913c532e4a8639c9f23fa37d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentsSkills: {fileID: 0}
 --- !u!1 &1619059244503973689
 GameObject:
   m_ObjectHideFlags: 0
@@ -4851,6 +4865,7 @@ GameObject:
   - component: {fileID: 1619059244503973690}
   - component: {fileID: 1619059244503973691}
   - component: {fileID: 1619059244503973688}
+  - component: {fileID: 6538109583650219}
   m_Layer: 0
   m_Name: Effect_25_GroundSpark_2
   m_TagString: Untagged
@@ -9680,6 +9695,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &6538109583650219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619059244503973689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdc6333913c532e4a8639c9f23fa37d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentsSkills: {fileID: 0}
 --- !u!1 &1619059244550225762
 GameObject:
   m_ObjectHideFlags: 0
@@ -9691,6 +9719,7 @@ GameObject:
   - component: {fileID: 1619059244550225775}
   - component: {fileID: 1619059244550225772}
   - component: {fileID: 1619059244550225773}
+  - component: {fileID: 3595153549141603472}
   m_Layer: 0
   m_Name: Effect_25_Wheel
   m_TagString: Untagged
@@ -14569,6 +14598,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &3595153549141603472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619059244550225762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdc6333913c532e4a8639c9f23fa37d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentsSkills: {fileID: 0}
 --- !u!1 &1619059244647649034
 GameObject:
   m_ObjectHideFlags: 0
@@ -14580,6 +14622,7 @@ GameObject:
   - component: {fileID: 1619059244647649047}
   - component: {fileID: 1619059244647649044}
   - component: {fileID: 1619059244647649045}
+  - component: {fileID: 610779870291580883}
   m_Layer: 0
   m_Name: Effect_25_Wheel_6
   m_TagString: Untagged
@@ -19458,6 +19501,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &610779870291580883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619059244647649034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdc6333913c532e4a8639c9f23fa37d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentsSkills: {fileID: 0}
 --- !u!1 &1619059244981430621
 GameObject:
   m_ObjectHideFlags: 0
@@ -19469,6 +19525,7 @@ GameObject:
   - component: {fileID: 1619059244981430622}
   - component: {fileID: 1619059244981430623}
   - component: {fileID: 1619059244981430620}
+  - component: {fileID: 2398717923173044214}
   m_Layer: 0
   m_Name: Effect_25_FrontSphere
   m_TagString: Untagged
@@ -24356,6 +24413,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &2398717923173044214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619059244981430621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdc6333913c532e4a8639c9f23fa37d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentsSkills: {fileID: 0}
 --- !u!1 &1619059245693106145
 GameObject:
   m_ObjectHideFlags: 0
@@ -24367,6 +24437,7 @@ GameObject:
   - component: {fileID: 1619059245693106146}
   - component: {fileID: 1619059245693106147}
   - component: {fileID: 1619059245693106144}
+  - component: {fileID: 2822143832453549708}
   m_Layer: 0
   m_Name: Effect_25_Wheel_5
   m_TagString: Untagged
@@ -29245,6 +29316,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &2822143832453549708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619059245693106145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdc6333913c532e4a8639c9f23fa37d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentsSkills: {fileID: 0}
 --- !u!1 &1619059245733753056
 GameObject:
   m_ObjectHideFlags: 0
@@ -29256,6 +29340,7 @@ GameObject:
   - component: {fileID: 1619059245733753069}
   - component: {fileID: 1619059245733753058}
   - component: {fileID: 1619059245733753059}
+  - component: {fileID: 4089581306769955459}
   m_Layer: 0
   m_Name: Effect_25_GroundSpark
   m_TagString: Untagged
@@ -34085,6 +34170,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &4089581306769955459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619059245733753056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdc6333913c532e4a8639c9f23fa37d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentsSkills: {fileID: 0}
 --- !u!1 &1619059245782370470
 GameObject:
   m_ObjectHideFlags: 0
@@ -34096,6 +34194,7 @@ GameObject:
   - component: {fileID: 1619059245782370467}
   - component: {fileID: 1619059245782370464}
   - component: {fileID: 1619059245782370465}
+  - component: {fileID: 8935527912663338748}
   m_Layer: 0
   m_Name: Effect_25_Wheel_4
   m_TagString: Untagged
@@ -38974,6 +39073,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &8935527912663338748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619059245782370470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdc6333913c532e4a8639c9f23fa37d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentsSkills: {fileID: 0}
 --- !u!1 &1619059246364173153
 GameObject:
   m_ObjectHideFlags: 0
@@ -38985,6 +39097,7 @@ GameObject:
   - component: {fileID: 1619059246364173154}
   - component: {fileID: 1619059246364173155}
   - component: {fileID: 1619059246364173152}
+  - component: {fileID: 8544303597142686188}
   m_Layer: 0
   m_Name: Effect_25_Wheel_3
   m_TagString: Untagged
@@ -43863,6 +43976,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &8544303597142686188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619059246364173153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdc6333913c532e4a8639c9f23fa37d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentsSkills: {fileID: 0}
 --- !u!1 &1619059246460250740
 GameObject:
   m_ObjectHideFlags: 0
@@ -43874,6 +44000,7 @@ GameObject:
   - component: {fileID: 1619059246460250737}
   - component: {fileID: 1619059246460250742}
   - component: {fileID: 1619059246460250743}
+  - component: {fileID: 3741076179747781612}
   m_Layer: 0
   m_Name: Effect_25_Wheel_2
   m_TagString: Untagged
@@ -48752,6 +48879,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &3741076179747781612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619059246460250740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdc6333913c532e4a8639c9f23fa37d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentsSkills: {fileID: 0}
 --- !u!1 &5434564393320655816
 GameObject:
   m_ObjectHideFlags: 0

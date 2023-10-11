@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 3073014231683088469}
   - component: {fileID: 4975232397596990265}
   - component: {fileID: 2068698775166037939}
-  - component: {fileID: 1386969708012752957}
+  - component: {fileID: 3012197036020776239}
+  - component: {fileID: 5672686878296177120}
   m_Layer: 0
   m_Name: Effect_11_ParticleSlash
   m_TagString: Untagged
@@ -3678,7 +3679,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     type: 1
     collisionMode: 0
@@ -4899,7 +4900,30 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &1386969708012752957
+--- !u!136 &3012197036020776239
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474785459925323701}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 14.71299
+  m_Height: 58.64595
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: -0}
+--- !u!114 &5672686878296177120
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4908,10 +4932,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1474785459925323701}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1459add48d7bb4d4298d7b3a36b67f4d, type: 3}
+  m_Script: {fileID: 11500000, guid: d68aa466c91acf149878d0b931924c93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentsSkills: {fileID: 3527912838208871524}
 --- !u!1 &3527912838208871524
 GameObject:
   m_ObjectHideFlags: 0
@@ -4921,7 +4944,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4520880185332635852}
-  - component: {fileID: 5405331250221212290}
   m_Layer: 0
   m_Name: Effect_11_FlameButterfly
   m_TagString: Untagged
@@ -4951,19 +4973,6 @@ Transform:
   - {fileID: 6981578810970241966}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5405331250221212290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3527912838208871524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b6a39c8d1795dc4dafdbdcf222db540, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SkillDMG: 100
 --- !u!1 &4733452276066533992
 GameObject:
   m_ObjectHideFlags: 0
@@ -4975,7 +4984,8 @@ GameObject:
   - component: {fileID: 4733452276066533995}
   - component: {fileID: 4733452276066533989}
   - component: {fileID: 4733452276066533994}
-  - component: {fileID: 6708476826703852868}
+  - component: {fileID: 5747848231925212838}
+  - component: {fileID: 3595010983986741722}
   m_Layer: 0
   m_Name: Effect_11_Slash_3
   m_TagString: Untagged
@@ -8642,7 +8652,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     type: 1
     collisionMode: 0
@@ -9863,7 +9873,30 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &6708476826703852868
+--- !u!136 &5747848231925212838
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4733452276066533992}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 16.983444
+  m_Height: 33.96689
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3595010983986741722
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9872,10 +9905,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4733452276066533992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1459add48d7bb4d4298d7b3a36b67f4d, type: 3}
+  m_Script: {fileID: 11500000, guid: d68aa466c91acf149878d0b931924c93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentsSkills: {fileID: 3527912838208871524}
 --- !u!1 &4733452276370125361
 GameObject:
   m_ObjectHideFlags: 0
@@ -9887,7 +9919,8 @@ GameObject:
   - component: {fileID: 4733452276370125360}
   - component: {fileID: 4733452276370125362}
   - component: {fileID: 4733452276370125363}
-  - component: {fileID: 5829889455386220817}
+  - component: {fileID: 5147521822275719224}
+  - component: {fileID: 3556859945782088613}
   m_Layer: 0
   m_Name: Effect_11_Slash_4
   m_TagString: Untagged
@@ -13554,7 +13587,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     type: 1
     collisionMode: 0
@@ -14775,7 +14808,30 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &5829889455386220817
+--- !u!136 &5147521822275719224
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4733452276370125361}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 16.983446
+  m_Height: 33.966892
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3556859945782088613
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14784,10 +14840,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4733452276370125361}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1459add48d7bb4d4298d7b3a36b67f4d, type: 3}
+  m_Script: {fileID: 11500000, guid: d68aa466c91acf149878d0b931924c93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentsSkills: {fileID: 3527912838208871524}
 --- !u!1 &4733452276764746303
 GameObject:
   m_ObjectHideFlags: 0
@@ -14799,7 +14854,8 @@ GameObject:
   - component: {fileID: 4733452276764746302}
   - component: {fileID: 4733452276764746296}
   - component: {fileID: 4733452276764746297}
-  - component: {fileID: 4897787698314024856}
+  - component: {fileID: 8526675960354208166}
+  - component: {fileID: 73813866751625785}
   m_Layer: 0
   m_Name: Effect_11_MultipleSlash
   m_TagString: Untagged
@@ -18466,7 +18522,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     type: 1
     collisionMode: 0
@@ -19687,7 +19743,30 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &4897787698314024856
+--- !u!136 &8526675960354208166
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4733452276764746303}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 8.015501
+  m_Height: 16.031002
+  m_Direction: 1
+  m_Center: {x: -3.75, y: 0, z: 0}
+--- !u!114 &73813866751625785
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19696,10 +19775,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4733452276764746303}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1459add48d7bb4d4298d7b3a36b67f4d, type: 3}
+  m_Script: {fileID: 11500000, guid: d68aa466c91acf149878d0b931924c93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentsSkills: {fileID: 3527912838208871524}
 --- !u!1 &5327660683598703081
 GameObject:
   m_ObjectHideFlags: 0
@@ -19711,7 +19789,8 @@ GameObject:
   - component: {fileID: 5327660683598703076}
   - component: {fileID: 5327660683598703083}
   - component: {fileID: 5327660683598703082}
-  - component: {fileID: 2887063431723279061}
+  - component: {fileID: 3450830377921980695}
+  - component: {fileID: 1472587259270728073}
   m_Layer: 0
   m_Name: Effect_11_Slash_2
   m_TagString: Untagged
@@ -23378,7 +23457,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     type: 1
     collisionMode: 0
@@ -24599,7 +24678,30 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &2887063431723279061
+--- !u!136 &3450830377921980695
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5327660683598703081}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5.482081
+  m_Height: 13.931372
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1472587259270728073
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -24608,10 +24710,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5327660683598703081}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1459add48d7bb4d4298d7b3a36b67f4d, type: 3}
+  m_Script: {fileID: 11500000, guid: d68aa466c91acf149878d0b931924c93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentsSkills: {fileID: 3527912838208871524}
 --- !u!1 &5327660683944617041
 GameObject:
   m_ObjectHideFlags: 0
@@ -24623,7 +24724,8 @@ GameObject:
   - component: {fileID: 5327660683944617036}
   - component: {fileID: 5327660683944617043}
   - component: {fileID: 5327660683944617042}
-  - component: {fileID: 160319316155569744}
+  - component: {fileID: 3841109673999656440}
+  - component: {fileID: 7905684736501746158}
   m_Layer: 0
   m_Name: Effect_11_Slash
   m_TagString: Untagged
@@ -28290,7 +28392,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     type: 1
     collisionMode: 0
@@ -29511,7 +29613,30 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &160319316155569744
+--- !u!136 &3841109673999656440
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5327660683944617041}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 11.18913
+  m_Height: 33.966892
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7905684736501746158
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -29520,10 +29645,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5327660683944617041}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1459add48d7bb4d4298d7b3a36b67f4d, type: 3}
+  m_Script: {fileID: 11500000, guid: d68aa466c91acf149878d0b931924c93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentsSkills: {fileID: 3527912838208871524}
 --- !u!1 &6981578810970241967
 GameObject:
   m_ObjectHideFlags: 0
@@ -29535,7 +29659,8 @@ GameObject:
   - component: {fileID: 6981578810970241966}
   - component: {fileID: 6981578810970241964}
   - component: {fileID: 6981578810970241965}
-  - component: {fileID: 6015369516604436553}
+  - component: {fileID: 7327494261486334828}
+  - component: {fileID: 3314855780018329471}
   m_Layer: 0
   m_Name: Effect_11_ForwardMoveSlash
   m_TagString: Untagged
@@ -33202,7 +33327,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     type: 1
     collisionMode: 0
@@ -34423,7 +34548,30 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &6015369516604436553
+--- !u!136 &7327494261486334828
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6981578810970241967}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.00001
+  m_Height: 0.00002
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3314855780018329471
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -34432,7 +34580,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6981578810970241967}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1459add48d7bb4d4298d7b3a36b67f4d, type: 3}
+  m_Script: {fileID: 11500000, guid: d68aa466c91acf149878d0b931924c93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentsSkills: {fileID: 3527912838208871524}

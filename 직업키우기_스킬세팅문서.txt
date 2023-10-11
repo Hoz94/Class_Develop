@@ -1,7 +1,7 @@
 <물법사>
 필살기 effect_25
 스킬 1 : effect47(preciseshot)->effect26(IceRing)->effect50(deathwave)
-스킬 2 : effect41(MultipleArrow)->effect39(AnnihilationBeam)->effect38(PulseShot)
+스킬 2 : effect39(AnnihilationBeam)->effect38(PulseShot) ->effect_39_WindBlast
 스킬 3 : effect46(CyberOrbitalGunFire)->effect43(DarkDimensionAttack)->effect46(sateliteBeamCannon)
 <불법사>
 필살기effect26(HellofFire)
@@ -26,5 +26,8 @@ effect_18
 가르기 effect30(talonScratch)->effect11(FlameButterfly)->effect11(madnessofdarkness)
 
 
-effect11 ShiningSlashDance로 대체 3번 2번스킬
 
+effect42_cyberstorm effect_38 pulseshot 
+effect_38 electricExplosion
+effect_46 cyberorbitalgunfire
+effect_46 sateliteBeamCannon
