@@ -347,33 +347,33 @@ MonoBehaviour:
   WorriorSkill3Prefab1: {fileID: 8440170721088204535, guid: 26e8937d9ba3cbf46b594149089fc088, type: 3}
   WorriorSkill3Prefab2: {fileID: 3527912838208871524, guid: 66c21d72a7c581f40828fd8612103bbd, type: 3}
   WorriorSkill3Prefab3: {fileID: 57889927359416303, guid: de435b13515a9bd4caab746f55b8eb55, type: 3}
-  FireMagicianSkill1Prefab1: {fileID: 0}
-  FireMagicianSkill1Prefab2: {fileID: 0}
-  FireMagicianSkill1Prefab3: {fileID: 0}
-  FireMagicianSkill2Prefab1: {fileID: 0}
-  FireMagicianSkill2Prefab2: {fileID: 0}
-  FireMagicianSkill2Prefab3: {fileID: 0}
-  FireMagicianSkill3Prefab1: {fileID: 0}
-  FireMagicianSkill3Prefab2: {fileID: 0}
-  FireMagicianSkill3Prefab3: {fileID: 0}
+  FireMagicianSkill1Prefab1: {fileID: 1267622881173442705, guid: c15e6ae34ba4f4342aaea160e0d30071, type: 3}
+  FireMagicianSkill1Prefab2: {fileID: 8170752514618103492, guid: 79be24f135d46964e9f186bacaca2299, type: 3}
+  FireMagicianSkill1Prefab3: {fileID: 4371201884222273529, guid: 754148b94da304e4481533e4091e56dd, type: 3}
+  FireMagicianSkill2Prefab1: {fileID: 7757400376200559977, guid: 63de9cfb38118e44f80d938863c2a6af, type: 3}
+  FireMagicianSkill2Prefab2: {fileID: 2826097458391882711, guid: e8bdafe19a48d8045a1faf9012c26006, type: 3}
+  FireMagicianSkill2Prefab3: {fileID: 7082525810440381746, guid: a628130ab124b774ca2c0dc173c776a1, type: 3}
+  FireMagicianSkill3Prefab1: {fileID: 5298568859125960228, guid: 5477de8fe81b1b14ca9edc5d27363378, type: 3}
+  FireMagicianSkill3Prefab2: {fileID: 3712707503665828137, guid: 519ff72a211faaf43b8be89b3169a13d, type: 3}
+  FireMagicianSkill3Prefab3: {fileID: 1535685079361222951, guid: d4af488d06927654a9be45b66a1bfc22, type: 3}
   WaterMagicianSkill1Prefab1: {fileID: 6069143791621258020, guid: 521dce82787287b4a88fc3c600f9ef53, type: 3}
   WaterMagicianSkill1Prefab2: {fileID: 1871041086231115576, guid: 57876b174f0cda54c8ad1b02373c6432, type: 3}
   WaterMagicianSkill1Prefab3: {fileID: 1992029900475280859, guid: 4dfb534a3a08e5d49bd0b6362fbedce1, type: 3}
   WaterMagicianSkill2Prefab1: {fileID: 3604243883325192077, guid: 927626e07678c50489e1f8787d46f335, type: 3}
   WaterMagicianSkill2Prefab2: {fileID: 2280925449003687311, guid: e9e21d88bb89b5246be3b621334555eb, type: 3}
   WaterMagicianSkill2Prefab3: {fileID: 2309121833319074514, guid: 873551b8744bc804893a229c446918e5, type: 3}
-  WaterMagicianSkill3Prefab1: {fileID: 0}
-  WaterMagicianSkill3Prefab2: {fileID: 0}
-  WaterMagicianSkill3Prefab3: {fileID: 0}
-  WindMagicianSkill1Prefab1: {fileID: 0}
-  WindMagicianSkill1Prefab2: {fileID: 0}
-  WindMagicianSkill1Prefab3: {fileID: 0}
-  WindMagicianSkill2Prefab1: {fileID: 0}
-  WindMagicianSkill2Prefab2: {fileID: 0}
-  WindMagicianSkill2Prefab3: {fileID: 0}
-  WindMagicianSkill3Prefab1: {fileID: 0}
-  WindMagicianSkill3Prefab2: {fileID: 0}
-  WindMagicianSkill3Prefab3: {fileID: 0}
+  WaterMagicianSkill3Prefab1: {fileID: 8410164102978685339, guid: 03e96e8920d8dce459e1408ac7cb2dc4, type: 3}
+  WaterMagicianSkill3Prefab2: {fileID: 1604487808337520302, guid: ab41d91f175f20242b66a3c60c877b98, type: 3}
+  WaterMagicianSkill3Prefab3: {fileID: 7202037676252773923, guid: 2c68ab591529ec446ac4ffdc7fb91291, type: 3}
+  WindMagicianSkill1Prefab1: {fileID: 8337239312643627552, guid: 9d847abb63f67374fad7521470bdc08a, type: 3}
+  WindMagicianSkill1Prefab2: {fileID: 3339689407291046817, guid: 0a6288eda1cade44e895d169e86ea1fb, type: 3}
+  WindMagicianSkill1Prefab3: {fileID: 3256968268829050527, guid: 513a171cf5a52ed4a8ea91b31db367ff, type: 3}
+  WindMagicianSkill2Prefab1: {fileID: 8779592066186592422, guid: dc23428272f0ee3489c468f483fad239, type: 3}
+  WindMagicianSkill2Prefab2: {fileID: 8698782878667420179, guid: 855426263e276d74797f04fc614b993a, type: 3}
+  WindMagicianSkill2Prefab3: {fileID: 1339483653523732529, guid: b7016aae7bbdcd54fb4bf3a41bf01a60, type: 3}
+  WindMagicianSkill3Prefab1: {fileID: 8024328742427582494, guid: eea120b0d1d54bf4b942b10ed1b54bc5, type: 3}
+  WindMagicianSkill3Prefab2: {fileID: 7123486491888384649, guid: 39e4a3f78a9bf984584e9dcdc8c53da4, type: 3}
+  WindMagicianSkill3Prefab3: {fileID: 6252130925861768005, guid: 26d18c76357323442aebb3e37fa40c13, type: 3}
   SpecialSkillCool: 30
   SpecialSkillTime: 30
   Skill1Cool: 5
@@ -9010,6 +9010,152 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &1726233964
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1726233969}
+  - component: {fileID: 1726233968}
+  - component: {fileID: 1726233967}
+  - component: {fileID: 1726233966}
+  - component: {fileID: 1726233965}
+  - component: {fileID: 1726233970}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!54 &1726233965
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726233964}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1726233966
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726233964}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1726233967
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726233964}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1726233968
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726233964}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1726233969
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726233964}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 10, z: -16.25}
+  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1726233970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726233964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daa36c5fb5750b94688d6b2e55069f4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1729422516
 GameObject:
   m_ObjectHideFlags: 0
@@ -11453,3 +11599,4 @@ SceneRoots:
   - {fileID: 1518044705}
   - {fileID: 1303574451}
   - {fileID: 705507995}
+  - {fileID: 1726233969}

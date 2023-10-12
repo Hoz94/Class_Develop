@@ -1,35 +1,30 @@
+<불법사>
+필살기effect26(HellofFire)
+스킬 1 : effect_19 FlameBreath -> effect_21 GroundScatter -> effect_19 FlmaeDestroyer
+스킬 2 : effect_45 BlastFlame -> effect_26 Napalm -> effect_51 FlameTsunami
+스킬 3 : effect_30 magmaField -> effect_21 InnertcoreRelease -> effect_30 MagmaStrike
+<바람법사>
+필살기 effect_22_WindCyclon
+스킬 1 :  effect_18(Steelstron) -> effect_01 FloatingWindstorm -> Lightning Tornado
+스킬 2 : effect_24(Lightning Strike) -> effect_52(LightningField) -> effect_31(LumenJudgement)
+스킬 3 : effect_32(FloatingArrow) -> effect_37(LightnigShock) -> effect_54(SateliteCannon)
+필살기
+<군인>
+필살기effect_10
+스킬 1 :  multiple shot->effect45 MultipleLaserCanon
+->effect_23 Brandshing Gunfire
+스킬 2 : effect35(RuinousOperation)->effect40(AerialBombing)->effec13(DangerClose)
+스킬 3 : effect_22HoloAirInvade ->effect_23BomberAirraid->effect_46(cybercarrier)
+
 <물법사>
 필살기 effect_25
 스킬 1 : effect47(preciseshot)->effect26(IceRing)->effect50(deathwave)
 스킬 2 : effect39(AnnihilationBeam)->effect38(PulseShot) ->effect_39_WindBlast
 스킬 3 : effect46(CyberOrbitalGunFire)->effect43(DarkDimensionAttack)->effect46(sateliteBeamCannon)
-<불법사>
-필살기effect26(HellofFire)
-effect_21
-effect_26
-<바람법사>
-필살기 effect_22_WindCyclon
-effect_18
-필살기
-<군인>
-필살기effect_10
-개틀링사격 :  multiple shot->effect45 MultipleLaserCanon
-->effect_23 Brandshing Gunfire
-포사격 : effect35(RuinousOperation)->effect40(AerialBombing)->effec13(DangerClose)
-공중지원 : effect_22HoloAirInvade ->effect_23BomberAirraid->effect_46(cybercarrier)
-
 
 <검사>
 필살기effect11(EternalSlashDance)
-가르기 effect25 CriticalSlash->effect08(GroundSlash)->effect29 MuscleArts
-검기 : effect07(DimentionCutter)->effect30(SwordForce)->effect11(powerofMystic)
-가르기 effect30(talonScratch)->effect11(FlameButterfly)->effect11(madnessofdarkness)
+스킬 1 : effect25 CriticalSlash->effect08(GroundSlash)->effect29 MuscleArts
+스킬 2 : effect07(DimentionCutter)->effect30(SwordForce)->effect11(powerofMystic)
+스킬 3 : effect30(talonScratch)->effect11(FlameButterfly)->effect11(madnessofdarkness)
 
-
-
-effect42_cyberstorm effect_38 pulseshot 
-effect_38 electricExplosion
-effect_46 cyberorbitalgunfire
-effect_46 sateliteBeamCannon
-
-dsadsadsadsa

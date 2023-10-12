@@ -112,18 +112,20 @@ public class Skill : MonoBehaviour
 
     void SpecialSkill() // 각 직업별 필살기
     {
+        // 군인
         if (player.tag == "Soldier")
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 SpecialSkillTime = 0f;
                 SkillInput = Instantiate(SoldierSpecialSkillPrefab, transform.position, transform.rotation);
-/*                SkillInput.GetComponent<Rigidbody>().AddForce(transform.forward * 500f);*/
+                SkillInput.GetComponent<Rigidbody>().AddForce(transform.forward * 500f);
                 Destroy(SkillInput, 15f);
                 
             }
         }
 
+        // 검사
         if (player.tag == "Worrior")
         {
             if (Input.GetKeyDown(KeyCode.Q))
@@ -134,6 +136,7 @@ public class Skill : MonoBehaviour
             }
         }
 
+        // 불법
         if (player.tag == "FireMagician")
         {
             if (Input.GetKeyDown(KeyCode.Q))
@@ -144,6 +147,7 @@ public class Skill : MonoBehaviour
             }
         }
 
+        // 물법
         if (player.tag == "WaterMagician")
         {
             if (Input.GetKeyDown(KeyCode.Q))
@@ -155,6 +159,7 @@ public class Skill : MonoBehaviour
             }
         }
 
+        // 바람법
         if (player.tag == "WindMagician")
         {
             if (Input.GetKeyDown(KeyCode.Q))
@@ -223,6 +228,23 @@ public class Skill : MonoBehaviour
             // 불법
             if (player.tag == "FireMagician")
             {
+                if (shopManager.FireMagicianSkill1 == 1)
+                {
+                    SkillInput = Instantiate(FireMagicianSkill1Prefab1, transform.position, transform.rotation);
+                    Destroy(SkillInput, Skill1DeleteTime);
+                }
+
+                if (shopManager.FireMagicianSkill1 == 2)
+                {
+                    SkillInput = Instantiate(FireMagicianSkill1Prefab2, transform.position, transform.rotation);
+                    Destroy(SkillInput, 2f);
+                }
+
+                if (shopManager.FireMagicianSkill1 == 3)
+                {
+                    SkillInput = Instantiate(FireMagicianSkill1Prefab3, transform.position, transform.rotation);
+                    Destroy(SkillInput, Skill1DeleteTime);
+                }
                 Skill1Time = 0f;
             }
 
@@ -254,6 +276,24 @@ public class Skill : MonoBehaviour
             //바람법
             if (player.tag == "WindMagician")
             {
+                if (shopManager.WindMagicianSkill1 == 1)
+                {
+                    SkillInput = Instantiate(WindMagicianSkill1Prefab1, transform.position, transform.rotation);
+                    Destroy(SkillInput, Skill1DeleteTime);
+                }
+
+                if (shopManager.WindMagicianSkill1 == 2)
+                {
+                    SkillInput = Instantiate(WindMagicianSkill1Prefab2, transform.position, transform.rotation);
+
+                    Destroy(SkillInput, Skill1DeleteTime);
+                }
+
+                if (shopManager.WindMagicianSkill1 == 3)
+                {
+                    SkillInput = Instantiate(WindMagicianSkill1Prefab3, transform.position, transform.rotation);
+                    Destroy(SkillInput, Skill1DeleteTime);
+                }
                 Skill1Time = 0f;
             }
         } // 1번 스킬
@@ -311,6 +351,25 @@ public class Skill : MonoBehaviour
             // 불법
             if (player.tag == "FireMagician")
             {
+                if (shopManager.FireMagicianSkill2 == 1)
+                {
+                    SkillInput = Instantiate(FireMagicianSkill2Prefab1, transform.position, transform.rotation);
+                    Destroy(SkillInput, Skill1DeleteTime);
+                }
+
+                if (shopManager.FireMagicianSkill2 == 2)
+                {
+                    SkillInput = Instantiate(FireMagicianSkill2Prefab2, transform.position, transform.rotation);
+                    
+                    Destroy(SkillInput, 2f);
+                }
+
+                if (shopManager.FireMagicianSkill2 == 3)
+                {
+                    SkillInput = Instantiate(FireMagicianSkill2Prefab3, transform.position, transform.rotation);
+                    SkillInput.GetComponent<Rigidbody>().AddForce(transform.forward * 1000f);
+                    Destroy(SkillInput, Skill1DeleteTime);
+                }
                 Skill2Time = 0f;
             }
 
@@ -336,9 +395,28 @@ public class Skill : MonoBehaviour
                 }
                 Skill2Time = 0f;
             }
+
             // 바람법
             if (player.tag == "WindMagician")
             {
+                if (shopManager.WindMagicianSkill2 == 1)
+                {
+                    SkillInput = Instantiate(WindMagicianSkill2Prefab1, transform.position, transform.rotation);
+                    Destroy(SkillInput, Skill1DeleteTime);
+                }
+
+                if (shopManager.WindMagicianSkill2 == 2)
+                {
+                    SkillInput = Instantiate(WindMagicianSkill2Prefab2, transform.position, transform.rotation);
+
+                    Destroy(SkillInput, Skill1DeleteTime);
+                }
+
+                if (shopManager.WindMagicianSkill2 == 3)
+                {
+                    SkillInput = Instantiate(WindMagicianSkill2Prefab3, transform.position, transform.rotation);
+                    Destroy(SkillInput, Skill1DeleteTime);
+                }
                 Skill2Time = 0f;
             }
         }// 2번 스킬
@@ -398,12 +476,46 @@ public class Skill : MonoBehaviour
             // 불법
             if (player.tag == "FireMagician")
             {
+                if (shopManager.FireMagicianSkill3 == 1)
+                {
+                    SkillInput = Instantiate(FireMagicianSkill3Prefab1, transform.position, transform.rotation);
+                    Destroy(SkillInput, Skill1DeleteTime);
+                }
+
+                if (shopManager.FireMagicianSkill3 == 2)
+                {
+                    SkillInput = Instantiate(FireMagicianSkill3Prefab2, transform.position, transform.rotation);
+                    Destroy(SkillInput, 1f);
+                }
+
+                if (shopManager.FireMagicianSkill3 == 3)
+                {
+                    SkillInput = Instantiate(FireMagicianSkill3Prefab3, transform.position, transform.rotation);
+                    Destroy(SkillInput, Skill1DeleteTime);
+                }
                 Skill3Time = 0f;
             }
 
             // 물법
             if (player.tag == "WaterMagician")
             {
+                if (shopManager.WaterMagicianSkill3 == 1)
+                {
+                    SkillInput = Instantiate(WaterMagicianSkill3Prefab1, transform.position, transform.rotation);
+                    Destroy(SkillInput, Skill3DeleteTime);
+                }
+
+                if (shopManager.WaterMagicianSkill3 == 2)
+                {
+                    SkillInput = Instantiate(WaterMagicianSkill3Prefab2, transform.position, transform.rotation);
+                    Destroy(SkillInput, Skill3DeleteTime);
+                }
+
+                if (shopManager.WaterMagicianSkill3 == 3)
+                {
+                    SkillInput = Instantiate(WaterMagicianSkill3Prefab3, transform.position, transform.rotation);
+                    Destroy(SkillInput, Skill3DeleteTime);
+                }
 
                 Skill3Time = 0f;
             }
@@ -411,6 +523,23 @@ public class Skill : MonoBehaviour
             // 바람법
             if (player.tag == "WindMagician")
             {
+                if (shopManager.WindMagicianSkill3 == 1)
+                {
+                    SkillInput = Instantiate(WindMagicianSkill3Prefab1, transform.position, transform.rotation);
+                    Destroy(SkillInput, Skill3DeleteTime);
+                }
+
+                if (shopManager.WindMagicianSkill3 == 2)
+                {
+                    SkillInput = Instantiate(WindMagicianSkill3Prefab2, transform.position, transform.rotation);
+                    Destroy(SkillInput, 1f);
+                }
+
+                if (shopManager.WindMagicianSkill3 == 3)
+                {
+                    SkillInput = Instantiate(WindMagicianSkill3Prefab3, transform.position, transform.rotation);
+                    Destroy(SkillInput, Skill3DeleteTime);
+                }
                 Skill3Time = 0f;
             }
             

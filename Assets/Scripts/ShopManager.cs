@@ -44,6 +44,13 @@ public class ShopManager : MonoBehaviour
     void Update()
     {
         BtnCooltime -= Time.unscaledDeltaTime;
+
+        Shop(); // 상점 열고 닫기
+        ViewGold(); // 상점내부 골드 보이기
+
+    }
+    public void Shop()
+    {
         if (Input.GetKeyDown(KeyCode.Escape) && shopopen == false)
         {
             Time.timeScale = 0;
@@ -53,7 +60,7 @@ public class ShopManager : MonoBehaviour
             EnemyUI.SetActive(false);
             GambleUI.SetActive(false);
             shopopen = true;
-        } // 상점 열기
+        }
         else if (Input.GetKeyDown(KeyCode.Escape) && shopopen == true)
         {
             Time.timeScale = 1;
@@ -63,19 +70,16 @@ public class ShopManager : MonoBehaviour
             EnemyUI.SetActive(false);
             GambleUI.SetActive(false);
             shopopen = false;
-        } // 상점 닫기
-
-        ViewGold();
-        
+        }
     }
-
     public void ViewGold()
     {
         Player p = player.GetComponent<Player>();
         CurGoldText.text = "골드 : " + p.gold.ToString();
     }
 
-    public void onclickStatsButton() //스탯 탭
+
+    public void onclickStatsButton() // 스탯 탭
     {
         StatsUI.SetActive(true);
         SKillsUI.SetActive(false);
@@ -169,8 +173,9 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    public void onclickSkill1Btn() // 스킬 1 버튼
+    public void onclickSkill1Btn() // 스킬 1 버튼 업그레이드 버튼
     {
+        // 군인
         if (player.tag == "Soldier")
         {
             if (player.gold >= SkillUpgradeGold)
@@ -205,6 +210,7 @@ public class ShopManager : MonoBehaviour
             }
         }
 
+        // 검사
         if (player.tag == "Worrior")
         {
             if (player.gold >= SkillUpgradeGold)
@@ -239,6 +245,7 @@ public class ShopManager : MonoBehaviour
             }
         }
 
+        // 불법
         if (player.tag == "FireMagician")
         {
             if (player.gold >= SkillUpgradeGold)
@@ -273,6 +280,7 @@ public class ShopManager : MonoBehaviour
             }
         }
 
+        // 물법
         if (player.tag == "WaterMagician")
         {
             if (player.gold >= SkillUpgradeGold)
@@ -307,6 +315,7 @@ public class ShopManager : MonoBehaviour
             }
         }
 
+        // 바람법
         if (player.tag == "WindMagician")       
         {
             if (player.gold >= SkillUpgradeGold)
@@ -342,7 +351,7 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    public void onclickSkill2Btn()
+    public void onclickSkill2Btn() // 스킬 2 버튼 업그레이드 버튼
     {
         // 군인
         if (player.tag == "Soldier")
@@ -413,6 +422,7 @@ public class ShopManager : MonoBehaviour
                 return;
             }
         }
+
         // 물법
         if (player.tag == "WaterMagician")
         {
@@ -447,11 +457,82 @@ public class ShopManager : MonoBehaviour
                 return;
             }
         }
-        
+
+        // 바람법
+        if (player.tag == "WindMagician")
+        {
+            if (player.gold >= SkillUpgradeGold)
+            {
+                if (WindMagicianSkill2 == 0)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    WindMagicianSkill2++;
+                }
+
+                else if (WindMagicianSkill2 == 1)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    WindMagicianSkill2++;
+                }
+
+                else if (WindMagicianSkill2 == 2)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    WindMagicianSkill2++;
+                }
+
+                else if (WindMagicianSkill2 <= 3)
+                {
+                    return;
+                }
+            }
+
+            else if (player.gold <= SkillUpgradeGold)
+            {
+                return;
+            }
+        }
+
+        // 불법
+        if (player.tag == "FireMagician")
+        {
+            if (player.gold >= SkillUpgradeGold)
+            {
+                if (FireMagicianSkill2 == 0)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    FireMagicianSkill2++;
+                }
+
+                else if (FireMagicianSkill2 == 1)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    FireMagicianSkill2++;
+                }
+
+                else if (FireMagicianSkill2 == 2)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    FireMagicianSkill2++;
+                }
+
+                else if (FireMagicianSkill2 <= 3)
+                {
+                    return;
+                }
+            }
+
+            else if (player.gold <= SkillUpgradeGold)
+            {
+                return;
+            }
+        }
+
     }
 
-    public void onclickSkill3Btn()
+    public void onclickSkill3Btn() // 스킬 3 업그레이드 버튼
     {
+        // 군인
         if (player.tag == "Soldier")
         {
             if (player.gold >= SkillUpgradeGold)
@@ -486,6 +567,7 @@ public class ShopManager : MonoBehaviour
             }
         }
 
+        // 검사
         if (player.tag == "Worrior")
         {
             if (player.gold >= SkillUpgradeGold)
@@ -519,7 +601,113 @@ public class ShopManager : MonoBehaviour
                 return;
             }
         }
+
+        // 물법
+        if (player.tag == "WaterMagician")
+        {
+            if (player.gold >= SkillUpgradeGold)
+            {
+                if (WaterMagicianSkill3 == 0)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    WaterMagicianSkill3++;
+                }
+
+                else if (WaterMagicianSkill3 == 1)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    WaterMagicianSkill3++;
+                }
+
+                else if (WaterMagicianSkill3 == 2)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    WaterMagicianSkill3++;
+                }
+
+                else if (WaterMagicianSkill3 <= 3)
+                {
+                    return;
+                }
+            }
+
+            else if (player.gold <= SkillUpgradeGold)
+            {
+                return;
+            }
+        }
+
+        // 바람법
+        if (player.tag == "WindMagician")
+        {
+            if (player.gold >= SkillUpgradeGold)
+            {
+                if (WindMagicianSkill3 == 0)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    WindMagicianSkill3++;
+                }
+
+                else if (WindMagicianSkill3 == 1)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    WindMagicianSkill3++;
+                }
+
+                else if (WindMagicianSkill3 == 2)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    WindMagicianSkill3++;
+                }
+
+                else if (WindMagicianSkill3 <= 3)
+                {
+                    return;
+                }
+            }
+
+            else if (player.gold <= SkillUpgradeGold)
+            {
+                return;
+            }
+        }
+
+        // 불법
+        if (player.tag == "FireMagician")
+        {
+            if (player.gold >= SkillUpgradeGold)
+            {
+                if (FireMagicianSkill3 == 0)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    FireMagicianSkill3++;
+                }
+
+                else if (FireMagicianSkill3 == 1)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    FireMagicianSkill3++;
+                }
+
+                else if (FireMagicianSkill3 == 2)
+                {
+                    player.gold -= SkillUpgradeGold;
+                    FireMagicianSkill3++;
+                }
+
+                else if (FireMagicianSkill3 <= 3)
+                {
+                    return;
+                }
+            }
+
+            else if (player.gold <= SkillUpgradeGold)
+            {
+                return;
+            }
+        }
     }
+
 
 
 }

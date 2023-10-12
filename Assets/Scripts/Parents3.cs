@@ -25,6 +25,7 @@ public class Parents3 : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
+        Practice practice =other.GetComponent<Practice>();
         Enemy enemy = other.GetComponent<Enemy>();
         StartCoroutine(Timeco(enemy));
 
