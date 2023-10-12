@@ -9,6 +9,12 @@ public class ShopManager : MonoBehaviour
     public GameObject ShopUI;
 
     bool shopopen;
+    int MaxSpeed = 15;
+    int MaxAtk = 300;
+    int MaxHpPlus = 1000;
+    int Lotto1 = 3000;
+    int Lotto2 = 10000;
+    int Lotto3 = 50000;
 
     public GameObject StatsUI;
     public GameObject SKillsUI;
@@ -18,10 +24,16 @@ public class ShopManager : MonoBehaviour
     public Text NotEnoughTipText;
     public Text EnoughTipText;
     public Text CurGoldText;
+    public Text NotEnoughUpgradeMoney;
+    public Text NoMoreUpgrade;
+    public Text GGwanglotto;
+    public Text Successlotto;
+    
 
+    int StatsUpgradeMoney = 1000; // 스탯 업그레이드 비용
 
-    public float BtnCooltime = 0f;
-
+    float BtnCooltime = 0f;
+    float textoffcooltime = 0f;
 
     public int SoldierSkill1 = 0;
     public int SoldierSkill2 = 0;
@@ -40,15 +52,16 @@ public class ShopManager : MonoBehaviour
     public int WindMagicianSkill3 = 0;
     public int SkillUpgradeGold = 3000;
 
+
     // Update is called once per frame
     void Update()
     {
         BtnCooltime -= Time.unscaledDeltaTime;
-
+        textoffcooltime += Time.unscaledDeltaTime;
         Shop(); // 상점 열고 닫기
         ViewGold(); // 상점내부 골드 보이기
-
     }
+
     public void Shop()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && shopopen == false)
@@ -130,6 +143,13 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    
+    IEnumerator LottoTextCo() // 로또 꽝 or 당첨 텍스트 없애는 쿨타임
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        GGwanglotto.gameObject.SetActive(false);
+        Successlotto.gameObject.SetActive(false);
+    }
     IEnumerator NotEnoughTipCo() // 팁 줄 때 잔액에 따른 텍스트 없애는 쿨타임
     {
         yield return new WaitForSecondsRealtime(1.5f);
@@ -141,36 +161,104 @@ public class ShopManager : MonoBehaviour
         EnoughTipText.gameObject.SetActive(false);
     }
 
+    IEnumerator NoMoreUpgradeCo() // 업그레이드 최대치일 때 텍스트 없애는 쿨타임
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        NoMoreUpgrade.gameObject.SetActive(false);
+    }
+
+    IEnumerator NotEnoughGoldCo() // 업그레이드 비용 없을 때 텍스트 없애는 쿨타임
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        NotEnoughUpgradeMoney.gameObject.SetActive(false);
+    }
 
     public void onclickAtkBtn() // 기본 공격 증가 
     {
         Status status = player.gameObject.GetComponent<Status>();
-        status.Atk += 10;
+        if (status.Atk < MaxAtk)
+        {
+            if (player.gold >= StatsUpgradeMoney)
+            {
+                player.gold -= StatsUpgradeMoney;
+                status.Atk += 10;
+            }
+
+            else if (player.gold < StatsUpgradeMoney)
+            {
+                NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                StartCoroutine(NotEnoughGoldCo());
+            }
+
+        }
+        else if(status.Atk==MaxAtk)
+        {
+            NoMoreUpgrade.gameObject.SetActive(true);
+            StartCoroutine(NoMoreUpgradeCo());
+        }
     }
 
     public void onclickWalkSpdBtn() // 이속 증가
     {
         Status status = player.gameObject.GetComponent<Status>();
-        status.Spd += 1;
+        if (status.Spd < MaxSpeed)
+        {
+            if (player.gold >= StatsUpgradeMoney)
+            {
+                player.gold -= StatsUpgradeMoney;
+                status.Spd += 1;
+            }
+            else if(player.gold<StatsUpgradeMoney)
+            {
+                NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                StartCoroutine(NotEnoughGoldCo());
+            }
+        }
+        else if (status.Spd == MaxSpeed)
+        {
+            NoMoreUpgrade.gameObject.SetActive(true);
+            StartCoroutine(NoMoreUpgradeCo());
+        }
     }
 
     public void onclickMaxHpBtn() // 최대 체력 증가
     {
         Status status = player.gameObject.GetComponent<Status>();
-        status.MaxHp += 30;
+        if (status.MaxHp < MaxHpPlus)
+        {
+            if (player.gold >= StatsUpgradeMoney)
+            {
+                player.gold -= StatsUpgradeMoney;
+                status.MaxHp += 50;
+            }
+            else if (player.gold < StatsUpgradeMoney)
+            {
+                NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                StartCoroutine(NotEnoughGoldCo());
+            }
+        }
+        else if (status.MaxHp == MaxHpPlus)
+        {
+            NoMoreUpgrade.gameObject.SetActive(true);
+            StartCoroutine(NoMoreUpgradeCo());
+        }
     }
 
     public void onclickHpPotionBtn() // 물약 포션
     {
         Status status = player.gameObject.GetComponent<Status>();
-        if (status.CurHp <= status.MaxHp)
+        if (player.gold>=StatsUpgradeMoney)
         {
+            player.gold -= StatsUpgradeMoney;
             status.CurHp += 10;
-            if (status.CurHp > status.MaxHp)
-            {
-                status.CurHp = status.MaxHp;
-            }
         }
+        else if (player.gold < StatsUpgradeMoney)
+        {
+            NotEnoughUpgradeMoney.gameObject.SetActive(true);
+            StartCoroutine(NotEnoughGoldCo());
+        }
+
+
     }
 
     public void onclickSkill1Btn() // 스킬 1 버튼 업그레이드 버튼
@@ -200,14 +288,17 @@ public class ShopManager : MonoBehaviour
 
                 else if (SoldierSkill1 <= 3)
                 {
-                    return;
+                    NoMoreUpgrade.gameObject.SetActive(true);
+                    StartCoroutine(NoMoreUpgradeCo());
                 }
             }
-
-            else if (player.gold <= SkillUpgradeGold)
+            else if (player.gold < SkillUpgradeGold)
             {
-                return;
+                NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                StartCoroutine(NotEnoughGoldCo());
             }
+
+
         }
 
         // 검사
@@ -235,14 +326,16 @@ public class ShopManager : MonoBehaviour
 
                 else if (WorriorSkill1 <= 3)
                 {
-                    return;
+                    NoMoreUpgrade.gameObject.SetActive(true);
+                    StartCoroutine(NoMoreUpgradeCo());
                 }
             }
-
-            else if (player.gold <= SkillUpgradeGold)
+            else if (player.gold < SkillUpgradeGold)
             {
-                return;
+                NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                StartCoroutine(NotEnoughGoldCo());
             }
+
         }
 
         // 불법
@@ -270,13 +363,14 @@ public class ShopManager : MonoBehaviour
 
                 else if (FireMagicianSkill1 <= 3)
                 {
-                    return;
+                    NoMoreUpgrade.gameObject.SetActive(true);
+                    StartCoroutine(NoMoreUpgradeCo());
                 }
             }
-
-            else if (player.gold <= SkillUpgradeGold)
+            else if (player.gold < SkillUpgradeGold)
             {
-                return;
+                NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                StartCoroutine(NotEnoughGoldCo());
             }
         }
 
@@ -305,14 +399,16 @@ public class ShopManager : MonoBehaviour
 
                 else if (WaterMagicianSkill1 <= 3)
                 {
-                    return;
+                    NoMoreUpgrade.gameObject.SetActive(true);
+                    StartCoroutine(NoMoreUpgradeCo());
                 }
             }
-
-            else if (player.gold <= SkillUpgradeGold)
+            else if (player.gold < SkillUpgradeGold)
             {
-                return;
+                NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                StartCoroutine(NotEnoughGoldCo());
             }
+
         }
 
         // 바람법
@@ -340,15 +436,17 @@ public class ShopManager : MonoBehaviour
 
                 else if (WindMagicianSkill1 <= 3)
                 {
-                    return;
+                    NoMoreUpgrade.gameObject.SetActive(true);
+                    StartCoroutine(NoMoreUpgradeCo());
                 }
             }
-
-            else if (player.gold <= SkillUpgradeGold)
+            else if (player.gold < SkillUpgradeGold)
             {
-                return;
+                NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                StartCoroutine(NotEnoughGoldCo());
             }
         }
+
     }
 
     public void onclickSkill2Btn() // 스킬 2 버튼 업그레이드 버튼
@@ -378,14 +476,16 @@ public class ShopManager : MonoBehaviour
 
                 else if (SoldierSkill2 <= 3)
                 {
-                    return;
+                    NoMoreUpgrade.gameObject.SetActive(true);
+                    StartCoroutine(NoMoreUpgradeCo());
                 }
             }
-
-            else if (player.gold <= SkillUpgradeGold)
+            else if (player.gold < SkillUpgradeGold)
             {
-                return;
+                NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                StartCoroutine(NotEnoughGoldCo());
             }
+
         }
 
         // 검사
@@ -413,14 +513,16 @@ public class ShopManager : MonoBehaviour
 
                 else if (WorriorSkill2 <= 3)
                 {
-                    return;
+                    NoMoreUpgrade.gameObject.SetActive(true);
+                    StartCoroutine(NoMoreUpgradeCo());
                 }
             }
-
-            else if (player.gold <= SkillUpgradeGold)
+            else if (player.gold < SkillUpgradeGold)
             {
-                return;
+                NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                StartCoroutine(NotEnoughGoldCo());
             }
+
         }
 
         // 물법
@@ -448,14 +550,16 @@ public class ShopManager : MonoBehaviour
 
                 else if (WaterMagicianSkill2 <= 3)
                 {
-                    return;
+                    NoMoreUpgrade.gameObject.SetActive(true);
+                    StartCoroutine(NoMoreUpgradeCo());
                 }
             }
-
-            else if (player.gold <= SkillUpgradeGold)
+            else if (player.gold < SkillUpgradeGold)
             {
-                return;
+                NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                StartCoroutine(NotEnoughGoldCo());
             }
+
         }
 
         // 바람법
@@ -483,14 +587,16 @@ public class ShopManager : MonoBehaviour
 
                 else if (WindMagicianSkill2 <= 3)
                 {
-                    return;
+                    NoMoreUpgrade.gameObject.SetActive(true);
+                    StartCoroutine(NoMoreUpgradeCo());
                 }
             }
-
-            else if (player.gold <= SkillUpgradeGold)
+            else if (player.gold < SkillUpgradeGold)
             {
-                return;
+                NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                StartCoroutine(NotEnoughGoldCo());
             }
+
         }
 
         // 불법
@@ -518,14 +624,16 @@ public class ShopManager : MonoBehaviour
 
                 else if (FireMagicianSkill2 <= 3)
                 {
-                    return;
+                    NoMoreUpgrade.gameObject.SetActive(true);
+                    StartCoroutine(NoMoreUpgradeCo());
                 }
             }
-
-            else if (player.gold <= SkillUpgradeGold)
+            else if (player.gold < SkillUpgradeGold)
             {
-                return;
+                NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                StartCoroutine(NotEnoughGoldCo());
             }
+
         }
 
     }
@@ -557,14 +665,16 @@ public class ShopManager : MonoBehaviour
 
                 else if (SoldierSkill3 <= 3)
                 {
-                    return;
+                    NoMoreUpgrade.gameObject.SetActive(true);
+                    StartCoroutine(NoMoreUpgradeCo());
                 }
             }
-
-            else if (player.gold <= SkillUpgradeGold)
+            else if (player.gold < SkillUpgradeGold)
             {
-                return;
+                NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                StartCoroutine(NotEnoughGoldCo());
             }
+
         }
 
         // 검사
@@ -592,14 +702,16 @@ public class ShopManager : MonoBehaviour
 
                 else if (WorriorSkill3 <= 3)
                 {
-                    return;
+                    NoMoreUpgrade.gameObject.SetActive(true);
+                    StartCoroutine(NoMoreUpgradeCo());
                 }
             }
-
-            else if (player.gold <= SkillUpgradeGold)
+            else if (player.gold < SkillUpgradeGold)
             {
-                return;
+                NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                StartCoroutine(NotEnoughGoldCo());
             }
+
         }
 
         // 물법
@@ -627,14 +739,16 @@ public class ShopManager : MonoBehaviour
 
                 else if (WaterMagicianSkill3 <= 3)
                 {
-                    return;
+                    NoMoreUpgrade.gameObject.SetActive(true);
+                    StartCoroutine(NoMoreUpgradeCo());
                 }
             }
-
-            else if (player.gold <= SkillUpgradeGold)
+            else if (player.gold < SkillUpgradeGold)
             {
-                return;
+                NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                StartCoroutine(NotEnoughGoldCo());
             }
+
         }
 
         // 바람법
@@ -662,14 +776,16 @@ public class ShopManager : MonoBehaviour
 
                 else if (WindMagicianSkill3 <= 3)
                 {
-                    return;
+                    NoMoreUpgrade.gameObject.SetActive(true);
+                    StartCoroutine(NoMoreUpgradeCo());
                 }
             }
-
-            else if (player.gold <= SkillUpgradeGold)
+            else if (player.gold < SkillUpgradeGold)
             {
-                return;
+                NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                StartCoroutine(NotEnoughGoldCo());
             }
+
         }
 
         // 불법
@@ -697,17 +813,103 @@ public class ShopManager : MonoBehaviour
 
                 else if (FireMagicianSkill3 <= 3)
                 {
-                    return;
+                    NoMoreUpgrade.gameObject.SetActive(true);
+                    StartCoroutine(NoMoreUpgradeCo());
                 }
             }
-
-            else if (player.gold <= SkillUpgradeGold)
+            else if (player.gold < SkillUpgradeGold)
             {
-                return;
+                NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                StartCoroutine(NotEnoughGoldCo());
             }
+
         }
     }
 
+    public void onLottoclick1() // 로또 1 클릭
+    {
+        if (BtnCooltime <= 0)
+        {
+            if (player.gold >= Lotto1)
+            {
+                player.gold -= Lotto1;
+                int a = Random.Range(1, 100);
+                if (a <= 45)
+                {
+                    player.gold += Lotto1 * 2;
+                    Successlotto.gameObject.SetActive(true);
+                    StartCoroutine(LottoTextCo());
+                }
+                else
+                {
+                    GGwanglotto.gameObject.SetActive(true);
+                    StartCoroutine(LottoTextCo());
+                }
+                
+            }
+            else if (player.gold < Lotto1)
+            {
+                NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                StartCoroutine(NotEnoughGoldCo());
+            }
+            BtnCooltime = 1.5f;
+        }
+    }
 
+    public void onLottoclick2() // 로또 2 클릭
+    {
+        if (BtnCooltime <= 0)
+        {
+            if (player.gold >= Lotto2)
+            {
+                player.gold -= Lotto2;
+                int a = Random.Range(1, 100);
+                if (a<=5)
+                {
+                    player.gold += Lotto2 * 10;
+                    Successlotto.gameObject.SetActive(true);
+                }
+                else
+                {
+                    GGwanglotto.gameObject.SetActive(true);
+                    StartCoroutine(LottoTextCo());
+                }
+            }
+            else if (player.gold < Lotto2)
+            {
+                NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                StartCoroutine(NotEnoughGoldCo());
+            }
+            BtnCooltime = 1.5f;
+        }
+    }
 
+    public void onLottoclick3() // 로또 3 클릭
+    {
+        if (BtnCooltime <= 0)
+        {
+            if (player.gold >= Lotto3)
+            {
+                player.gold -= Lotto3;
+                int a = Random.Range(1, 100);
+                if (a<=1)
+                {
+                    player.gold += Lotto3 * 10;
+                    Successlotto.gameObject.SetActive(true);
+                }
+                else
+                {
+                    GGwanglotto.gameObject.SetActive(true);
+                    StartCoroutine(LottoTextCo());
+                }
+            }
+            
+            else if(player.gold<Lotto3)
+            {
+                NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                StartCoroutine(NotEnoughGoldCo());
+            }
+            BtnCooltime = 1.5f;
+        }
+    }
 }
