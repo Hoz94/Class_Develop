@@ -8,7 +8,8 @@ public class UIManager : MonoBehaviour
     public Text goldText;
     public Slider HPslider;
     public Canvas PlayerUICanvas;
-
+    public Slider GoalSlider;
+    float GoalGold = 1000000;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,7 @@ public class UIManager : MonoBehaviour
     {
         
         printGold();
-
+        printGoalValue();
         if (Time.timeScale == 1)
         {
             PlayerUICanvas.gameObject.SetActive(true);
@@ -29,10 +30,14 @@ public class UIManager : MonoBehaviour
     }
 
 
+    void printGoalValue()
+    {
+        GoalSlider.value = player.gold / GoalGold;
+    }
 
     void printGold()
     {
-        int gold = player.gold;
+        float gold = player.gold;
 
         goldText.text = "°ñµå : "+gold.ToString();
     }
