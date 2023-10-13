@@ -28,3 +28,6 @@
 스킬 2 : effect07(DimentionCutter)->effect30(SwordForce)->effect11(powerofMystic)
 스킬 3 : effect30(talonScratch)->effect11(FlameButterfly)->effect11(madnessofdarkness)
 
+
+제목 : 직업갖고 돈벌기
+죽으면 직장에서 짤려버렸다 텍스트 ㄱ
