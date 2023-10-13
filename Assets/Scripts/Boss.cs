@@ -7,6 +7,7 @@ public class Boss : MonoBehaviour
 {
     Status status;
     public int Hp = 100000;
+    int DropGold = 100000;
     NavMeshAgent nvAgent;
     Transform player;
     public float Atk = 80f;
@@ -15,12 +16,12 @@ public class Boss : MonoBehaviour
     public float Attackdist = 2f;
     bool isDead;
     bool isAttack;
-    bool isTrace;
     CapsuleCollider cc;
     Animator ani;
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player").GetComponent<Transform>();
         status=player.GetComponent<Status>();
         cc=GetComponent<CapsuleCollider>();
         nvAgent = GetComponent<NavMeshAgent>();
@@ -31,14 +32,18 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isDead) return;
         dist = Vector3.Distance(this.gameObject.transform.position, player.position);
 
+        if (isDead)
+        { 
+            return; 
+        }
+        
 
         if(Hp<=0)
         {
             cc.enabled = false;
-/*            Death();*/
+            Death();
         }
     }
 
@@ -57,7 +62,7 @@ public class Boss : MonoBehaviour
         ani.SetBool("isAttack", false);
         nvAgent.angularSpeed = 5000000f * Time.deltaTime;
         nvAgent.acceleration = 8000000f * Time.deltaTime;
-        nvAgent.speed = 10f;
+        nvAgent.speed = 14f;
         dir = player.position;
         nvAgent.SetDestination(dir);
         if(dist<=Attackdist)
@@ -73,22 +78,34 @@ public class Boss : MonoBehaviour
     {
         ani.SetBool("isAttack", true);
         ani.SetBool("isWalk", false);
+        status.CurHp -= Atk;
         nvAgent.velocity = Vector3.zero;
         nvAgent.speed = 0f;
         nvAgent.acceleration = 0f;
-        status.CurHp -= Atk;
         yield return new WaitForSeconds(1.5f);
         isAttack = false;
     }
 
     IEnumerator DeathCo()
     {
-
+        ani.SetTrigger("isDead");
         yield return new WaitForSeconds(1.5f);
     }
 
-    public void OnHit(int Atk)
+    void Death()
     {
-        Hp -= Atk;
+        isDead = true;
+        StartCoroutine(DeathCo());
+        player.gameObject.GetComponent<Player>().GetGold(DropGold);
+    }
+
+    public void OnHit()
+    {
+        Hp -= status.Atk;
+    }
+
+    public void Onhit(int skilldamage)
+    {
+        Hp -= skilldamage;
     }
 }

@@ -10,8 +10,8 @@ public class Player : MonoBehaviour
     float turnSpeed = 50f;
     float xRotation;
     Rigidbody myRigid;
-    public float gold;
-    public float Addmoney = 0f;
+    public int gold;
+    public int Addmoney = 0;
 
     private void Awake()
     {
@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
         transform.Rotate(0f, mouseInput.x * Time.fixedDeltaTime * turnSpeed, 0f);
     }
 
-    public void GetGold(float getgold)
+    public void GetGold(int getgold)
     {
         gold += getgold+Addmoney;
     }

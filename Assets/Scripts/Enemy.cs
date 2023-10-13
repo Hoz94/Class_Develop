@@ -15,20 +15,19 @@ public class Enemy : MonoBehaviour
     Transform player;
     public int MaxHP = 50;
     public int HP = 50;
-    public float Atk = 1;
+    public float Atk = 1f;
     public NavMeshAgent nvAgent;
     public float nowSpeed = 4.5f;
     private Vector3 dir;
     Animator _ani;
     public float dist;
     public float Attackdist = 2f;
-    public float minGold=50f;
-    public float MidGold=100f;
-    public float MaxGold=150f;
+    public int minGold =50;
+    public int MidGold =100;
+    public int MaxGold=150;
     bool isDead;
     bool isAttack;
     CapsuleCollider cc;
-    Skill skill;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +41,9 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isDead)
+        dist = Vector3.Distance(this.gameObject.transform.position, player.position);
+
+        if (isDead)
         {
             return;
         }
@@ -52,7 +53,7 @@ public class Enemy : MonoBehaviour
             cc.enabled = false;
             Death();
         }
-        dist = Vector3.Distance(this.gameObject.transform.position, player.position);
+        
 
     }
 

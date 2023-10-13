@@ -9,7 +9,8 @@ public class ShopManager : MonoBehaviour
 {
     public Enemy enemy;
     public Player player;
-    public GameObject ShopUI;
+
+
 
     bool shopopen;
     int MaxSpeed = 15;
@@ -18,14 +19,23 @@ public class ShopManager : MonoBehaviour
     int Lotto1 = 3000;
     int Lotto2 = 10000;
     int Lotto3 = 50000;
+
     int upGradeGoldLevel = 0;
     int upGradeSpdLevel = 0;
     int MaxUpGradeSpdLevel = 9;
     int MaxUpGradeGoldLevel = 10;
+
+
     public GameObject StatsUI;
     public GameObject SKillsUI;
     public GameObject EnemyUI;
     public GameObject GambleUI;
+    public GameObject ShopUI;
+    public GameObject BossPrefab;
+    public GameObject Boss;
+
+    public Transform BossSpawnPoint;
+
 
     string[] NotEnoughTip = new string[] { "돈도 없으면서 장난치다 혼난다!", "돈이 없어 두들겨 맞을 뻔 했다..", "돈이 없는 걸.." };
     string[] EnoughTip = new string[] { "상점 주인의 기분이 좋아 보인다.", "이것밖에 안주냐는 눈치이다..", "돈 주고도 욕 먹었다..", "노래를 알려 줄 생각인 것 같다." };
@@ -38,9 +48,9 @@ public class ShopManager : MonoBehaviour
     public Text Successlotto;
 
 
-    float StatsUpgradeMoney = 1000f; // 스탯 업그레이드 비용
+    int StatsUpgradeMoney = 1000; // 스탯 업그레이드 비용
 
-    float BtnCooltime = 0f;
+    float BtnCooltime = 0f; 
 
     public int SoldierSkill1 = 0;
     public int SoldierSkill2 = 0;
@@ -57,16 +67,15 @@ public class ShopManager : MonoBehaviour
     public int WindMagicianSkill1 = 0;
     public int WindMagicianSkill2 = 0;
     public int WindMagicianSkill3 = 0;
-    public float SkillUpgradeGold = 3000f;
-    
 
-    public float MonUpgradeGold = 3000f;
-    public float BossSpawnGold = 10000f;
+    public int SkillUpgradeGold = 3000; // 스킬 업그레이드 비용
+    public int MonUpgradeGold = 3000; // 몬스터 업그레이드 비용
+    public int BossSpawnGold = 10000; // 보스 스폰 비용
 
     // Update is called once per frame
     void Update()
     {
-        BtnCooltime -= Time.unscaledDeltaTime;
+        BtnCooltime -= Time.unscaledDeltaTime; // timescale이 0일때도 시간이 감.
         Shop(); // 상점 열고 닫기
         ViewGold(); // 상점내부에 현재 골드 보이기
     }
@@ -93,13 +102,13 @@ public class ShopManager : MonoBehaviour
             GambleUI.SetActive(false);
             shopopen = false;
         }
-    }
+    } // 상점 열고 닫기
+
     public void ViewGold()
     {
         Player p = player.GetComponent<Player>();
         CurGoldText.text = "골드 : " + p.gold.ToString();
-    }
-
+    } // 상점내부에 현재 골드 보이기
 
     public void onclickStatsButton() // 스탯 탭
     {
@@ -196,11 +205,13 @@ public class ShopManager : MonoBehaviour
         GGwanglotto.gameObject.SetActive(false);
         Successlotto.gameObject.SetActive(false);
     }
+
     IEnumerator NotEnoughTipCo() // 팁 줄 때 잔액에 따른 텍스트 없애는 쿨타임
     {
         yield return new WaitForSecondsRealtime(1.5f);
         NotEnoughTipText.gameObject.SetActive(false);
     }
+
     IEnumerator EnoughTipCo() // 팁 줄 때 잔액에 따른 텍스트 없애는 쿨타임
     {
         yield return new WaitForSecondsRealtime(1f);
@@ -933,6 +944,7 @@ public class ShopManager : MonoBehaviour
             }
         }
     }
+
     public void onclickMonLvupBtn() // 몬스터 레벨 증가 (획득 골드 증가)
     {
         if (BtnCooltime <= 0f)
@@ -1010,7 +1022,21 @@ public class ShopManager : MonoBehaviour
 
     public void onclickBossSpawnBtn() // 보스 몹 스폰 (대량 골드 획득)
     {
+        if (BtnCooltime <= 0f)
+        {
+            if(player.gold>=BossSpawnGold)
+            {
+                player.gold -= BossSpawnGold;
+                Boss = Instantiate(BossPrefab, BossSpawnPoint.position, transform.rotation);
+            }
 
+            else if(player.gold<BossSpawnGold)
+            {
+                NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                StartCoroutine(NotEnoughGoldCo());
+            }
+            BtnCooltime = 1f;
+        }
     }
 
     public void onLottoclick1() // 로또 1 클릭
@@ -1081,7 +1107,7 @@ public class ShopManager : MonoBehaviour
                 int a = Random.Range(1, 100);
                 if (a <= 1)
                 {
-                    player.gold += Lotto3 * 10;
+                    player.gold += Lotto3 * 20;
                     Successlotto.gameObject.SetActive(true);
                 }
                 else

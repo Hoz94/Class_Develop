@@ -4475,6 +4475,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 881277465}
   m_CullTransparentMesh: 1
+--- !u!1 &883019632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 883019633}
+  - component: {fileID: 883019634}
+  m_Layer: 0
+  m_Name: BossSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &883019633
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883019632}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 79.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &883019634
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883019632}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &910162573
 GameObject:
   m_ObjectHideFlags: 0
@@ -5747,7 +5800,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9de569f6dd784ba4dbdf58c1769e755e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 7607524824208091476, guid: 7fc1b0d37fea21b47af33177b8c9d5e5, type: 3}
   Enemypool: []
   EnemyPrefab: {fileID: 8994184589087907214, guid: 7fc1b0d37fea21b47af33177b8c9d5e5, type: 3}
   BulletPool: []
@@ -8691,11 +8743,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: -6249769458866848988, guid: 7fc1b0d37fea21b47af33177b8c9d5e5, type: 3}
   player: {fileID: 6172253}
-  ShopUI: {fileID: 2146274095}
   StatsUI: {fileID: 1177055422}
   SKillsUI: {fileID: 347054447}
   EnemyUI: {fileID: 1047840413}
   GambleUI: {fileID: 424572454}
+  ShopUI: {fileID: 2146274095}
+  BossPrefab: {fileID: 1639818050706832, guid: 28fce92923d67c2449f9c3d295c70aef, type: 3}
+  Boss: {fileID: 0}
+  BossSpawnPoint: {fileID: 883019633}
   NotEnoughTipText: {fileID: 47098504}
   EnoughTipText: {fileID: 1182481984}
   CurGoldText: {fileID: 61093304}
@@ -10408,7 +10463,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\uC778\uC0DD\uC740 \uD55C\uAC15\uBDF0 \n\uB610\uB294 \uD55C\uAC15\uBB3C\n\n(\uC131\uACF5
-    \uC2DC 10\uBC30 \uD68D\uB4DD)\n\n- 50000 G"
+    \uC2DC 20\uBC30 \uD68D\uB4DD)\n\n- 50000 G"
 --- !u!222 &1869474263
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12383,3 +12438,4 @@ SceneRoots:
   - {fileID: 1518044705}
   - {fileID: 1303574451}
   - {fileID: 705507995}
+  - {fileID: 883019633}
