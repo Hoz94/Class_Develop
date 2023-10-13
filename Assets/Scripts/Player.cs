@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     float xRotation;
     Rigidbody myRigid;
     public float gold;
-
+    public float Addmoney = 0f;
 
     private void Awake()
     {
@@ -72,11 +72,6 @@ public class Player : MonoBehaviour
 
     public void GetGold(float getgold)
     {
-        gold += getgold;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log(collision.gameObject.name);
+        gold += getgold+Addmoney;
     }
 }

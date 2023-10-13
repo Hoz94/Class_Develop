@@ -16,15 +16,18 @@ public class Enemy : MonoBehaviour
     public int MaxHP = 50;
     public int HP = 50;
     public float Atk = 1;
-    NavMeshAgent nvAgent;
+    public NavMeshAgent nvAgent;
+    public float nowSpeed = 4.5f;
     private Vector3 dir;
     Animator _ani;
     public float dist;
     public float Attackdist = 2f;
-    public bool isAttack;
+    public float minGold=50f;
+    public float MidGold=100f;
+    public float MaxGold=150f;
     bool isDead;
+    bool isAttack;
     CapsuleCollider cc;
-    Rigidbody rb;
     Skill skill;
     // Start is called before the first frame update
     void Start()
@@ -34,7 +37,6 @@ public class Enemy : MonoBehaviour
         _ani = GetComponent<Animator>();
         status = player.GetComponent<Status>();
         cc = GetComponent<CapsuleCollider>();
-        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -70,14 +72,14 @@ public class Enemy : MonoBehaviour
         _ani.SetBool("isRun", true);
         _ani.SetBool("isAttack", false);
         nvAgent.angularSpeed = 5000000 * Time.deltaTime;
-        nvAgent.acceleration = 8000 * Time.deltaTime;
-        nvAgent.speed = 4.5f;
+        nvAgent.acceleration = 8000000 * Time.deltaTime;
+        nvAgent.speed = nowSpeed;
         dir = player.position;
         nvAgent.SetDestination(dir);
         if (dist <= Attackdist)
         {
             isAttack = true;
-            transform.LookAt(player.position);
+            transform.LookAt(dir);
             StartCoroutine(Attackco());
         }
 
@@ -101,20 +103,19 @@ public class Enemy : MonoBehaviour
     {
         isDead = true;
         StartCoroutine(DeathCo());
-
         int Ran = Random.Range(0, 10);
         if (Ran < 7) // (0~6) 70% 
         {
-            player.gameObject.GetComponent<Player>().GetGold(50);
+            player.gameObject.GetComponent<Player>().GetGold(minGold);
         }
         else if (Ran < 9) // (7, 8) 20%
         {
-            player.gameObject.GetComponent<Player>().GetGold(100);
+            player.gameObject.GetComponent<Player>().GetGold(MidGold);
         }
 
         else if (Ran < 10) // (9) 10%
         {
-            player.gameObject.GetComponent<Player>().GetGold(150);
+            player.gameObject.GetComponent<Player>().GetGold(MaxGold);
         }
 
     }
@@ -122,7 +123,7 @@ public class Enemy : MonoBehaviour
     IEnumerator DeathCo()
     {
         _ani.SetTrigger("isDead");
-        nvAgent.speed = 0;
+        nvAgent.speed = nowSpeed;
         nvAgent.velocity = Vector3.zero;
         nvAgent.acceleration = 0;
         nvAgent.angularSpeed = 0;
@@ -143,5 +144,16 @@ public class Enemy : MonoBehaviour
     public void OnHit(int SkillDamage) // 일반스킬, 필살기
     {
         HP -= SkillDamage;
+    }
+
+    public void SetHealth(int AddHp)
+    {
+        MaxHP += AddHp;
+        HP += AddHp;
+    }
+
+    public void SetSpeed(float speed)
+    {
+        nowSpeed=nvAgent.speed + speed;
     }
 }

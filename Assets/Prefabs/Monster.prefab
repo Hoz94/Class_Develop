@@ -3042,9 +3042,13 @@ MonoBehaviour:
   MaxHP: 50
   HP: 50
   Atk: 1
+  nvAgent: {fileID: 7607524824208091476}
+  nowSpeed: 4.5
   dist: 0
   Attackdist: 2
-  isAttack: 0
+  minGold: 50
+  MidGold: 100
+  MaxGold: 150
 --- !u!195 &7607524824208091476
 NavMeshAgent:
   m_ObjectHideFlags: 0

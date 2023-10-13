@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Unity.VisualScripting;
+using UnityEngine.AI;
 
 public class PoolingManager : MonoBehaviour
 {
@@ -29,6 +30,8 @@ public class PoolingManager : MonoBehaviour
     int MaxSword = 20;
 
 
+    public int AddHp=0;
+    public float AddSpeed = 0;
     private void Awake()
     {
         _instance = this;
@@ -108,6 +111,12 @@ public class PoolingManager : MonoBehaviour
         {
             if (Enemypool[i].activeSelf==false)
             {
+                Enemy enemy = Enemypool[i].GetComponent<Enemy>();
+                if(enemy != null)
+                {
+                    enemy.SetHealth(AddHp);
+                    enemy.SetSpeed(AddSpeed);
+                }
                 return Enemypool[i];
             }
         }

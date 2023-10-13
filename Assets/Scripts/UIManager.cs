@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
@@ -21,11 +22,12 @@ public class UIManager : MonoBehaviour
     {
 
         printGold();
-        printGoalValue();
+        
         if (Time.timeScale == 1)
         {
             PlayerUICanvas.gameObject.SetActive(true);
             HandleHP();
+            printGoalValue();
         }
     }
 

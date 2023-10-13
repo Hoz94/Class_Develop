@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
+    public Enemy enemy;
     public Player player;
     public GameObject ShopUI;
 
@@ -15,7 +18,10 @@ public class ShopManager : MonoBehaviour
     int Lotto1 = 3000;
     int Lotto2 = 10000;
     int Lotto3 = 50000;
-
+    int upGradeGoldLevel = 0;
+    int upGradeSpdLevel = 0;
+    int MaxUpGradeSpdLevel = 9;
+    int MaxUpGradeGoldLevel = 10;
     public GameObject StatsUI;
     public GameObject SKillsUI;
     public GameObject EnemyUI;
@@ -35,7 +41,6 @@ public class ShopManager : MonoBehaviour
     float StatsUpgradeMoney = 1000f; // 스탯 업그레이드 비용
 
     float BtnCooltime = 0f;
-    float textoffcooltime = 0f;
 
     public int SoldierSkill1 = 0;
     public int SoldierSkill2 = 0;
@@ -53,6 +58,7 @@ public class ShopManager : MonoBehaviour
     public int WindMagicianSkill2 = 0;
     public int WindMagicianSkill3 = 0;
     public float SkillUpgradeGold = 3000f;
+    
 
     public float MonUpgradeGold = 3000f;
     public float BossSpawnGold = 10000f;
@@ -895,32 +901,74 @@ public class ShopManager : MonoBehaviour
     {
         if (BtnCooltime <= 0f)
         {
-            if (player.gold >= MonUpgradeGold)
+            GameObject PoolingMangerobj = GameObject.Find("PoolingManager");
+            if (PoolingMangerobj != null)
             {
+                PoolingManager poolingmanager = PoolingMangerobj.GetComponent<PoolingManager>();
+                if (poolingmanager != null)
+                {
+                    if (upGradeSpdLevel < MaxUpGradeSpdLevel)
+                    {
+                        if (player.gold >= MonUpgradeGold)
+                        {
+                            ++upGradeSpdLevel;
+                            player.gold -= MonUpgradeGold;
+                            poolingmanager.AddSpeed = 1*upGradeSpdLevel;
+                        }
 
+                        else if (player.gold < MonUpgradeGold)
+                        {
+                            NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                            StartCoroutine(NotEnoughGoldCo());
+                        }
+                    }
+
+                    else if (upGradeSpdLevel == MaxUpGradeSpdLevel)
+                    {
+                        NoMoreUpgrade.gameObject.SetActive(true);
+                        StartCoroutine(NoMoreUpgradeCo());
+                    }
+                    BtnCooltime = 1f;
+                }
             }
-
-            else if (player.gold < MonUpgradeGold)
-            {
-
-            }
-            BtnCooltime = 1f;
         }
     }
     public void onclickMonLvupBtn() // 몬스터 레벨 증가 (획득 골드 증가)
     {
         if (BtnCooltime <= 0f)
         {
-            if (player.gold >= MonUpgradeGold)
+            GameObject PoolingMangerobj = GameObject.Find("PoolingManager");
+            if (PoolingMangerobj != null)
             {
+                PoolingManager poolingmanager = PoolingMangerobj.GetComponent<PoolingManager>();
+                if (poolingmanager != null)
+                {
+                    if (upGradeGoldLevel < MaxUpGradeGoldLevel)
+                    {
 
+                        if (player.gold >= MonUpgradeGold)
+                        {
+                            ++upGradeGoldLevel;
+                            player.gold -= MonUpgradeGold;
+                            player.Addmoney += 50 * upGradeGoldLevel;
+                            poolingmanager.AddHp = 100 * upGradeGoldLevel;
+                        }
+
+                        else if (player.gold < MonUpgradeGold)
+                        {
+                            NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                            StartCoroutine(NotEnoughGoldCo());
+                        }
+                    }
+
+                    else if (upGradeGoldLevel == MaxUpGradeGoldLevel)
+                    {
+                        NoMoreUpgrade.gameObject.SetActive(true);
+                        StartCoroutine(NoMoreUpgradeCo());
+                    }
+                    BtnCooltime = 1f;
+                }
             }
-
-            else if (player.gold < MonUpgradeGold)
-            {
-
-            }
-            BtnCooltime = 1f;
         }
     }
 
@@ -928,20 +976,39 @@ public class ShopManager : MonoBehaviour
     {
         if (BtnCooltime <= 0f)
         {
-            if (player.gold >= MonUpgradeGold)
+            GameObject spawnEnemiesobj = GameObject.Find("SpawnEnemies");
+            if (spawnEnemiesobj != null)
             {
+                SpawnEnemies spawnEnemies = spawnEnemiesobj.GetComponent<SpawnEnemies>();
+                if (spawnEnemies != null)
+                {
+                    if (0.1f<spawnEnemies.spawnInterval)
+                    {
+                        if (player.gold >= MonUpgradeGold)
+                        {
+                            player.gold -= MonUpgradeGold;
+                            spawnEnemies.spawnInterval -= 0.1f;
+                        }
 
+                        else if (player.gold < MonUpgradeGold)
+                        {
+                            NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                            StartCoroutine(NotEnoughGoldCo());
+                        }
+                        
+                    }
+                    else if (spawnEnemies.spawnInterval<= 0.1f)
+                    {
+                        NoMoreUpgrade.gameObject.SetActive(true);
+                        StartCoroutine(NoMoreUpgradeCo());
+                    }
+                    BtnCooltime = 1f;
+                }
             }
-
-            else if (player.gold < MonUpgradeGold)
-            {
-
-            }
-            BtnCooltime = 1f;
         }
     }
 
-    public void onclickBossSpdBtn() // 보스 몹 스폰 (대량 골드 획득)
+    public void onclickBossSpawnBtn() // 보스 몹 스폰 (대량 골드 획득)
     {
 
     }
