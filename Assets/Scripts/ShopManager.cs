@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,6 +21,8 @@ public class ShopManager : MonoBehaviour
     public GameObject EnemyUI;
     public GameObject GambleUI;
 
+    string[] NotEnoughTip = new string[] { "ÎèàÎèÑ ÏóÜÏúºÎ©¥ÏÑú Ïû•ÎÇúÏπòÎã§ ÌòºÎÇúÎã§!", "ÎèàÏù¥ ÏóÜÏñ¥ ÎëêÎì§Í≤® ÎßûÏùÑ Îªî ÌñàÎã§..", "ÎèàÏù¥ ÏóÜÎäî Í±∏.." };
+    string[] EnoughTip = new string[] { "ÏÉÅÏ†ê Ï£ºÏù∏Ïùò Í∏∞Î∂ÑÏù¥ Ï¢ãÏïÑ Î≥¥Ïù∏Îã§.", "Ïù¥Í≤ÉÎ∞ñÏóê ÏïàÏ£ºÎÉêÎäî ÎààÏπòÏù¥Îã§..", "Îèà Ï£ºÍ≥†ÎèÑ Ïöï Î®πÏóàÎã§..", "ÎÖ∏ÎûòÎ•º ÏïåÎ†§ Ï§Ñ ÏÉùÍ∞ÅÏù∏ Í≤É Í∞ôÎã§." };
     public Text NotEnoughTipText;
     public Text EnoughTipText;
     public Text CurGoldText;
@@ -28,9 +30,9 @@ public class ShopManager : MonoBehaviour
     public Text NoMoreUpgrade;
     public Text GGwanglotto;
     public Text Successlotto;
-    
 
-    int StatsUpgradeMoney = 1000; // Ω∫≈» æ˜±◊∑π¿ÃµÂ ∫ÒøÎ
+
+    float StatsUpgradeMoney = 1000f; // Ïä§ÌÉØ ÏóÖÍ∑∏Î†àÏù¥Îìú ÎπÑÏö©
 
     float BtnCooltime = 0f;
     float textoffcooltime = 0f;
@@ -50,16 +52,17 @@ public class ShopManager : MonoBehaviour
     public int WindMagicianSkill1 = 0;
     public int WindMagicianSkill2 = 0;
     public int WindMagicianSkill3 = 0;
-    public int SkillUpgradeGold = 3000;
+    public float SkillUpgradeGold = 3000f;
 
+    public float MonUpgradeGold = 3000f;
+    public float BossSpawnGold = 10000f;
 
     // Update is called once per frame
     void Update()
     {
         BtnCooltime -= Time.unscaledDeltaTime;
-        textoffcooltime += Time.unscaledDeltaTime;
-        Shop(); // ªÛ¡° ø≠∞Ì ¥›±‚
-        ViewGold(); // ªÛ¡°≥ª∫Œ ∞ÒµÂ ∫∏¿Ã±‚
+        Shop(); // ÏÉÅÏ†ê Ïó¥Í≥† Îã´Í∏∞
+        ViewGold(); // ÏÉÅÏ†êÎÇ¥Î∂ÄÏóê ÌòÑÏû¨ Í≥®Îìú Î≥¥Ïù¥Í∏∞
     }
 
     public void Shop()
@@ -88,745 +91,862 @@ public class ShopManager : MonoBehaviour
     public void ViewGold()
     {
         Player p = player.GetComponent<Player>();
-        CurGoldText.text = "∞ÒµÂ : " + p.gold.ToString();
+        CurGoldText.text = "Í≥®Îìú : " + p.gold.ToString();
     }
 
 
-    public void onclickStatsButton() // Ω∫≈» ≈«
+    public void onclickStatsButton() // Ïä§ÌÉØ ÌÉ≠
     {
         StatsUI.SetActive(true);
         SKillsUI.SetActive(false);
         EnemyUI.SetActive(false);
         GambleUI.SetActive(false);
+
     }
 
-    public void onclickSkillsButton() //Ω∫≈≥ ≈«
+    public void onclickSkillsButton() // Ïä§ÌÇ¨ ÌÉ≠
     {
         StatsUI.SetActive(false);
         SKillsUI.SetActive(true);
         EnemyUI.SetActive(false);
         GambleUI.SetActive(false);
+
     }
 
-    public void onclickEnemyButton() //∏ÛΩ∫≈Õ ≈«
+    public void onclickEnemyButton() // Ï†Å ÌÉ≠
     {
         StatsUI.SetActive(false);
         SKillsUI.SetActive(false);
         EnemyUI.SetActive(true);
         GambleUI.SetActive(false);
+
     }
 
-    public void onclickGamebleButton() // µµπ⁄ ≈«
+    public void onclickGamebleButton() // ÎèÑÎ∞ï ÌÉ≠
     {
         StatsUI.SetActive(false);
         SKillsUI.SetActive(false);
         EnemyUI.SetActive(false);
         GambleUI.SetActive(true);
+
     }
 
-    public void onclickTipButton() // ∆¡ ≈«
+    public void onclickTipButton() // ÌåÅ ÌÉ≠
     {
+        StatsUI.SetActive(false);
+        SKillsUI.SetActive(false);
+        EnemyUI.SetActive(false);
+        GambleUI.SetActive(false);
         if (BtnCooltime <= 0f)
         {
-            if (player.gold <= 1000)
+            if (player.gold < 1000)
             {
+                int ran = Random.Range(0, NotEnoughTip.Length);
+                switch (ran)
+                {
+                    case 0:
+                        NotEnoughTipText.text = NotEnoughTip[0];
+                        break;
+                    case 1:
+                        NotEnoughTipText.text = NotEnoughTip[1];
+                        break;
+                    case 2:
+                        NotEnoughTipText.text = NotEnoughTip[2];
+                        break;
+                }
                 NotEnoughTipText.gameObject.SetActive(true);
                 StartCoroutine(NotEnoughTipCo());
             }
             if (player.gold >= 1000)
             {
+                int ran = Random.Range(0, EnoughTip.Length);
+                switch (ran)
+                {
+                    case 0:
+                        EnoughTipText.text = EnoughTip[0];
+                        break;
+                    case 1:
+                        EnoughTipText.text = EnoughTip[1];
+                        break;
+                    case 2:
+                        EnoughTipText.text = EnoughTip[2];
+                        break;
+                    case 3:
+                        EnoughTipText.text = EnoughTip[3];
+                        break;
+                }
                 player.gold -= 1000;
                 EnoughTipText.gameObject.SetActive(true);
                 StartCoroutine(EnoughTipCo());
             }
-            BtnCooltime = 1.7f;
+            BtnCooltime = 1.5f;
         }
     }
 
-    
-    IEnumerator LottoTextCo() // ∑Œ∂« ≤Œ or ¥Á√∑ ≈ÿΩ∫∆Æ æ¯æ÷¥¬ ƒ≈∏¿”
+
+    IEnumerator LottoTextCo() // Î°úÎòê ÍΩù or ÎãπÏ≤® ÌÖçÏä§Ìä∏ ÏóÜÏï†Îäî Ïø®ÌÉÄÏûÑ
     {
         yield return new WaitForSecondsRealtime(1f);
         GGwanglotto.gameObject.SetActive(false);
         Successlotto.gameObject.SetActive(false);
     }
-    IEnumerator NotEnoughTipCo() // ∆¡ ¡Ÿ ∂ß ¿‹æ◊ø° µ˚∏• ≈ÿΩ∫∆Æ æ¯æ÷¥¬ ƒ≈∏¿”
+    IEnumerator NotEnoughTipCo() // ÌåÅ Ï§Ñ Îïå ÏûîÏï°Ïóê Îî∞Î•∏ ÌÖçÏä§Ìä∏ ÏóÜÏï†Îäî Ïø®ÌÉÄÏûÑ
     {
         yield return new WaitForSecondsRealtime(1.5f);
         NotEnoughTipText.gameObject.SetActive(false);
     }
-    IEnumerator EnoughTipCo() // ∆¡ ¡Ÿ ∂ß ¿‹æ◊ø° µ˚∏• ≈ÿΩ∫∆Æ æ¯æ÷¥¬ ƒ≈∏¿”
+    IEnumerator EnoughTipCo() // ÌåÅ Ï§Ñ Îïå ÏûîÏï°Ïóê Îî∞Î•∏ ÌÖçÏä§Ìä∏ ÏóÜÏï†Îäî Ïø®ÌÉÄÏûÑ
     {
-        yield return new WaitForSecondsRealtime(1.5f);
+        yield return new WaitForSecondsRealtime(1f);
         EnoughTipText.gameObject.SetActive(false);
     }
 
-    IEnumerator NoMoreUpgradeCo() // æ˜±◊∑π¿ÃµÂ √÷¥Îƒ°¿œ ∂ß ≈ÿΩ∫∆Æ æ¯æ÷¥¬ ƒ≈∏¿”
+    IEnumerator NoMoreUpgradeCo() // ÏóÖÍ∑∏Î†àÏù¥Îìú ÏµúÎåÄÏπòÏùº Îïå ÌÖçÏä§Ìä∏ ÏóÜÏï†Îäî Ïø®ÌÉÄÏûÑ
     {
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(0.8f);
         NoMoreUpgrade.gameObject.SetActive(false);
     }
 
-    IEnumerator NotEnoughGoldCo() // æ˜±◊∑π¿ÃµÂ ∫ÒøÎ æ¯¿ª ∂ß ≈ÿΩ∫∆Æ æ¯æ÷¥¬ ƒ≈∏¿”
+    IEnumerator NotEnoughGoldCo() // ÏóÖÍ∑∏Î†àÏù¥Îìú ÎπÑÏö© ÏóÜÏùÑ Îïå ÌÖçÏä§Ìä∏ ÏóÜÏï†Îäî Ïø®ÌÉÄÏûÑ
     {
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(0.8f);
         NotEnoughUpgradeMoney.gameObject.SetActive(false);
     }
 
-    public void onclickAtkBtn() // ±‚∫ª ∞¯∞› ¡ı∞° 
+    public void onclickAtkBtn() // Í∏∞Î≥∏ Í≥µÍ≤© Ï¶ùÍ∞Ä 
     {
         Status status = player.gameObject.GetComponent<Status>();
-        if (status.Atk < MaxAtk)
+        if (BtnCooltime <= 0f)
+        {
+            if (status.Atk < MaxAtk)
+            {
+                if (player.gold >= StatsUpgradeMoney)
+                {
+                    player.gold -= StatsUpgradeMoney;
+                    status.Atk += 10;
+                }
+
+                else if (player.gold < StatsUpgradeMoney)
+                {
+                    NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                    StartCoroutine(NotEnoughGoldCo());
+                }
+
+            }
+            else if (status.Atk == MaxAtk)
+            {
+                NoMoreUpgrade.gameObject.SetActive(true);
+                StartCoroutine(NoMoreUpgradeCo());
+            }
+            BtnCooltime = 1f;
+        }
+    }
+
+    public void onclickWalkSpdBtn() // Ïù¥ÏÜç Ï¶ùÍ∞Ä
+    {
+        if (BtnCooltime <= 0f)
+        {
+            Status status = player.gameObject.GetComponent<Status>();
+            if (status.Spd < MaxSpeed)
+            {
+                if (player.gold >= StatsUpgradeMoney)
+                {
+                    player.gold -= StatsUpgradeMoney;
+                    status.Spd += 1;
+                }
+                else if (player.gold < StatsUpgradeMoney)
+                {
+                    NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                    StartCoroutine(NotEnoughGoldCo());
+                }
+            }
+            else if (status.Spd == MaxSpeed)
+            {
+                NoMoreUpgrade.gameObject.SetActive(true);
+                StartCoroutine(NoMoreUpgradeCo());
+            }
+            BtnCooltime = 1f;
+        }
+    }
+
+    public void onclickMaxHpBtn() // ÏµúÎåÄ Ï≤¥Î†• Ï¶ùÍ∞Ä
+    {
+        Status status = player.gameObject.GetComponent<Status>();
+        if (BtnCooltime <= 0f)
+        {
+            if (status.MaxHp < MaxHpPlus)
+            {
+                if (player.gold >= StatsUpgradeMoney)
+                {
+                    player.gold -= StatsUpgradeMoney;
+                    status.MaxHp += 50;
+                }
+                else if (player.gold < StatsUpgradeMoney)
+                {
+                    NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                    StartCoroutine(NotEnoughGoldCo());
+                }
+            }
+            else if (status.MaxHp == MaxHpPlus)
+            {
+                NoMoreUpgrade.gameObject.SetActive(true);
+                StartCoroutine(NoMoreUpgradeCo());
+            }
+            BtnCooltime = 1f;
+        }
+    }
+
+    public void onclickHpPotionBtn() // Î¨ºÏïΩ Ìè¨ÏÖò
+    {
+        Status status = player.gameObject.GetComponent<Status>();
+        if (BtnCooltime <= 0f)
         {
             if (player.gold >= StatsUpgradeMoney)
             {
                 player.gold -= StatsUpgradeMoney;
-                status.Atk += 10;
+                status.CurHp += 10;
             }
-
             else if (player.gold < StatsUpgradeMoney)
             {
                 NotEnoughUpgradeMoney.gameObject.SetActive(true);
                 StartCoroutine(NotEnoughGoldCo());
             }
+            BtnCooltime = 1f;
+        }
 
-        }
-        else if(status.Atk==MaxAtk)
-        {
-            NoMoreUpgrade.gameObject.SetActive(true);
-            StartCoroutine(NoMoreUpgradeCo());
-        }
+
     }
 
-    public void onclickWalkSpdBtn() // ¿Ãº” ¡ı∞°
+    public void onclickSkill1Btn() // Ïä§ÌÇ¨ 1 Î≤ÑÌäº ÏóÖÍ∑∏Î†àÏù¥Îìú Î≤ÑÌäº
     {
-        Status status = player.gameObject.GetComponent<Status>();
-        if (status.Spd < MaxSpeed)
+        if (BtnCooltime <= 0f)
         {
-            if (player.gold >= StatsUpgradeMoney)
+            // Íµ∞Ïù∏
+            if (player.tag == "Soldier")
             {
-                player.gold -= StatsUpgradeMoney;
-                status.Spd += 1;
+                if (player.gold >= SkillUpgradeGold)
+                {
+                    if (SoldierSkill1 == 0)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        SoldierSkill1++;
+                    }
+
+                    else if (SoldierSkill1 == 1)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        SoldierSkill1++;
+                    }
+
+                    else if (SoldierSkill1 == 2)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        SoldierSkill1++;
+                    }
+
+                    else if (SoldierSkill1 <= 3)
+                    {
+                        NoMoreUpgrade.gameObject.SetActive(true);
+                        StartCoroutine(NoMoreUpgradeCo());
+                    }
+                }
+                else if (player.gold < SkillUpgradeGold)
+                {
+                    NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                    StartCoroutine(NotEnoughGoldCo());
+                }
+
+
             }
-            else if(player.gold<StatsUpgradeMoney)
+
+            // Í≤ÄÏÇ¨
+            if (player.tag == "Worrior")
             {
-                NotEnoughUpgradeMoney.gameObject.SetActive(true);
-                StartCoroutine(NotEnoughGoldCo());
+                if (player.gold >= SkillUpgradeGold)
+                {
+                    if (WorriorSkill1 == 0)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WorriorSkill1++;
+                    }
+
+                    else if (WorriorSkill1 == 1)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WorriorSkill1++;
+                    }
+
+                    else if (WorriorSkill1 == 2)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WorriorSkill1++;
+                    }
+
+                    else if (WorriorSkill1 <= 3)
+                    {
+                        NoMoreUpgrade.gameObject.SetActive(true);
+                        StartCoroutine(NoMoreUpgradeCo());
+                    }
+                }
+                else if (player.gold < SkillUpgradeGold)
+                {
+                    NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                    StartCoroutine(NotEnoughGoldCo());
+                }
+
             }
+
+            // Î∂àÎ≤ï
+            if (player.tag == "FireMagician")
+            {
+                if (player.gold >= SkillUpgradeGold)
+                {
+                    if (FireMagicianSkill1 == 0)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        FireMagicianSkill1++;
+                    }
+
+                    else if (FireMagicianSkill1 == 1)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        FireMagicianSkill1++;
+                    }
+
+                    else if (FireMagicianSkill1 == 2)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        FireMagicianSkill1++;
+                    }
+
+                    else if (FireMagicianSkill1 <= 3)
+                    {
+                        NoMoreUpgrade.gameObject.SetActive(true);
+                        StartCoroutine(NoMoreUpgradeCo());
+                    }
+                }
+                else if (player.gold < SkillUpgradeGold)
+                {
+                    NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                    StartCoroutine(NotEnoughGoldCo());
+                }
+            }
+
+            // Î¨ºÎ≤ï
+            if (player.tag == "WaterMagician")
+            {
+                if (player.gold >= SkillUpgradeGold)
+                {
+                    if (WaterMagicianSkill1 == 0)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WaterMagicianSkill1++;
+                    }
+
+                    else if (WaterMagicianSkill1 == 1)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WaterMagicianSkill1++;
+                    }
+
+                    else if (WaterMagicianSkill1 == 2)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WaterMagicianSkill1++;
+                    }
+
+                    else if (WaterMagicianSkill1 <= 3)
+                    {
+                        NoMoreUpgrade.gameObject.SetActive(true);
+                        StartCoroutine(NoMoreUpgradeCo());
+                    }
+                }
+                else if (player.gold < SkillUpgradeGold)
+                {
+                    NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                    StartCoroutine(NotEnoughGoldCo());
+                }
+
+            }
+
+            // Î∞îÎûåÎ≤ï
+            if (player.tag == "WindMagician")
+            {
+                if (player.gold >= SkillUpgradeGold)
+                {
+                    if (WindMagicianSkill1 == 0)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WindMagicianSkill1++;
+                    }
+
+                    else if (WindMagicianSkill1 == 1)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WindMagicianSkill1++;
+                    }
+
+                    else if (WindMagicianSkill1 == 2)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WindMagicianSkill1++;
+                    }
+
+                    else if (WindMagicianSkill1 <= 3)
+                    {
+                        NoMoreUpgrade.gameObject.SetActive(true);
+                        StartCoroutine(NoMoreUpgradeCo());
+                    }
+                }
+                else if (player.gold < SkillUpgradeGold)
+                {
+                    NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                    StartCoroutine(NotEnoughGoldCo());
+                }
+            }
+            BtnCooltime = 1f;
         }
-        else if (status.Spd == MaxSpeed)
-        {
-            NoMoreUpgrade.gameObject.SetActive(true);
-            StartCoroutine(NoMoreUpgradeCo());
-        }
+
     }
 
-    public void onclickMaxHpBtn() // √÷¥Î √º∑¬ ¡ı∞°
+    public void onclickSkill2Btn() // Ïä§ÌÇ¨ 2 Î≤ÑÌäº ÏóÖÍ∑∏Î†àÏù¥Îìú Î≤ÑÌäº
     {
-        Status status = player.gameObject.GetComponent<Status>();
-        if (status.MaxHp < MaxHpPlus)
-        {
-            if (player.gold >= StatsUpgradeMoney)
+        if (BtnCooltime <= 0f)
+        {    // Íµ∞Ïù∏
+            if (player.tag == "Soldier")
             {
-                player.gold -= StatsUpgradeMoney;
-                status.MaxHp += 50;
+                if (player.gold >= SkillUpgradeGold)
+                {
+                    if (SoldierSkill2 == 0)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        SoldierSkill2++;
+                    }
+
+                    else if (SoldierSkill2 == 1)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        SoldierSkill2++;
+                    }
+
+                    else if (SoldierSkill2 == 2)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        SoldierSkill2++;
+                    }
+
+                    else if (SoldierSkill2 <= 3)
+                    {
+                        NoMoreUpgrade.gameObject.SetActive(true);
+                        StartCoroutine(NoMoreUpgradeCo());
+                    }
+                }
+                else if (player.gold < SkillUpgradeGold)
+                {
+                    NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                    StartCoroutine(NotEnoughGoldCo());
+                }
+
             }
-            else if (player.gold < StatsUpgradeMoney)
+
+            // Í≤ÄÏÇ¨
+            if (player.tag == "Worrior")
             {
-                NotEnoughUpgradeMoney.gameObject.SetActive(true);
-                StartCoroutine(NotEnoughGoldCo());
+                if (player.gold >= SkillUpgradeGold)
+                {
+                    if (WorriorSkill2 == 0)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WorriorSkill2++;
+                    }
+
+                    else if (WorriorSkill2 == 1)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WorriorSkill2++;
+                    }
+
+                    else if (WorriorSkill2 == 2)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WorriorSkill2++;
+                    }
+
+                    else if (WorriorSkill2 <= 3)
+                    {
+                        NoMoreUpgrade.gameObject.SetActive(true);
+                        StartCoroutine(NoMoreUpgradeCo());
+                    }
+                }
+                else if (player.gold < SkillUpgradeGold)
+                {
+                    NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                    StartCoroutine(NotEnoughGoldCo());
+                }
+
             }
-        }
-        else if (status.MaxHp == MaxHpPlus)
-        {
-            NoMoreUpgrade.gameObject.SetActive(true);
-            StartCoroutine(NoMoreUpgradeCo());
+
+            // Î¨ºÎ≤ï
+            if (player.tag == "WaterMagician")
+            {
+                if (player.gold >= SkillUpgradeGold)
+                {
+                    if (WaterMagicianSkill2 == 0)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WaterMagicianSkill2++;
+                    }
+
+                    else if (WaterMagicianSkill2 == 1)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WaterMagicianSkill2++;
+                    }
+
+                    else if (WaterMagicianSkill2 == 2)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WaterMagicianSkill2++;
+                    }
+
+                    else if (WaterMagicianSkill2 <= 3)
+                    {
+                        NoMoreUpgrade.gameObject.SetActive(true);
+                        StartCoroutine(NoMoreUpgradeCo());
+                    }
+                }
+                else if (player.gold < SkillUpgradeGold)
+                {
+                    NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                    StartCoroutine(NotEnoughGoldCo());
+                }
+
+            }
+
+            // Î∞îÎûåÎ≤ï
+            if (player.tag == "WindMagician")
+            {
+                if (player.gold >= SkillUpgradeGold)
+                {
+                    if (WindMagicianSkill2 == 0)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WindMagicianSkill2++;
+                    }
+
+                    else if (WindMagicianSkill2 == 1)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WindMagicianSkill2++;
+                    }
+
+                    else if (WindMagicianSkill2 == 2)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WindMagicianSkill2++;
+                    }
+
+                    else if (WindMagicianSkill2 <= 3)
+                    {
+                        NoMoreUpgrade.gameObject.SetActive(true);
+                        StartCoroutine(NoMoreUpgradeCo());
+                    }
+                }
+                else if (player.gold < SkillUpgradeGold)
+                {
+                    NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                    StartCoroutine(NotEnoughGoldCo());
+                }
+
+            }
+
+            // Î∂àÎ≤ï
+            if (player.tag == "FireMagician")
+            {
+                if (player.gold >= SkillUpgradeGold)
+                {
+                    if (FireMagicianSkill2 == 0)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        FireMagicianSkill2++;
+                    }
+
+                    else if (FireMagicianSkill2 == 1)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        FireMagicianSkill2++;
+                    }
+
+                    else if (FireMagicianSkill2 == 2)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        FireMagicianSkill2++;
+                    }
+
+                    else if (FireMagicianSkill2 <= 3)
+                    {
+                        NoMoreUpgrade.gameObject.SetActive(true);
+                        StartCoroutine(NoMoreUpgradeCo());
+                    }
+                }
+                else if (player.gold < SkillUpgradeGold)
+                {
+                    NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                    StartCoroutine(NotEnoughGoldCo());
+                }
+
+            }
+            BtnCooltime = 1f;
         }
     }
 
-    public void onclickHpPotionBtn() // π∞æ‡ ∆˜º«
+    public void onclickSkill3Btn() // Ïä§ÌÇ¨ 3 Î≤ÑÌäº ÏóÖÍ∑∏Î†àÏù¥Îìú Î≤ÑÌäº
     {
-        Status status = player.gameObject.GetComponent<Status>();
-        if (player.gold>=StatsUpgradeMoney)
+        if (BtnCooltime <= 0f)
         {
-            player.gold -= StatsUpgradeMoney;
-            status.CurHp += 10;
-        }
-        else if (player.gold < StatsUpgradeMoney)
-        {
-            NotEnoughUpgradeMoney.gameObject.SetActive(true);
-            StartCoroutine(NotEnoughGoldCo());
-        }
+            // Íµ∞Ïù∏
+            if (player.tag == "Soldier")
+            {
+                if (player.gold >= SkillUpgradeGold)
+                {
+                    if (SoldierSkill3 == 0)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        SoldierSkill3++;
+                    }
 
+                    else if (SoldierSkill3 == 1)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        SoldierSkill3++;
+                    }
 
+                    else if (SoldierSkill3 == 2)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        SoldierSkill3++;
+                    }
+
+                    else if (SoldierSkill3 <= 3)
+                    {
+                        NoMoreUpgrade.gameObject.SetActive(true);
+                        StartCoroutine(NoMoreUpgradeCo());
+                    }
+                }
+                else if (player.gold < SkillUpgradeGold)
+                {
+                    NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                    StartCoroutine(NotEnoughGoldCo());
+                }
+
+            }
+
+            // Í≤ÄÏÇ¨
+            if (player.tag == "Worrior")
+            {
+                if (player.gold >= SkillUpgradeGold)
+                {
+                    if (WorriorSkill3 == 0)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WorriorSkill3++;
+                    }
+
+                    else if (WorriorSkill3 == 1)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WorriorSkill3++;
+                    }
+
+                    else if (WorriorSkill3 == 2)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WorriorSkill3++;
+                    }
+
+                    else if (WorriorSkill3 <= 3)
+                    {
+                        NoMoreUpgrade.gameObject.SetActive(true);
+                        StartCoroutine(NoMoreUpgradeCo());
+                    }
+                }
+                else if (player.gold < SkillUpgradeGold)
+                {
+                    NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                    StartCoroutine(NotEnoughGoldCo());
+                }
+
+            }
+
+            // Î¨ºÎ≤ï
+            if (player.tag == "WaterMagician")
+            {
+                if (player.gold >= SkillUpgradeGold)
+                {
+                    if (WaterMagicianSkill3 == 0)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WaterMagicianSkill3++;
+                    }
+
+                    else if (WaterMagicianSkill3 == 1)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WaterMagicianSkill3++;
+                    }
+
+                    else if (WaterMagicianSkill3 == 2)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WaterMagicianSkill3++;
+                    }
+
+                    else if (WaterMagicianSkill3 <= 3)
+                    {
+                        NoMoreUpgrade.gameObject.SetActive(true);
+                        StartCoroutine(NoMoreUpgradeCo());
+                    }
+                }
+                else if (player.gold < SkillUpgradeGold)
+                {
+                    NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                    StartCoroutine(NotEnoughGoldCo());
+                }
+
+            }
+
+            // Î∞îÎûåÎ≤ï
+            if (player.tag == "WindMagician")
+            {
+                if (player.gold >= SkillUpgradeGold)
+                {
+                    if (WindMagicianSkill3 == 0)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WindMagicianSkill3++;
+                    }
+
+                    else if (WindMagicianSkill3 == 1)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WindMagicianSkill3++;
+                    }
+
+                    else if (WindMagicianSkill3 == 2)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        WindMagicianSkill3++;
+                    }
+
+                    else if (WindMagicianSkill3 <= 3)
+                    {
+                        NoMoreUpgrade.gameObject.SetActive(true);
+                        StartCoroutine(NoMoreUpgradeCo());
+                    }
+                }
+                else if (player.gold < SkillUpgradeGold)
+                {
+                    NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                    StartCoroutine(NotEnoughGoldCo());
+                }
+
+            }
+
+            // Î∂àÎ≤ï
+            if (player.tag == "FireMagician")
+            {
+                if (player.gold >= SkillUpgradeGold)
+                {
+                    if (FireMagicianSkill3 == 0)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        FireMagicianSkill3++;
+                    }
+
+                    else if (FireMagicianSkill3 == 1)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        FireMagicianSkill3++;
+                    }
+
+                    else if (FireMagicianSkill3 == 2)
+                    {
+                        player.gold -= SkillUpgradeGold;
+                        FireMagicianSkill3++;
+                    }
+
+                    else if (FireMagicianSkill3 <= 3)
+                    {
+                        NoMoreUpgrade.gameObject.SetActive(true);
+                        StartCoroutine(NoMoreUpgradeCo());
+                    }
+                }
+                else if (player.gold < SkillUpgradeGold)
+                {
+                    NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                    StartCoroutine(NotEnoughGoldCo());
+                }
+            }
+            BtnCooltime = 1f;
+        }
     }
 
-    public void onclickSkill1Btn() // Ω∫≈≥ 1 πˆ∆∞ æ˜±◊∑π¿ÃµÂ πˆ∆∞
+    public void onclickMonSpdBtn() // Î™¨Ïä§ÌÑ∞ Ïù¥ÏÜç Ï¶ùÍ∞Ä
     {
-        // ±∫¿Œ
-        if (player.tag == "Soldier")
+        if (BtnCooltime <= 0f)
         {
-            if (player.gold >= SkillUpgradeGold)
+            if (player.gold >= MonUpgradeGold)
             {
-                if (SoldierSkill1 == 0)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    SoldierSkill1++;
-                }
 
-                else if (SoldierSkill1 == 1)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    SoldierSkill1++;
-                }
-
-                else if (SoldierSkill1 == 2)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    SoldierSkill1++;
-                }
-
-                else if (SoldierSkill1 <= 3)
-                {
-                    NoMoreUpgrade.gameObject.SetActive(true);
-                    StartCoroutine(NoMoreUpgradeCo());
-                }
-            }
-            else if (player.gold < SkillUpgradeGold)
-            {
-                NotEnoughUpgradeMoney.gameObject.SetActive(true);
-                StartCoroutine(NotEnoughGoldCo());
             }
 
+            else if (player.gold < MonUpgradeGold)
+            {
 
+            }
+            BtnCooltime = 1f;
         }
-
-        // ∞ÀªÁ
-        if (player.tag == "Worrior")
-        {
-            if (player.gold >= SkillUpgradeGold)
-            {
-                if (WorriorSkill1 == 0)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WorriorSkill1++;
-                }
-
-                else if (WorriorSkill1 == 1)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WorriorSkill1++;
-                }
-
-                else if (WorriorSkill1 == 2)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WorriorSkill1++;
-                }
-
-                else if (WorriorSkill1 <= 3)
-                {
-                    NoMoreUpgrade.gameObject.SetActive(true);
-                    StartCoroutine(NoMoreUpgradeCo());
-                }
-            }
-            else if (player.gold < SkillUpgradeGold)
-            {
-                NotEnoughUpgradeMoney.gameObject.SetActive(true);
-                StartCoroutine(NotEnoughGoldCo());
-            }
-
-        }
-
-        // ∫“π˝
-        if (player.tag == "FireMagician")
-        {
-            if (player.gold >= SkillUpgradeGold)
-            {
-                if (FireMagicianSkill1 == 0)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    FireMagicianSkill1++;
-                }
-
-                else if (FireMagicianSkill1 == 1)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    FireMagicianSkill1++;
-                }
-
-                else if (FireMagicianSkill1 == 2)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    FireMagicianSkill1++;
-                }
-
-                else if (FireMagicianSkill1 <= 3)
-                {
-                    NoMoreUpgrade.gameObject.SetActive(true);
-                    StartCoroutine(NoMoreUpgradeCo());
-                }
-            }
-            else if (player.gold < SkillUpgradeGold)
-            {
-                NotEnoughUpgradeMoney.gameObject.SetActive(true);
-                StartCoroutine(NotEnoughGoldCo());
-            }
-        }
-
-        // π∞π˝
-        if (player.tag == "WaterMagician")
-        {
-            if (player.gold >= SkillUpgradeGold)
-            {
-                if (WaterMagicianSkill1 == 0)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WaterMagicianSkill1++;
-                }
-
-                else if (WaterMagicianSkill1 == 1)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WaterMagicianSkill1++;
-                }
-
-                else if (WaterMagicianSkill1 == 2)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WaterMagicianSkill1++;
-                }
-
-                else if (WaterMagicianSkill1 <= 3)
-                {
-                    NoMoreUpgrade.gameObject.SetActive(true);
-                    StartCoroutine(NoMoreUpgradeCo());
-                }
-            }
-            else if (player.gold < SkillUpgradeGold)
-            {
-                NotEnoughUpgradeMoney.gameObject.SetActive(true);
-                StartCoroutine(NotEnoughGoldCo());
-            }
-
-        }
-
-        // πŸ∂˜π˝
-        if (player.tag == "WindMagician")       
-        {
-            if (player.gold >= SkillUpgradeGold)
-            {
-                if (WindMagicianSkill1 == 0)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WindMagicianSkill1++;
-                }
-
-                else if (WindMagicianSkill1 == 1)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WindMagicianSkill1++;
-                }
-
-                else if (WindMagicianSkill1 == 2)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WindMagicianSkill1++;
-                }
-
-                else if (WindMagicianSkill1 <= 3)
-                {
-                    NoMoreUpgrade.gameObject.SetActive(true);
-                    StartCoroutine(NoMoreUpgradeCo());
-                }
-            }
-            else if (player.gold < SkillUpgradeGold)
-            {
-                NotEnoughUpgradeMoney.gameObject.SetActive(true);
-                StartCoroutine(NotEnoughGoldCo());
-            }
-        }
-
     }
-
-    public void onclickSkill2Btn() // Ω∫≈≥ 2 πˆ∆∞ æ˜±◊∑π¿ÃµÂ πˆ∆∞
+    public void onclickMonLvupBtn() // Î™¨Ïä§ÌÑ∞ Î†àÎ≤® Ï¶ùÍ∞Ä (ÌöçÎìù Í≥®Îìú Ï¶ùÍ∞Ä)
     {
-        // ±∫¿Œ
-        if (player.tag == "Soldier")
+        if (BtnCooltime <= 0f)
         {
-            if (player.gold >= SkillUpgradeGold)
+            if (player.gold >= MonUpgradeGold)
             {
-                if (SoldierSkill2 == 0)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    SoldierSkill2++;
-                }
 
-                else if (SoldierSkill2 == 1)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    SoldierSkill2++;
-                }
-
-                else if (SoldierSkill2 == 2)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    SoldierSkill2++;
-                }
-
-                else if (SoldierSkill2 <= 3)
-                {
-                    NoMoreUpgrade.gameObject.SetActive(true);
-                    StartCoroutine(NoMoreUpgradeCo());
-                }
-            }
-            else if (player.gold < SkillUpgradeGold)
-            {
-                NotEnoughUpgradeMoney.gameObject.SetActive(true);
-                StartCoroutine(NotEnoughGoldCo());
             }
 
+            else if (player.gold < MonUpgradeGold)
+            {
+
+            }
+            BtnCooltime = 1f;
         }
-
-        // ∞ÀªÁ
-        if (player.tag == "Worrior")
-        {
-            if (player.gold >= SkillUpgradeGold)
-            {
-                if (WorriorSkill2 == 0)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WorriorSkill2++;
-                }
-
-                else if (WorriorSkill2 == 1)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WorriorSkill2++;
-                }
-
-                else if (WorriorSkill2 == 2)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WorriorSkill2++;
-                }
-
-                else if (WorriorSkill2 <= 3)
-                {
-                    NoMoreUpgrade.gameObject.SetActive(true);
-                    StartCoroutine(NoMoreUpgradeCo());
-                }
-            }
-            else if (player.gold < SkillUpgradeGold)
-            {
-                NotEnoughUpgradeMoney.gameObject.SetActive(true);
-                StartCoroutine(NotEnoughGoldCo());
-            }
-
-        }
-
-        // π∞π˝
-        if (player.tag == "WaterMagician")
-        {
-            if (player.gold >= SkillUpgradeGold)
-            {
-                if (WaterMagicianSkill2 == 0)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WaterMagicianSkill2++;
-                }
-
-                else if (WaterMagicianSkill2 == 1)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WaterMagicianSkill2++;
-                }
-
-                else if (WaterMagicianSkill2 == 2)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WaterMagicianSkill2++;
-                }
-
-                else if (WaterMagicianSkill2 <= 3)
-                {
-                    NoMoreUpgrade.gameObject.SetActive(true);
-                    StartCoroutine(NoMoreUpgradeCo());
-                }
-            }
-            else if (player.gold < SkillUpgradeGold)
-            {
-                NotEnoughUpgradeMoney.gameObject.SetActive(true);
-                StartCoroutine(NotEnoughGoldCo());
-            }
-
-        }
-
-        // πŸ∂˜π˝
-        if (player.tag == "WindMagician")
-        {
-            if (player.gold >= SkillUpgradeGold)
-            {
-                if (WindMagicianSkill2 == 0)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WindMagicianSkill2++;
-                }
-
-                else if (WindMagicianSkill2 == 1)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WindMagicianSkill2++;
-                }
-
-                else if (WindMagicianSkill2 == 2)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WindMagicianSkill2++;
-                }
-
-                else if (WindMagicianSkill2 <= 3)
-                {
-                    NoMoreUpgrade.gameObject.SetActive(true);
-                    StartCoroutine(NoMoreUpgradeCo());
-                }
-            }
-            else if (player.gold < SkillUpgradeGold)
-            {
-                NotEnoughUpgradeMoney.gameObject.SetActive(true);
-                StartCoroutine(NotEnoughGoldCo());
-            }
-
-        }
-
-        // ∫“π˝
-        if (player.tag == "FireMagician")
-        {
-            if (player.gold >= SkillUpgradeGold)
-            {
-                if (FireMagicianSkill2 == 0)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    FireMagicianSkill2++;
-                }
-
-                else if (FireMagicianSkill2 == 1)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    FireMagicianSkill2++;
-                }
-
-                else if (FireMagicianSkill2 == 2)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    FireMagicianSkill2++;
-                }
-
-                else if (FireMagicianSkill2 <= 3)
-                {
-                    NoMoreUpgrade.gameObject.SetActive(true);
-                    StartCoroutine(NoMoreUpgradeCo());
-                }
-            }
-            else if (player.gold < SkillUpgradeGold)
-            {
-                NotEnoughUpgradeMoney.gameObject.SetActive(true);
-                StartCoroutine(NotEnoughGoldCo());
-            }
-
-        }
-
     }
 
-    public void onclickSkill3Btn() // Ω∫≈≥ 3 æ˜±◊∑π¿ÃµÂ πˆ∆∞
+    public void onclickMonSpawnSpdBtn() // Î™π Ïä§Ìè∞ÏÜçÎèÑ Ï¶ùÍ∞Ä
     {
-        // ±∫¿Œ
-        if (player.tag == "Soldier")
+        if (BtnCooltime <= 0f)
         {
-            if (player.gold >= SkillUpgradeGold)
+            if (player.gold >= MonUpgradeGold)
             {
-                if (SoldierSkill3 == 0)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    SoldierSkill3++;
-                }
 
-                else if (SoldierSkill3 == 1)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    SoldierSkill3++;
-                }
-
-                else if (SoldierSkill3 == 2)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    SoldierSkill3++;
-                }
-
-                else if (SoldierSkill3 <= 3)
-                {
-                    NoMoreUpgrade.gameObject.SetActive(true);
-                    StartCoroutine(NoMoreUpgradeCo());
-                }
-            }
-            else if (player.gold < SkillUpgradeGold)
-            {
-                NotEnoughUpgradeMoney.gameObject.SetActive(true);
-                StartCoroutine(NotEnoughGoldCo());
             }
 
-        }
-
-        // ∞ÀªÁ
-        if (player.tag == "Worrior")
-        {
-            if (player.gold >= SkillUpgradeGold)
+            else if (player.gold < MonUpgradeGold)
             {
-                if (WorriorSkill3 == 0)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WorriorSkill3++;
-                }
 
-                else if (WorriorSkill3 == 1)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WorriorSkill3++;
-                }
-
-                else if (WorriorSkill3 == 2)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WorriorSkill3++;
-                }
-
-                else if (WorriorSkill3 <= 3)
-                {
-                    NoMoreUpgrade.gameObject.SetActive(true);
-                    StartCoroutine(NoMoreUpgradeCo());
-                }
             }
-            else if (player.gold < SkillUpgradeGold)
-            {
-                NotEnoughUpgradeMoney.gameObject.SetActive(true);
-                StartCoroutine(NotEnoughGoldCo());
-            }
-
-        }
-
-        // π∞π˝
-        if (player.tag == "WaterMagician")
-        {
-            if (player.gold >= SkillUpgradeGold)
-            {
-                if (WaterMagicianSkill3 == 0)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WaterMagicianSkill3++;
-                }
-
-                else if (WaterMagicianSkill3 == 1)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WaterMagicianSkill3++;
-                }
-
-                else if (WaterMagicianSkill3 == 2)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WaterMagicianSkill3++;
-                }
-
-                else if (WaterMagicianSkill3 <= 3)
-                {
-                    NoMoreUpgrade.gameObject.SetActive(true);
-                    StartCoroutine(NoMoreUpgradeCo());
-                }
-            }
-            else if (player.gold < SkillUpgradeGold)
-            {
-                NotEnoughUpgradeMoney.gameObject.SetActive(true);
-                StartCoroutine(NotEnoughGoldCo());
-            }
-
-        }
-
-        // πŸ∂˜π˝
-        if (player.tag == "WindMagician")
-        {
-            if (player.gold >= SkillUpgradeGold)
-            {
-                if (WindMagicianSkill3 == 0)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WindMagicianSkill3++;
-                }
-
-                else if (WindMagicianSkill3 == 1)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WindMagicianSkill3++;
-                }
-
-                else if (WindMagicianSkill3 == 2)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    WindMagicianSkill3++;
-                }
-
-                else if (WindMagicianSkill3 <= 3)
-                {
-                    NoMoreUpgrade.gameObject.SetActive(true);
-                    StartCoroutine(NoMoreUpgradeCo());
-                }
-            }
-            else if (player.gold < SkillUpgradeGold)
-            {
-                NotEnoughUpgradeMoney.gameObject.SetActive(true);
-                StartCoroutine(NotEnoughGoldCo());
-            }
-
-        }
-
-        // ∫“π˝
-        if (player.tag == "FireMagician")
-        {
-            if (player.gold >= SkillUpgradeGold)
-            {
-                if (FireMagicianSkill3 == 0)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    FireMagicianSkill3++;
-                }
-
-                else if (FireMagicianSkill3 == 1)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    FireMagicianSkill3++;
-                }
-
-                else if (FireMagicianSkill3 == 2)
-                {
-                    player.gold -= SkillUpgradeGold;
-                    FireMagicianSkill3++;
-                }
-
-                else if (FireMagicianSkill3 <= 3)
-                {
-                    NoMoreUpgrade.gameObject.SetActive(true);
-                    StartCoroutine(NoMoreUpgradeCo());
-                }
-            }
-            else if (player.gold < SkillUpgradeGold)
-            {
-                NotEnoughUpgradeMoney.gameObject.SetActive(true);
-                StartCoroutine(NotEnoughGoldCo());
-            }
-
+            BtnCooltime = 1f;
         }
     }
 
-    public void onLottoclick1() // ∑Œ∂« 1 ≈¨∏Ø
+    public void onclickBossSpdBtn() // Î≥¥Ïä§ Î™π Ïä§Ìè∞ (ÎåÄÎüâ Í≥®Îìú ÌöçÎìù)
+    {
+
+    }
+
+    public void onLottoclick1() // Î°úÎòê 1 ÌÅ¥Î¶≠
     {
         if (BtnCooltime <= 0)
         {
@@ -845,18 +965,18 @@ public class ShopManager : MonoBehaviour
                     GGwanglotto.gameObject.SetActive(true);
                     StartCoroutine(LottoTextCo());
                 }
-                
+
             }
             else if (player.gold < Lotto1)
             {
                 NotEnoughUpgradeMoney.gameObject.SetActive(true);
                 StartCoroutine(NotEnoughGoldCo());
             }
-            BtnCooltime = 1.5f;
+            BtnCooltime = 0.7f;
         }
     }
 
-    public void onLottoclick2() // ∑Œ∂« 2 ≈¨∏Ø
+    public void onLottoclick2() // Î°úÎòê 2 ÌÅ¥Î¶≠
     {
         if (BtnCooltime <= 0)
         {
@@ -864,9 +984,9 @@ public class ShopManager : MonoBehaviour
             {
                 player.gold -= Lotto2;
                 int a = Random.Range(1, 100);
-                if (a<=5)
+                if (a <= 5)
                 {
-                    player.gold += Lotto2 * 10;
+                    player.gold += Lotto2 * 5;
                     Successlotto.gameObject.SetActive(true);
                 }
                 else
@@ -880,11 +1000,11 @@ public class ShopManager : MonoBehaviour
                 NotEnoughUpgradeMoney.gameObject.SetActive(true);
                 StartCoroutine(NotEnoughGoldCo());
             }
-            BtnCooltime = 1.5f;
+            BtnCooltime = 0.7f;
         }
     }
 
-    public void onLottoclick3() // ∑Œ∂« 3 ≈¨∏Ø
+    public void onLottoclick3() // Î°úÎòê 3 ÌÅ¥Î¶≠
     {
         if (BtnCooltime <= 0)
         {
@@ -892,7 +1012,7 @@ public class ShopManager : MonoBehaviour
             {
                 player.gold -= Lotto3;
                 int a = Random.Range(1, 100);
-                if (a<=1)
+                if (a <= 1)
                 {
                     player.gold += Lotto3 * 10;
                     Successlotto.gameObject.SetActive(true);
@@ -903,13 +1023,13 @@ public class ShopManager : MonoBehaviour
                     StartCoroutine(LottoTextCo());
                 }
             }
-            
-            else if(player.gold<Lotto3)
+
+            else if (player.gold < Lotto3)
             {
                 NotEnoughUpgradeMoney.gameObject.SetActive(true);
                 StartCoroutine(NotEnoughGoldCo());
             }
-            BtnCooltime = 1.5f;
+            BtnCooltime = 0.7f;
         }
     }
 }

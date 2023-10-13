@@ -2585,6 +2585,7 @@ MonoBehaviour:
   goldText: {fileID: 1451482295}
   HPslider: {fileID: 1333862396}
   PlayerUICanvas: {fileID: 910162576}
+  GoalSlider: {fileID: 0}
 --- !u!4 &451626873
 Transform:
   m_ObjectHideFlags: 0
@@ -3610,7 +3611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
+  m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
@@ -8521,6 +8522,8 @@ MonoBehaviour:
   WindMagicianSkill2: 0
   WindMagicianSkill3: 0
   SkillUpgradeGold: 3000
+  MonUpgradeGold: 3000
+  BossSpawnGold: 10000
 --- !u!1 &1520017868
 GameObject:
   m_ObjectHideFlags: 0
@@ -9463,7 +9466,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
@@ -9494,9 +9496,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725908545}
   m_CullTransparentMesh: 1
-=======
-  hp: 1000000
->>>>>>> Stashed changes
 --- !u!1 &1729422516
 GameObject:
   m_ObjectHideFlags: 0

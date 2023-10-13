@@ -21,7 +21,7 @@ public class ActiveSkillDamage : MonoBehaviour
         if(other.CompareTag("Enemy"))
         {
             Enemy enemy=other.gameObject.GetComponent<Enemy>();
-            enemy.OnHit(50);
+            enemy.OnHit(100);
         }
     }
 

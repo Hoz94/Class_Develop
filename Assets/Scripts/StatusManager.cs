@@ -31,7 +31,7 @@ public class StatusManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void Soldier(Status status)
@@ -42,7 +42,7 @@ public class StatusManager : MonoBehaviour
         status.Spd = 6f;
     }
 
-    public void Worrior(Status status) 
+    public void Worrior(Status status)
     {
         status.Atk = 20;
         status.CurHp = 90f;
@@ -50,7 +50,7 @@ public class StatusManager : MonoBehaviour
         status.Spd = 5f;
     }
 
-    public void Magician(Status status) 
+    public void Magician(Status status)
     {
         status.Atk = 50;
         status.CurHp = 60f;

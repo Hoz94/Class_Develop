@@ -105,16 +105,16 @@ public class Enemy : MonoBehaviour
         int Ran = Random.Range(0, 10);
         if (Ran < 7) // (0~6) 70% 
         {
-            player.gameObject.GetComponent<Player>().GetGold(10);
+            player.gameObject.GetComponent<Player>().GetGold(50);
         }
         else if (Ran < 9) // (7, 8) 20%
         {
-            player.gameObject.GetComponent<Player>().GetGold(20);
+            player.gameObject.GetComponent<Player>().GetGold(100);
         }
 
         else if (Ran < 10) // (9) 10%
         {
-            player.gameObject.GetComponent<Player>().GetGold(30);
+            player.gameObject.GetComponent<Player>().GetGold(150);
         }
 
     }
