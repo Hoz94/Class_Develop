@@ -18,7 +18,7 @@ public class Select : MonoBehaviour
         
     }
 
-    public void SoldierSelect()
+    public void SoldierSelect() // 군인 선택
     {
         player.tag = "Soldier";
         Status stat = player.GetComponent<Status>();
@@ -28,7 +28,7 @@ public class Select : MonoBehaviour
 
     }
 
-    public void WorriorSelect()
+    public void WorriorSelect() // 검사 선택
     {
         player.tag ="Worrior";
         Status stat = player.GetComponent<Status>();
@@ -39,7 +39,7 @@ public class Select : MonoBehaviour
 
     }
 
-    public void ElementsSelect()
+    public void ElementsSelect() // 마법사 속성 선택
     {
         this.gameObject.SetActive(false);
         thirdcanvas.gameObject.SetActive(true);
