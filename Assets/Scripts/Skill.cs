@@ -8,6 +8,7 @@ public class Skill : MonoBehaviour
     Player player;
     public Transform skillpos; // 스킬이 나가는 위치
     public GameObject SkillInput; // 인스턴스한것을 저장하는 오브젝트
+
     [Header ("각 직업별 필살기 프리팹")]
     public GameObject SoldierSpecialSkillPrefab;
     public GameObject WorriorSpecialSkillPrefab;

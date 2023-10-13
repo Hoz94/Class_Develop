@@ -27,6 +27,9 @@ public class Parents3 : MonoBehaviour
     {
         Enemy enemy = other.GetComponent<Enemy>();
         StartCoroutine(Timeco(enemy));
+        Boss boss = other.GetComponent<Boss>();
+        StartCoroutine(BossCo(boss));
+
 
         /*if (enemy != null) 
         {
@@ -49,6 +52,15 @@ public class Parents3 : MonoBehaviour
             }*/
             enemy.OnHit(SD.SkillDMG);
             
+        }
+    }
+
+    IEnumerator BossCo(Boss boss)
+    {
+        yield return new WaitForSeconds(0.1f);
+        if (boss != null) 
+        {
+            boss.OnHit(SD.SkillDMG);
         }
     }
 

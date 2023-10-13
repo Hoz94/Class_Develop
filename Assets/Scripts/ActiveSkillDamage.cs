@@ -23,6 +23,11 @@ public class ActiveSkillDamage : MonoBehaviour
             Enemy enemy=other.gameObject.GetComponent<Enemy>();
             enemy.OnHit(100);
         }
+        if(other.CompareTag("Boss"))
+        {
+            Boss boss = other.gameObject.GetComponent<Boss>();
+            boss.OnHit(100);
+        }
     }
 
 }

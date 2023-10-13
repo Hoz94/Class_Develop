@@ -8,7 +8,7 @@ public class Parents4 : MonoBehaviour
     public GameObject parentsSkills;
     // Start is called before the first frame update
 
-    
+
     // Update is called once per frame
     void Update()
     {
@@ -17,7 +17,7 @@ public class Parents4 : MonoBehaviour
             parentsSkills = transform.parent.transform.parent.transform.parent.transform.parent.gameObject;
         }
 
-        if (SD == null&&parentsSkills!=null) 
+        if (SD == null && parentsSkills != null)
         {
             SD = parentsSkills.GetComponent<SkillDamage>();
         }
@@ -27,7 +27,10 @@ public class Parents4 : MonoBehaviour
     {
         Enemy enemy = other.GetComponent<Enemy>();
         StartCoroutine(Timeco(enemy));
-        
+        Boss boss = other.GetComponent<Boss>();
+        StartCoroutine(BossCo(boss));
+
+
         /*if (enemy != null) 
         {
             *//*if (SD == null)
@@ -38,12 +41,28 @@ public class Parents4 : MonoBehaviour
         }*/
     }
 
-    IEnumerator Timeco(Enemy enemy) 
+    IEnumerator Timeco(Enemy enemy)
     {
         yield return new WaitForSeconds(0.1f);
         if (enemy != null)
         {
+            /*if (SD == null)
+            {
+                SD = parentsSkills.GetComponent<SkillDamage>();
+            }*/
             enemy.OnHit(SD.SkillDMG);
+
         }
     }
+
+    IEnumerator BossCo(Boss boss)
+    {
+        yield return new WaitForSeconds(0.1f);
+        if (boss != null)
+        {
+            boss.OnHit(SD.SkillDMG);
+        }
+    }
+
+
 }

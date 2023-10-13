@@ -1,7 +1,7 @@
 fileFormatVersion: 2
-guid: 34a0ae1027a081043869e1a81e0db1c5
+guid: 5a99f5b3084eba1478f6b2775ac3e636
 ModelImporter:
-  serializedVersion: 22200
+  serializedVersion: 20200
   internalIDToNameTable:
   - first:
       1: 100000
@@ -353,7 +353,7 @@ ModelImporter:
     second: DemonGirlTail5
   - first:
       74: 7400000
-    second: attack01
+    second: walk00
   - first:
       95: 9500000
     second: //RootNode
@@ -368,22 +368,27 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Inbetween bone
       rotation in copied configuration does not match rotation in animation file:\n\t'DemonGirlSpine4'
-      : rotation error = 8.196028 deg\n\t'DemonGirlRibcage' : rotation error = 20.556480
-      deg\n\t'DemonGirlNeck2' : rotation error = 7.820422 deg\n"
+      : rotation error = 4.174229 deg\n\t'DemonGirlRibcage' : rotation error = 0.850321
+      deg\n\t'DemonGirlNeck2' : rotation error = 7.556917 deg\n"
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'DemonGirlLFoot' has scale animation that
-      will be discarded.\n\t'DemonGirlSpine4' is inbetween humanoid transforms and
-      has rotation animation that will be discarded.\n\t'DemonGirlRibcage' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'DemonGirlNeck2'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'DemonGirlRLegFoot'
-      has scale animation that will be discarded.\n"
+      to improve retargeting quality.\n\t'DemonGirlSpine4' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\t'DemonGirlRibcage'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'DemonGirlLDigit13'
+      has scale animation that will be discarded.\n\t'DemonGirlLDigit23' has scale
+      animation that will be discarded.\n\t'DemonGirlLDigit33' has scale animation
+      that will be discarded.\n\t'DemonGirlLDigit43' has scale animation that will
+      be discarded.\n\t'DemonGirlNeck2' is inbetween humanoid transforms and has
+      rotation animation that will be discarded.\n\t'DemonGirlRArmDigit13' has scale
+      animation that will be discarded.\n\t'DemonGirlRArmDigit23' has scale animation
+      that will be discarded.\n\t'DemonGirlRArmDigit33' has scale animation that
+      will be discarded.\n\t'DemonGirlRArmDigit42' has scale animation that will
+      be discarded.\n\t'DemonGirlRArmDigit43' has scale animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -397,26 +402,26 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: attack01
+      name: walk00
       takeName: Take 001
       internalID: 0
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 125
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 1
-      loopBlendOrientation: 1
+      loopBlendOrientation: 0
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
-      keepOriginalPositionY: 0
+      keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
-      heightFromFeet: 1
+      heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
@@ -433,12 +438,10 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
-    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
-    nodeNameCollisionStrategy: 0
     fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -450,7 +453,6 @@ ModelImporter:
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
-    optimizeBones: 1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
@@ -461,7 +463,6 @@ ModelImporter:
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
-    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -1160,14 +1161,13 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: d3b617d4c5387004fa355973611faee7, type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: d3b617d4c5387004fa355973611faee7,
+    type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 0
-  importBlendShapeDeformPercent: 0
-  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

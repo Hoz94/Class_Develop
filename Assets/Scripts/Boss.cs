@@ -104,7 +104,7 @@ public class Boss : MonoBehaviour
         Hp -= status.Atk;
     }
 
-    public void Onhit(int skilldamage)
+    public void OnHit(int skilldamage)
     {
         Hp -= skilldamage;
     }
