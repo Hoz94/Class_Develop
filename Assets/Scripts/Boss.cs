@@ -5,9 +5,11 @@ using UnityEngine.AI;
 
 public class Boss : MonoBehaviour
 {
+    public ShopManager shopmanager;
     Status status;
-    const int firstpaze = 400000;
-    public int Hp = 600000;
+    const float firstpaze = 250000;
+    public float MaxHp = 500000;
+    public float Hp = 500000;
     int DropGold = 300000;
     NavMeshAgent nvAgent;
     Transform player;
@@ -155,6 +157,9 @@ public class Boss : MonoBehaviour
 
     void Death()
     {
+        GameObject gameObject = GameObject.Find("ShopUIManager");
+        ShopManager shopmanager= gameObject.GetComponent<ShopManager>();
+        shopmanager.bossSpawn = false;
         StopAllCoroutines();
         isDead = true;
         StartCoroutine(DeathCo());

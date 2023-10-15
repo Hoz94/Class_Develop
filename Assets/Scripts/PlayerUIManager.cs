@@ -17,6 +17,8 @@ public class PlayerUIManager : MonoBehaviour
     public Image Skill3;
     public Image SpecialSkill;
     public Boss boss;
+    public Slider Boss1Slider;
+    public Slider Boss2Slider;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +60,11 @@ public class PlayerUIManager : MonoBehaviour
             Skill skill = player.gameObject.GetComponent<Skill>();
             SpecialSkill.fillAmount = skill.SpecialSkillTime / skill.SpecialSkillCool;
         }
+
+        if(ShopManager.bossSpawn==true)
+        {
+            BossHP();
+        }
     }
 
 
@@ -75,14 +82,25 @@ public class PlayerUIManager : MonoBehaviour
 
     void BossHP()
     {
-        
+        if(boss.Hp<=500000f)
+        {
+            Boss1Slider.gameObject.SetActive(true);
+            Boss2Slider.gameObject.SetActive(false);
+            Boss1Slider.value = boss.Hp / boss.MaxHp;
+        }
+        if(boss.Hp<=250000f)
+        {
+            Boss1Slider.gameObject.SetActive(false);
+            Boss2Slider.gameObject.SetActive(true);
+            Boss2Slider.value = boss.Hp / 250000f;
+
+        }
     }
 
     void HandleHP()
     {
         Status status = player.gameObject.GetComponent<Status>();
         HPslider.value = status.CurHp / status.MaxHp;
-
     }
 
     void HandleSkill1()

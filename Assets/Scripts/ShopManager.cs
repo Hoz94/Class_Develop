@@ -11,25 +11,25 @@ public class ShopManager : MonoBehaviour
     public Player player;
 
 
-
+    public bool bossSpawn = false;
     bool shopopen;
     int MaxSpeed = 15;
     int MaxAtk = 300;
     int MaxHpPlus = 1000;
     int Lotto1 = 3000;
-    int Lotto2 = 10000;
-    int Lotto3 = 50000;
-
+    int Lotto2 = 3000;
+    int Lotto3 = 3000;
+    int Lotto4 = 10000;
     int upGradeGoldLevel = 0;
     int upGradeSpdLevel = 0;
     int MaxUpGradeSpdLevel = 9;
     int MaxUpGradeGoldLevel = 10;
-
+    
 
     public GameObject StatsUI;
     public GameObject SKillsUI;
     public GameObject EnemyUI;
-    public GameObject GambleUI;
+    public GameObject LottoUI;
     public GameObject ShopUI;
     public GameObject BossPrefab;
     public GameObject Boss;
@@ -46,12 +46,12 @@ public class ShopManager : MonoBehaviour
     public Text NoMoreUpgrade;
     public Text GGwanglotto;
     public Text Successlotto;
-
+    public Text CantUseHpPotion;
     public bool Skill1IsOpen = false;
     public bool Skill2IsOpen = false;
     public bool Skill3IsOpen = false;
 
-    int StatsUpgradeMoney = 1000; // 스탯 업그레이드 비용
+    int StatsUpgradeMoney = 3000; // 스탯 업그레이드 비용
 
     float BtnCooltime = 0f; 
 
@@ -86,40 +86,40 @@ public class ShopManager : MonoBehaviour
 
     public void Shop()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && shopopen == false)
+        if (Input.GetKeyDown(KeyCode.U) && shopopen == false)
         {
             Time.timeScale = 0;
             ShopUI.SetActive(true);
             StatsUI.SetActive(false);
             SKillsUI.SetActive(false);
             EnemyUI.SetActive(false);
-            GambleUI.SetActive(false);
+            LottoUI.SetActive(false);
             shopopen = true;
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && shopopen == true)
+        else if (Input.GetKeyDown(KeyCode.U) && shopopen == true)
         {
             Time.timeScale = 1;
             ShopUI.SetActive(false);
             StatsUI.SetActive(false);
             SKillsUI.SetActive(false);
             EnemyUI.SetActive(false);
-            GambleUI.SetActive(false);
+            LottoUI.SetActive(false);
             shopopen = false;
         }
     } // 상점 열고 닫기
 
-    public void ViewGold()
+    public void ViewGold() // 스탯 탭
     {
         Player p = player.GetComponent<Player>();
         CurGoldText.text = "골드 : " + p.gold.ToString("N0");
-    } // 상점내부에 현재 골드 보이기
+    }
 
     public void onclickStatsButton() // 스탯 탭
     {
         StatsUI.SetActive(true);
         SKillsUI.SetActive(false);
         EnemyUI.SetActive(false);
-        GambleUI.SetActive(false);
+        LottoUI.SetActive(false);
 
     }
 
@@ -128,7 +128,7 @@ public class ShopManager : MonoBehaviour
         StatsUI.SetActive(false);
         SKillsUI.SetActive(true);
         EnemyUI.SetActive(false);
-        GambleUI.SetActive(false);
+        LottoUI.SetActive(false);
 
     }
 
@@ -137,7 +137,7 @@ public class ShopManager : MonoBehaviour
         StatsUI.SetActive(false);
         SKillsUI.SetActive(false);
         EnemyUI.SetActive(true);
-        GambleUI.SetActive(false);
+        LottoUI.SetActive(false);
 
     }
 
@@ -146,7 +146,7 @@ public class ShopManager : MonoBehaviour
         StatsUI.SetActive(false);
         SKillsUI.SetActive(false);
         EnemyUI.SetActive(false);
-        GambleUI.SetActive(true);
+        LottoUI.SetActive(true);
 
     }
 
@@ -155,7 +155,7 @@ public class ShopManager : MonoBehaviour
         StatsUI.SetActive(false);
         SKillsUI.SetActive(false);
         EnemyUI.SetActive(false);
-        GambleUI.SetActive(false);
+        LottoUI.SetActive(false);
         if (BtnCooltime <= 0f)
         {
             if (player.gold < 1000)
@@ -198,11 +198,16 @@ public class ShopManager : MonoBehaviour
                 EnoughTipText.gameObject.SetActive(true);
                 StartCoroutine(EnoughTipCo());
             }
-            BtnCooltime = 1.5f;
+            BtnCooltime = 1.3f;
         }
     }
 
 
+    IEnumerator CantRecoveryHp()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        CantUseHpPotion.gameObject.SetActive(false);
+    }
     IEnumerator LottoTextCo() // 로또 꽝 or 당첨 텍스트 없애는 쿨타임
     {
         yield return new WaitForSecondsRealtime(1f);
@@ -212,7 +217,7 @@ public class ShopManager : MonoBehaviour
 
     IEnumerator NotEnoughTipCo() // 팁 줄 때 잔액에 따른 텍스트 없애는 쿨타임
     {
-        yield return new WaitForSecondsRealtime(1.5f);
+        yield return new WaitForSecondsRealtime(1f);
         NotEnoughTipText.gameObject.SetActive(false);
     }
 
@@ -224,13 +229,13 @@ public class ShopManager : MonoBehaviour
 
     IEnumerator NoMoreUpgradeCo() // 업그레이드 최대치일 때 텍스트 없애는 쿨타임
     {
-        yield return new WaitForSecondsRealtime(0.8f);
+        yield return new WaitForSecondsRealtime(1f);
         NoMoreUpgrade.gameObject.SetActive(false);
     }
 
     IEnumerator NotEnoughGoldCo() // 업그레이드 비용 없을 때 텍스트 없애는 쿨타임
     {
-        yield return new WaitForSecondsRealtime(0.8f);
+        yield return new WaitForSecondsRealtime(1f);
         NotEnoughUpgradeMoney.gameObject.SetActive(false);
     }
 
@@ -259,7 +264,7 @@ public class ShopManager : MonoBehaviour
                 NoMoreUpgrade.gameObject.SetActive(true);
                 StartCoroutine(NoMoreUpgradeCo());
             }
-            BtnCooltime = 1f;
+            BtnCooltime = 1.3f;
         }
     }
 
@@ -286,7 +291,7 @@ public class ShopManager : MonoBehaviour
                 NoMoreUpgrade.gameObject.SetActive(true);
                 StartCoroutine(NoMoreUpgradeCo());
             }
-            BtnCooltime = 1f;
+            BtnCooltime = 1.3f;
         }
     }
 
@@ -300,7 +305,7 @@ public class ShopManager : MonoBehaviour
                 if (player.gold >= 5000)
                 {
                     player.gold -= 5000;
-                    status.MaxHp += 50;
+                    status.MaxHp += 100;
                 }
                 else if (player.gold < 5000)
                 {
@@ -313,7 +318,7 @@ public class ShopManager : MonoBehaviour
                 NoMoreUpgrade.gameObject.SetActive(true);
                 StartCoroutine(NoMoreUpgradeCo());
             }
-            BtnCooltime = 1f;
+            BtnCooltime = 1.3f;
         }
     }
 
@@ -324,15 +329,27 @@ public class ShopManager : MonoBehaviour
         {
             if (player.gold >= HpPotionMoney)
             {
-                player.gold -= HpPotionMoney;
-                status.CurHp += 50;
+                if (status.CurHp < status.MaxHp)
+                {
+                    player.gold -= HpPotionMoney;
+                    status.CurHp += 50;
+                    if (status.CurHp >= status.MaxHp)
+                    {
+                        status.CurHp = status.MaxHp;
+                    }
+                }
+                else if (status.CurHp == status.MaxHp) // 현재 체력이 최대체력과 같을 때 회복 사용 불가 텍스트 노출
+                {
+                    CantUseHpPotion.gameObject.SetActive(true);
+                    StartCoroutine(CantRecoveryHp());
+                }
             }
             else if (player.gold < HpPotionMoney)
             {
                 NotEnoughUpgradeMoney.gameObject.SetActive(true);
                 StartCoroutine(NotEnoughGoldCo());
             }
-            BtnCooltime = 1f;
+            BtnCooltime = 1.3f;
         }
 
 
@@ -530,7 +547,7 @@ public class ShopManager : MonoBehaviour
                     StartCoroutine(NotEnoughGoldCo());
                 }
             }
-            BtnCooltime = 1f;
+            BtnCooltime = 1.3f;
         }
 
     }
@@ -727,7 +744,7 @@ public class ShopManager : MonoBehaviour
                 }
 
             }
-            BtnCooltime = 1f;
+            BtnCooltime = 1.3f;
         }
     }
 
@@ -923,7 +940,7 @@ public class ShopManager : MonoBehaviour
                     StartCoroutine(NotEnoughGoldCo());
                 }
             }
-            BtnCooltime = 1f;
+            BtnCooltime = 1.3f;
         }
     }
 
@@ -958,7 +975,7 @@ public class ShopManager : MonoBehaviour
                         NoMoreUpgrade.gameObject.SetActive(true);
                         StartCoroutine(NoMoreUpgradeCo());
                     }
-                    BtnCooltime = 1f;
+                    BtnCooltime = 1.3f;
                 }
             }
         }
@@ -997,7 +1014,7 @@ public class ShopManager : MonoBehaviour
                         NoMoreUpgrade.gameObject.SetActive(true);
                         StartCoroutine(NoMoreUpgradeCo());
                     }
-                    BtnCooltime = 1f;
+                    BtnCooltime = 1.3f;
                 }
             }
         }
@@ -1033,7 +1050,7 @@ public class ShopManager : MonoBehaviour
                         NoMoreUpgrade.gameObject.SetActive(true);
                         StartCoroutine(NoMoreUpgradeCo());
                     }
-                    BtnCooltime = 1f;
+                    BtnCooltime = 1.3f;
                 }
             }
         }
@@ -1047,6 +1064,7 @@ public class ShopManager : MonoBehaviour
             {
                 player.gold -= BossSpawnGold;
                 Boss = Instantiate(BossPrefab, BossSpawnPoint.position, transform.rotation);
+                bossSpawn = true;
             }
 
             else if(player.gold<BossSpawnGold)
@@ -1054,7 +1072,7 @@ public class ShopManager : MonoBehaviour
                 NotEnoughUpgradeMoney.gameObject.SetActive(true);
                 StartCoroutine(NotEnoughGoldCo());
             }
-            BtnCooltime = 1f;
+            BtnCooltime = 1.3f;
         }
     }
 
@@ -1066,9 +1084,9 @@ public class ShopManager : MonoBehaviour
             {
                 player.gold -= Lotto1;
                 int a = Random.Range(1, 100);
-                if (a <= 45)
+                if (a <= 40)
                 {
-                    player.gold += Lotto1 * 2;
+                    player.gold += Lotto1 * 5;
                     Successlotto.gameObject.SetActive(true);
                     StartCoroutine(LottoTextCo());
                 }
@@ -1084,7 +1102,7 @@ public class ShopManager : MonoBehaviour
                 NotEnoughUpgradeMoney.gameObject.SetActive(true);
                 StartCoroutine(NotEnoughGoldCo());
             }
-            BtnCooltime = 0.7f;
+            BtnCooltime = 1.3f;
         }
     }
 
@@ -1096,9 +1114,9 @@ public class ShopManager : MonoBehaviour
             {
                 player.gold -= Lotto2;
                 int a = Random.Range(1, 100);
-                if (a <= 5)
+                if (a <= 10)
                 {
-                    player.gold += Lotto2 * 5;
+                    player.gold += Lotto2 * 10;
                     Successlotto.gameObject.SetActive(true);
                 }
                 else
@@ -1112,7 +1130,7 @@ public class ShopManager : MonoBehaviour
                 NotEnoughUpgradeMoney.gameObject.SetActive(true);
                 StartCoroutine(NotEnoughGoldCo());
             }
-            BtnCooltime = 0.7f;
+            BtnCooltime = 1.3f;
         }
     }
 
@@ -1126,7 +1144,7 @@ public class ShopManager : MonoBehaviour
                 int a = Random.Range(1, 100);
                 if (a <= 1)
                 {
-                    player.gold += Lotto3 * 20;
+                    player.gold += Lotto3 * 100;
                     Successlotto.gameObject.SetActive(true);
                 }
                 else
@@ -1141,7 +1159,47 @@ public class ShopManager : MonoBehaviour
                 NotEnoughUpgradeMoney.gameObject.SetActive(true);
                 StartCoroutine(NotEnoughGoldCo());
             }
-            BtnCooltime = 0.7f;
+            BtnCooltime = 1.3f;
         }
+    }
+
+    public void onLottoclick4() // 로또 4 클릭
+    {
+        if (BtnCooltime <= 0)
+        {
+            if (player.gold >= Lotto4)
+            {
+                player.gold -= Lotto4;
+                int a = Random.Range(1, 1000);
+                if (a <= 1)
+                {
+                    player.gold += Lotto4 * 1000;
+                    Successlotto.gameObject.SetActive(true);
+                }
+                else
+                {
+                    GGwanglotto.gameObject.SetActive(true);
+                    StartCoroutine(LottoTextCo());
+                }
+            }
+
+            else if (player.gold < Lotto4)
+            {
+                NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                StartCoroutine(NotEnoughGoldCo());
+            }
+            BtnCooltime = 1.3f;
+        }
+    }
+
+    public void QuitShop() // 상점 닫기
+    {
+        Time.timeScale = 1;
+        ShopUI.SetActive(false);
+        StatsUI.SetActive(false);
+        SKillsUI.SetActive(false);
+        EnemyUI.SetActive(false);
+        LottoUI.SetActive(false);
+        shopopen = false;
     }
 }
