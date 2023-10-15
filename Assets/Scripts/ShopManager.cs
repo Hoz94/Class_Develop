@@ -47,6 +47,9 @@ public class ShopManager : MonoBehaviour
     public Text GGwanglotto;
     public Text Successlotto;
 
+    public bool Skill1IsOpen = false;
+    public bool Skill2IsOpen = false;
+    public bool Skill3IsOpen = false;
 
     int StatsUpgradeMoney = 1000; // 스탯 업그레이드 비용
 
@@ -343,6 +346,7 @@ public class ShopManager : MonoBehaviour
             {
                 if (player.gold >= SkillUpgradeGold)
                 {
+                    Skill1IsOpen = true;
                     if (SoldierSkill1 == 0)
                     {
                         player.gold -= SkillUpgradeGold;
@@ -381,6 +385,7 @@ public class ShopManager : MonoBehaviour
             {
                 if (player.gold >= SkillUpgradeGold)
                 {
+                    Skill1IsOpen = true;
                     if (WorriorSkill1 == 0)
                     {
                         player.gold -= SkillUpgradeGold;
@@ -418,6 +423,7 @@ public class ShopManager : MonoBehaviour
             {
                 if (player.gold >= SkillUpgradeGold)
                 {
+                    Skill1IsOpen = true;
                     if (FireMagicianSkill1 == 0)
                     {
                         player.gold -= SkillUpgradeGold;
@@ -454,6 +460,7 @@ public class ShopManager : MonoBehaviour
             {
                 if (player.gold >= SkillUpgradeGold)
                 {
+                    Skill1IsOpen = true;
                     if (WaterMagicianSkill1 == 0)
                     {
                         player.gold -= SkillUpgradeGold;
@@ -491,6 +498,7 @@ public class ShopManager : MonoBehaviour
             {
                 if (player.gold >= SkillUpgradeGold)
                 {
+                    Skill1IsOpen = true;
                     if (WindMagicianSkill1 == 0)
                     {
                         player.gold -= SkillUpgradeGold;
@@ -534,6 +542,7 @@ public class ShopManager : MonoBehaviour
             {
                 if (player.gold >= SkillUpgradeGold)
                 {
+                    Skill2IsOpen = true;
                     if (SoldierSkill2 == 0)
                     {
                         player.gold -= SkillUpgradeGold;
@@ -571,6 +580,7 @@ public class ShopManager : MonoBehaviour
             {
                 if (player.gold >= SkillUpgradeGold)
                 {
+                    Skill2IsOpen = true;
                     if (WorriorSkill2 == 0)
                     {
                         player.gold -= SkillUpgradeGold;
@@ -608,6 +618,7 @@ public class ShopManager : MonoBehaviour
             {
                 if (player.gold >= SkillUpgradeGold)
                 {
+                    Skill2IsOpen = true;
                     if (WaterMagicianSkill2 == 0)
                     {
                         player.gold -= SkillUpgradeGold;
@@ -645,6 +656,7 @@ public class ShopManager : MonoBehaviour
             {
                 if (player.gold >= SkillUpgradeGold)
                 {
+                    Skill2IsOpen = true;
                     if (WindMagicianSkill2 == 0)
                     {
                         player.gold -= SkillUpgradeGold;
@@ -682,6 +694,7 @@ public class ShopManager : MonoBehaviour
             {
                 if (player.gold >= SkillUpgradeGold)
                 {
+                    Skill2IsOpen = true;
                     if (FireMagicianSkill2 == 0)
                     {
                         player.gold -= SkillUpgradeGold;
@@ -726,6 +739,7 @@ public class ShopManager : MonoBehaviour
             {
                 if (player.gold >= SkillUpgradeGold)
                 {
+                    Skill3IsOpen = true;
                     if (SoldierSkill3 == 0)
                     {
                         player.gold -= SkillUpgradeGold;
@@ -763,6 +777,7 @@ public class ShopManager : MonoBehaviour
             {
                 if (player.gold >= SkillUpgradeGold)
                 {
+                    Skill3IsOpen = true;
                     if (WorriorSkill3 == 0)
                     {
                         player.gold -= SkillUpgradeGold;
@@ -800,6 +815,7 @@ public class ShopManager : MonoBehaviour
             {
                 if (player.gold >= SkillUpgradeGold)
                 {
+                    Skill3IsOpen = true;
                     if (WaterMagicianSkill3 == 0)
                     {
                         player.gold -= SkillUpgradeGold;
@@ -837,6 +853,7 @@ public class ShopManager : MonoBehaviour
             {
                 if (player.gold >= SkillUpgradeGold)
                 {
+                    Skill3IsOpen = true;
                     if (WindMagicianSkill3 == 0)
                     {
                         player.gold -= SkillUpgradeGold;
@@ -874,6 +891,7 @@ public class ShopManager : MonoBehaviour
             {
                 if (player.gold >= SkillUpgradeGold)
                 {
+                    Skill3IsOpen = true;
                     if (FireMagicianSkill3 == 0)
                     {
                         player.gold -= SkillUpgradeGold;

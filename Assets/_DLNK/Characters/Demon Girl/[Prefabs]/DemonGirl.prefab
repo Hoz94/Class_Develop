@@ -2094,10 +2094,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7311cbc2cdb3887458f2a4f79594a316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 100000
+  Hp: 2000000
   Atk: 80
   dist: 0
-  Attackdist: 2
+  Attackdist: 2.5
 --- !u!95 &124073087254820732
 Animator:
   serializedVersion: 5

@@ -2582,11 +2582,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4116771773161d743a95fcd3da47f4e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShopManager: {fileID: 1518044706}
   player: {fileID: 6172253}
   goldText: {fileID: 1451482295}
   HPslider: {fileID: 1333862396}
   PlayerUICanvas: {fileID: 910162576}
   GoalSlider: {fileID: 1799778991}
+  Skill1: {fileID: 0}
+  Skill2: {fileID: 0}
+  Skill3: {fileID: 0}
 --- !u!4 &451626873
 Transform:
   m_ObjectHideFlags: 0
@@ -7378,7 +7382,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -26}
-  m_SizeDelta: {x: 320.9509, y: 69.5781}
+  m_SizeDelta: {x: 342.5787, y: 69.5781}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1309359815
 MonoBehaviour:
@@ -7413,7 +7417,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBAA9\uD45C : \uBC31\uB9CC\uACE8\uB4DC \uBAA8\uC73C\uAE30"
+  m_Text: "\uBAA9\uD45C : 2\uBC31\uB9CC \uACE8\uB4DC \uBAA8\uC73C\uAE30"
 --- !u!222 &1309359816
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7545,8 +7549,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 22.675}
-  m_SizeDelta: {x: 858.3323, y: 62.325}
+  m_AnchoredPosition: {x: 0, y: 29}
+  m_SizeDelta: {x: 858.3323, y: 78.8281}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &1346673927
 GameObject:
@@ -8758,6 +8762,9 @@ MonoBehaviour:
   NoMoreUpgrade: {fileID: 376637438}
   GGwanglotto: {fileID: 1725908547}
   Successlotto: {fileID: 1114958084}
+  Skill1IsOpen: 0
+  Skill2IsOpen: 0
+  Skill3IsOpen: 0
   SoldierSkill1: 0
   SoldierSkill2: 0
   SoldierSkill3: 0
@@ -10148,8 +10155,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 788.14307, y: 467}
-  m_SizeDelta: {x: 300.2863, y: 20}
+  m_AnchoredPosition: {x: 779.93, y: 467}
+  m_SizeDelta: {x: 325.01, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1799778991
 MonoBehaviour:
@@ -12435,7 +12442,7 @@ SceneRoots:
   - {fileID: 1509745195}
   - {fileID: 451626873}
   - {fileID: 919288454}
-  - {fileID: 1518044705}
   - {fileID: 1303574451}
   - {fileID: 883019633}
   - {fileID: 705507995}
+  - {fileID: 1518044705}

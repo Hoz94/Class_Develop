@@ -53,7 +53,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Wall")) /*|| other.gameObject.CompareTag("Boss")*/
+        if(other.gameObject.CompareTag("Wall")) 
         {
             this.gameObject.SetActive(false);
         }
@@ -67,6 +67,17 @@ public class Bullet : MonoBehaviour
             }
             
             
+            this.gameObject.SetActive(false);
+        }
+
+        if(other.gameObject.CompareTag("Boss"))
+        {
+            Boss boss = other.gameObject.GetComponent<Boss>();
+            if(boss != null)
+            {
+                boss.OnHit();
+            }
+
             this.gameObject.SetActive(false);
         }
         

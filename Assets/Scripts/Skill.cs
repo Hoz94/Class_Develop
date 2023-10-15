@@ -177,7 +177,7 @@ public class Skill : MonoBehaviour
     void ActiveSkill()
     {
         // 1번 스킬
-        if (Input.GetKeyDown(KeyCode.Alpha1)&&Skill1Cool==Skill1Time) 
+        if (Input.GetKeyDown(KeyCode.Alpha1)&&Skill1Cool==Skill1Time&& shopManager.Skill1IsOpen) 
         {
             // 군인 
             if (player.tag == "Soldier")
@@ -300,7 +300,7 @@ public class Skill : MonoBehaviour
         } // 1번 스킬
 
         // 2번 스킬
-        if (Input.GetKeyDown(KeyCode.Alpha2) && Skill2Cool == Skill2Time) 
+        if (Input.GetKeyDown(KeyCode.Alpha2) && Skill2Cool == Skill2Time && shopManager.Skill2IsOpen) 
         {
             // 군인
             if (player.tag == "Soldier")
@@ -423,7 +423,7 @@ public class Skill : MonoBehaviour
         }// 2번 스킬
 
         // 3번 스킬
-        if (Input.GetKeyDown(KeyCode.Alpha3) && Skill3Cool == Skill3Time) 
+        if (Input.GetKeyDown(KeyCode.Alpha3) && Skill3Cool == Skill3Time && shopManager.Skill3IsOpen) 
         {
             // 군인
             if (player.tag == "Soldier")
