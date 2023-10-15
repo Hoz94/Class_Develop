@@ -28,6 +28,8 @@ public class PlayerUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Boss1Slider.value: " + Boss1Slider.value);
+        Debug.Log("Boss2Slider.value: " + Boss2Slider.value);
         printGold();
         if (Time.timeScale == 1)
         {
@@ -63,6 +65,8 @@ public class PlayerUIManager : MonoBehaviour
 
         if(ShopManager.bossSpawn==true)
         {
+            Boss1Slider.gameObject.SetActive(true);
+            Boss2Slider.gameObject.SetActive(false);
             BossHP();
         }
     }
@@ -82,19 +86,16 @@ public class PlayerUIManager : MonoBehaviour
 
     void BossHP()
     {
-        if(boss.Hp<=500000f)
-        {
-            Boss1Slider.gameObject.SetActive(true);
-            Boss2Slider.gameObject.SetActive(false);
-            Boss1Slider.value = boss.Hp / boss.MaxHp;
-        }
-        if(boss.Hp<=250000f)
+        
+        Boss1Slider.value = boss.Hp / boss.MaxHp;
+        
+/*        if(boss.Hp<=250000f)
         {
             Boss1Slider.gameObject.SetActive(false);
             Boss2Slider.gameObject.SetActive(true);
             Boss2Slider.value = boss.Hp / 250000f;
 
-        }
+        }*/
     }
 
     void HandleHP()
