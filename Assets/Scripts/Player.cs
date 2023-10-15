@@ -39,12 +39,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(this.gameObject.tag!="Untagged")
+/*        if(this.gameObject.tag!="Untagged")
         {
-/*            Cursor.visible = false;*/
-/*            Cursor.lockState = CursorLockMode.Locked;*/
-            Cursor.visible = true;
-        }
+            Cursor.visible = false;
+        }*/
         Move();
     }
 

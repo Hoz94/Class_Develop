@@ -25,6 +25,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(Time.timeScale<1)
+        {
+            Cursor.visible = true;
+        }
+        else if(Time.timeScale==1) 
+        { 
+            Cursor.visible = false;
+        }
     }
 }

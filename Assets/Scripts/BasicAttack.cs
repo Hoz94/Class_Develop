@@ -32,7 +32,7 @@ public class BasicAttack : MonoBehaviour
 
     void Attack()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             if (player.tag == "Soldier")
             {
