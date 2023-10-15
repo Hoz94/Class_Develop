@@ -11,10 +11,12 @@ public class PlayerUIManager : MonoBehaviour
     public Slider HPslider;
     public Canvas PlayerUICanvas;
     public Slider GoalSlider;
-    float GoalGold = 2000000;
-    public Slider Skill1;
-    public Slider Skill2;
-    public Slider Skill3;
+    float GoalGold = 5000000;
+    public Image Skill1;
+    public Image Skill2;
+    public Image Skill3;
+    public Image SpecialSkill;
+    public Boss boss;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,20 +34,30 @@ public class PlayerUIManager : MonoBehaviour
             printGoalValue();
         }
 
-        /*if(ShopManager.Skill1IsOpen)
+        if (ShopManager.Skill1IsOpen)
         {
+            Skill1.gameObject.SetActive(true);
             HandleSkill1();
         }
 
-        if(ShopManager.Skill2IsOpen)
+        if (ShopManager.Skill2IsOpen)
         {
+            Skill2.gameObject.SetActive(true);
             HandleSkill2();
         }
 
-        if(ShopManager .Skill3IsOpen)
+        if (ShopManager.Skill3IsOpen)
         {
+            Skill3.gameObject.SetActive(true);
             HandleSkill3();
-        }*/
+        }
+
+        if(player!=null)
+        {
+            SpecialSkill.gameObject.SetActive(true);
+            Skill skill = player.gameObject.GetComponent<Skill>();
+            SpecialSkill.fillAmount = skill.SpecialSkillTime / skill.SpecialSkillCool;
+        }
     }
 
 
@@ -61,6 +73,11 @@ public class PlayerUIManager : MonoBehaviour
         goldText.text = "¸ðÀº °ñµå : " + gold.ToString("N0");
     }
 
+    void BossHP()
+    {
+        
+    }
+
     void HandleHP()
     {
         Status status = player.gameObject.GetComponent<Status>();
@@ -71,19 +88,19 @@ public class PlayerUIManager : MonoBehaviour
     void HandleSkill1()
     {
         Skill skill=player.gameObject.GetComponent<Skill>();
-        Skill1.value = skill.Skill1Time / skill.Skill1Cool;
+        Skill1.fillAmount = skill.Skill1Time / skill.Skill1Cool;
     }
 
     void HandleSkill2()
     {
         Skill skill = player.gameObject.GetComponent<Skill>();
-        Skill2.value = skill.Skill2Time / skill.Skill2Cool;
+        Skill2.fillAmount = skill.Skill2Time / skill.Skill2Cool;
     }
 
     void HandleSkill3()
     {
         Skill skill = player.gameObject.GetComponent<Skill>();
-        Skill3.value = skill.Skill3Time / skill.Skill3Cool;
+        Skill3.fillAmount = skill.Skill3Time / skill.Skill3Cool;
     }
 
 }

@@ -6,9 +6,9 @@ using UnityEngine.AI;
 public class Boss : MonoBehaviour
 {
     Status status;
-    const int firstpaze = 1000000;
-    public int Hp = 2000000;
-    int DropGold = 500000;
+    const int firstpaze = 400000;
+    public int Hp = 600000;
+    int DropGold = 300000;
     NavMeshAgent nvAgent;
     Transform player;
     public float Atk = 80f;
@@ -22,15 +22,15 @@ public class Boss : MonoBehaviour
     CapsuleCollider cc;
     Animator ani;
     float Jumpcooltime;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Transform>();
-        status=player.GetComponent<Status>();
-        cc=GetComponent<CapsuleCollider>();
+        status = player.GetComponent<Status>();
+        cc = GetComponent<CapsuleCollider>();
         nvAgent = GetComponent<NavMeshAgent>();
-        player = GameObject.Find("Player").GetComponent<Transform>();
-        ani=GetComponent<Animator>();
+        ani = GetComponent <Animator>();
     }
 
     // Update is called once per frame
@@ -38,11 +38,10 @@ public class Boss : MonoBehaviour
     {
         dist = Vector3.Distance(this.gameObject.transform.position, player.position);
         Jumpcooltime += Time.deltaTime;
-        if(isDead)
+        if (isDead)
         {
             return;
         }
-
     }
 
     private void FixedUpdate()
@@ -55,8 +54,7 @@ public class Boss : MonoBehaviour
                 {
                     Trace();
                 }
-
-                else if(Hp< firstpaze)
+                else if (Hp < firstpaze)
                 {
                     Run();
                 }
@@ -73,20 +71,21 @@ public class Boss : MonoBehaviour
         nvAgent.speed = 14f;
         dir = player.position;
         nvAgent.SetDestination(dir);
-        if (dist <= Attackdist)
+        if (dist <= Attackdist && Jumpcooltime < 15f)
         {
             isAttack = true;
             transform.LookAt(dir);
             StartCoroutine(RunAttackCo());
         }
-        else if(dist>=Attackdist&&Jumpcooltime>=15f)
+        else if (Jumpcooltime >= 15f)
         {
             isJumpAttack = true;
             transform.LookAt(dir);
             StartCoroutine(JumpAttackCo());
+            Jumpcooltime = 0f;
         }
-        
     }
+
     void Trace()
     {
         ani.SetBool("isWalk", true);
@@ -96,29 +95,28 @@ public class Boss : MonoBehaviour
         nvAgent.speed = 7f;
         dir = player.position;
         nvAgent.SetDestination(dir);
-        if(dist<=Attackdist)
+        if (dist <= Attackdist)
         {
             isAttack = true;
             transform.LookAt(dir);
             StartCoroutine(AttackCo());
         }
-
     }
+
     IEnumerator JumpAttackCo()
     {
         ani.SetBool("isJump", true);
         ani.SetBool("isRun", false);
-        yield return new WaitForSeconds(0.7f);
-        this.gameObject.SetActive(false);
-        /*nvAgent.velocity = Vector3.zero;
-        nvAgent.speed = 0f;
-        nvAgent.acceleration = 0f;*/
         yield return new WaitForSeconds(1.5f);
         this.transform.position = player.position;
-        this.gameObject.SetActive(true);
         status.CurHp -= JumpAtk;
+        yield return new WaitForSeconds(1f);
+        ani.SetBool("isJump", false);
+        ani.SetBool("isRun", true);
+        
         isJumpAttack = false;
     }
+
     IEnumerator RunAttackCo()
     {
         ani.SetBool("isAttack", true);
@@ -130,6 +128,7 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         isAttack = false;
     }
+
     IEnumerator AttackCo()
     {
         ani.SetBool("isAttack", true);
@@ -144,18 +143,21 @@ public class Boss : MonoBehaviour
 
     IEnumerator DeathCo()
     {
+        nvAgent.velocity = Vector3.zero;
+        nvAgent.speed = 0f;
+        nvAgent.acceleration = 0f;
         ani.SetTrigger("isDead");
-        yield return new WaitForSeconds(1.5f);
-        this.gameObject.SetActive(false);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2.5f);
+        // 비활성화 전에 DropGold 획득 및 제거
+        player.gameObject.GetComponent<Player>().GetGold(DropGold);
         Destroy(this.gameObject);
     }
 
     void Death()
     {
+        StopAllCoroutines();
         isDead = true;
         StartCoroutine(DeathCo());
-        player.gameObject.GetComponent<Player>().GetGold(DropGold);
         cc.enabled = false;
     }
 

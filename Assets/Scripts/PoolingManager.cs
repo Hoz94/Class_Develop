@@ -12,7 +12,7 @@ public class PoolingManager : MonoBehaviour
     [Header("일반몹 오브젝트풀링")]
     public List<GameObject> Enemypool = new List<GameObject>();
     public GameObject EnemyPrefab;
-    int MaxEnemies = 1500;
+    int MaxEnemies = 500;
 
     [Header("총알 오브젝트풀링")]
     public List<GameObject> BulletPool = new List<GameObject>();
@@ -31,7 +31,7 @@ public class PoolingManager : MonoBehaviour
 
 
     public int AddHp=0;
-    public float AddSpeed = 0;
+    public float AddSpeed = 0f;
     private void Awake()
     {
         _instance = this;

@@ -71,9 +71,10 @@ public class ShopManager : MonoBehaviour
     public int WindMagicianSkill2 = 0;
     public int WindMagicianSkill3 = 0;
 
+    public int HpPotionMoney = 5000;
     public int SkillUpgradeGold = 3000; // 스킬 업그레이드 비용
     public int MonUpgradeGold = 3000; // 몬스터 업그레이드 비용
-    public int BossSpawnGold = 10000; // 보스 스폰 비용
+    public int BossSpawnGold = 20000; // 보스 스폰 비용
 
     // Update is called once per frame
     void Update()
@@ -110,7 +111,7 @@ public class ShopManager : MonoBehaviour
     public void ViewGold()
     {
         Player p = player.GetComponent<Player>();
-        CurGoldText.text = "골드 : " + p.gold.ToString();
+        CurGoldText.text = "골드 : " + p.gold.ToString("N0");
     } // 상점내부에 현재 골드 보이기
 
     public void onclickStatsButton() // 스탯 탭
@@ -296,12 +297,12 @@ public class ShopManager : MonoBehaviour
         {
             if (status.MaxHp < MaxHpPlus)
             {
-                if (player.gold >= StatsUpgradeMoney)
+                if (player.gold >= 5000)
                 {
-                    player.gold -= StatsUpgradeMoney;
+                    player.gold -= 5000;
                     status.MaxHp += 50;
                 }
-                else if (player.gold < StatsUpgradeMoney)
+                else if (player.gold < 5000)
                 {
                     NotEnoughUpgradeMoney.gameObject.SetActive(true);
                     StartCoroutine(NotEnoughGoldCo());
@@ -321,12 +322,12 @@ public class ShopManager : MonoBehaviour
         Status status = player.gameObject.GetComponent<Status>();
         if (BtnCooltime <= 0f)
         {
-            if (player.gold >= StatsUpgradeMoney)
+            if (player.gold >= HpPotionMoney)
             {
-                player.gold -= StatsUpgradeMoney;
-                status.CurHp += 10;
+                player.gold -= HpPotionMoney;
+                status.CurHp += 50;
             }
-            else if (player.gold < StatsUpgradeMoney)
+            else if (player.gold < HpPotionMoney)
             {
                 NotEnoughUpgradeMoney.gameObject.SetActive(true);
                 StartCoroutine(NotEnoughGoldCo());

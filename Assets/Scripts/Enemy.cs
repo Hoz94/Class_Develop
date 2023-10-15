@@ -1,11 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Assertions.Must;
-using Debug = UnityEngine.Debug;
+
 
 public class Enemy : MonoBehaviour
 {
@@ -28,6 +24,8 @@ public class Enemy : MonoBehaviour
     bool isDead;
     bool isAttack;
     CapsuleCollider cc;
+
+    public int EnemyDeathCount = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,8 +51,10 @@ public class Enemy : MonoBehaviour
             cc.enabled = false;
             Death();
         }
-        
-
+        if(nvAgent.speed>=13f)
+        {
+            nowSpeed = 13f;
+        }
     }
 
     private void FixedUpdate()
@@ -102,6 +102,7 @@ public class Enemy : MonoBehaviour
 
     void Death()
     {
+        EnemyDeathCount++;
         isDead = true;
         StartCoroutine(DeathCo());
         int Ran = Random.Range(0, 10);
@@ -149,12 +150,16 @@ public class Enemy : MonoBehaviour
 
     public void SetHealth(int AddHp)
     {
-        MaxHP += AddHp;
-        HP += AddHp;
+        if (MaxHP <= 3000)
+        {
+            MaxHP += AddHp;
+            HP += AddHp;
+        }
     }
 
     public void SetSpeed(float speed)
     {
-        nowSpeed=nvAgent.speed + speed;
+        nowSpeed = nvAgent.speed + speed;
+        
     }
 }
