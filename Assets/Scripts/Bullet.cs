@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -30,15 +28,15 @@ public class Bullet : MonoBehaviour
             transform.Translate(Vector3.forward * 40 * Time.deltaTime);
         }
 
-        if(player.tag=="Worrior")
+        if (player.tag == "Worrior")
         {
             transform.Translate(Vector3.forward * 20 * Time.deltaTime);
         }
 
-        if(player.tag=="FireMagician"|| player.tag == "WaterMagician"|| player.tag == "WindMagician")
+        if (player.tag == "FireMagician" || player.tag == "WaterMagician" || player.tag == "WindMagician")
         {
             transform.Translate(Vector3.forward * 8 * Time.deltaTime);
-            
+
         }
     }
 
@@ -53,34 +51,34 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Wall")) 
+        if (other.gameObject.CompareTag("Wall"))
         {
-            this.gameObject.SetActive(false);
-        }
-        
-        if(other.gameObject.CompareTag("Enemy"))
-        {
-            Enemy enemy= other.gameObject.GetComponent<Enemy>();
-            if(enemy != null) 
-            {
-                enemy.OnHit();
-            }
-            
-            
             this.gameObject.SetActive(false);
         }
 
-        if(other.gameObject.CompareTag("Boss"))
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Enemy enemy = other.gameObject.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.OnHit();
+            }
+
+
+            this.gameObject.SetActive(false);
+        }
+
+        if (other.gameObject.CompareTag("Boss"))
         {
             Boss boss = other.gameObject.GetComponent<Boss>();
-            if(boss != null)
+            if (boss != null)
             {
                 boss.OnHit();
             }
 
             this.gameObject.SetActive(false);
         }
-        
+
     }
 
 }

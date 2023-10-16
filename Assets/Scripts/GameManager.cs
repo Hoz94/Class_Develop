@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -25,12 +23,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.timeScale<1)
+        if (Time.timeScale < 1)
         {
             Cursor.visible = true;
         }
-        else if(Time.timeScale==1) 
-        { 
+        else if (Time.timeScale == 1)
+        {
             Cursor.visible = false;
         }
     }

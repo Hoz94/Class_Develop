@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -25,6 +24,7 @@ public class Boss : MonoBehaviour
     Animator ani;
     float Jumpcooltime;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +32,7 @@ public class Boss : MonoBehaviour
         status = player.GetComponent<Status>();
         cc = GetComponent<CapsuleCollider>();
         nvAgent = GetComponent<NavMeshAgent>();
-        ani = GetComponent <Animator>();
+        ani = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -44,13 +44,13 @@ public class Boss : MonoBehaviour
         {
             return;
         }
+        HandleBossHP();
     }
 
     private void FixedUpdate()
     {
         if (!isDead)
         {
-            HandleHp();
             if (!isAttack && dist != 0)
             {
                 if (firstpaze <= Hp)
@@ -63,8 +63,8 @@ public class Boss : MonoBehaviour
                 }
             }
         }
-
     }
+
 
     void Run()
     {
@@ -81,7 +81,7 @@ public class Boss : MonoBehaviour
             transform.LookAt(dir);
             StartCoroutine(RunAttackCo());
         }
-        else if (dist>=5f&&Jumpcooltime >= 15f)
+        else if (dist >= 5f && Jumpcooltime >= 15f)
         {
             isJumpAttack = true;
             transform.LookAt(dir);
@@ -117,7 +117,7 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(1f);
         ani.SetBool("isJump", false);
         ani.SetBool("isRun", true);
-        
+
         isJumpAttack = false;
     }
 
@@ -160,7 +160,7 @@ public class Boss : MonoBehaviour
     void Death()
     {
         GameObject gameObject = GameObject.Find("ShopUIManager");
-        ShopManager shopmanager= gameObject.GetComponent<ShopManager>();
+        ShopManager shopmanager = gameObject.GetComponent<ShopManager>();
         shopmanager.bossSpawn = false;
         StopAllCoroutines();
         isDead = true;
@@ -186,23 +186,10 @@ public class Boss : MonoBehaviour
         }
     }
 
-    void HandleHp()
+    public void HandleBossHP()
     {
-        GameObject obj1 = GameObject.Find("BossHp1");
-        GameObject obj2 = GameObject.Find("BossHp2");
-        Slider Hp1 = obj1.GetComponent<Slider>();
-        Slider Hp2 = obj2.GetComponent<Slider>();
-        if (firstpaze<Hp)
-        {
-            
-            Hp1.gameObject.SetActive(true);
-            Hp1.value = Hp / MaxHp;
-        }
-        else if(Hp<=firstpaze)
-        {
-            Hp2.gameObject.SetActive(true);
-            Hp1.gameObject.SetActive(false);
-            Hp2.value = Hp / MaxHp;
-        }
+        GameObject obj = GameObject.Find("ShopUIManager");
+        Slider Boss1 = obj.GetComponent<ShopManager>().BossHPSlider();
+        Boss1.value = Hp / MaxHp;
     }
 }

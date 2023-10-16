@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class BasicAttack : MonoBehaviour
@@ -78,7 +75,7 @@ public class BasicAttack : MonoBehaviour
                         _energybolt.transform.position = firepos.position;
                         _energybolt.transform.rotation = firepos.rotation;
                         _energybolt.SetActive(true);
-                        
+
                         CurrentDealy = 0f;
                     }
                 }

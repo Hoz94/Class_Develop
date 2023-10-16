@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] 
+    [SerializeField]
     SkillDamage SD;
     Status status;
     Transform player;
@@ -18,9 +18,9 @@ public class Enemy : MonoBehaviour
     Animator _ani;
     public float dist;
     public float Attackdist = 2f;
-    public int minGold =50;
-    public int MidGold =100;
-    public int MaxGold=150;
+    public int minGold = 50;
+    public int MidGold = 100;
+    public int MaxGold = 150;
     bool isDead;
     bool isAttack;
     CapsuleCollider cc;
@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour
             cc.enabled = false;
             Death();
         }
-        if(nvAgent.speed>=13f)
+        if (nvAgent.speed >= 13f)
         {
             nowSpeed = 13f;
         }
@@ -129,7 +129,7 @@ public class Enemy : MonoBehaviour
         nvAgent.velocity = Vector3.zero;
         nvAgent.acceleration = 0;
         nvAgent.angularSpeed = 0;
-        
+
         yield return new WaitForSeconds(1.5f);
         cc.enabled = true;
         HP = MaxHP;
@@ -160,6 +160,6 @@ public class Enemy : MonoBehaviour
     public void SetSpeed(float speed)
     {
         nowSpeed = nvAgent.speed + speed;
-        
+
     }
 }

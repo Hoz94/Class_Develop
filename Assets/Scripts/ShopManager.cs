@@ -1,15 +1,12 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
     public Enemy enemy;
     public Player player;
-
+    public PlayerUIManager playerUI;
 
     public bool bossSpawn = false;
     bool shopopen;
@@ -19,12 +16,11 @@ public class ShopManager : MonoBehaviour
     int Lotto1 = 3000;
     int Lotto2 = 3000;
     int Lotto3 = 3000;
-    int Lotto4 = 10000;
+    public int Lotto4 = 10000;
     int upGradeGoldLevel = 0;
     int upGradeSpdLevel = 0;
     int MaxUpGradeSpdLevel = 9;
     int MaxUpGradeGoldLevel = 10;
-    
 
     public GameObject StatsUI;
     public GameObject SKillsUI;
@@ -33,6 +29,8 @@ public class ShopManager : MonoBehaviour
     public GameObject ShopUI;
     public GameObject BossPrefab;
     public GameObject Boss;
+
+    public Slider Boss1;
 
     public Transform BossSpawnPoint;
 
@@ -47,14 +45,15 @@ public class ShopManager : MonoBehaviour
     public Text GGwanglotto;
     public Text Successlotto;
     public Text CantUseHpPotion;
+    public Text NoMoreSpawnBoss;
     public bool Skill1IsOpen = false;
     public bool Skill2IsOpen = false;
     public bool Skill3IsOpen = false;
 
     int StatsUpgradeMoney = 3000; // 스탯 업그레이드 비용
 
-    float BtnCooltime = 0f; 
-
+    float BtnCooltime = 0f;
+    public int maxBosscount = 0;
     public int SoldierSkill1 = 0;
     public int SoldierSkill2 = 0;
     public int SoldierSkill3 = 0;
@@ -74,7 +73,7 @@ public class ShopManager : MonoBehaviour
     public int HpPotionMoney = 5000;
     public int SkillUpgradeGold = 3000; // 스킬 업그레이드 비용
     public int MonUpgradeGold = 3000; // 몬스터 업그레이드 비용
-    public int BossSpawnGold = 20000; // 보스 스폰 비용
+    public int BossSpawnGold = 100000; // 보스 스폰 비용
 
     // Update is called once per frame
     void Update()
@@ -82,6 +81,18 @@ public class ShopManager : MonoBehaviour
         BtnCooltime -= Time.unscaledDeltaTime; // timescale이 0일때도 시간이 감.
         Shop(); // 상점 열고 닫기
         ViewGold(); // 상점내부에 현재 골드 보이기
+
+        if (Boss1.gameObject.activeSelf == true && maxBosscount == 1)
+        {
+            Boss = Instantiate(BossPrefab, BossSpawnPoint.position, transform.rotation);
+            maxBosscount = 0;
+        }
+
+        if(Boss==null)
+        {
+            Boss1.gameObject.SetActive(false);
+        }
+        
     }
 
     public void Shop()
@@ -237,6 +248,12 @@ public class ShopManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(1f);
         NotEnoughUpgradeMoney.gameObject.SetActive(false);
+    }
+
+    IEnumerator NoMoreBossCo()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        NoMoreSpawnBoss.gameObject.SetActive(false);
     }
 
     public void onclickAtkBtn() // 기본 공격 증가 
@@ -960,7 +977,7 @@ public class ShopManager : MonoBehaviour
                         {
                             ++upGradeSpdLevel;
                             player.gold -= MonUpgradeGold;
-                            poolingmanager.AddSpeed = 1*upGradeSpdLevel;
+                            poolingmanager.AddSpeed = 1 * upGradeSpdLevel;
                         }
 
                         else if (player.gold < MonUpgradeGold)
@@ -1030,7 +1047,7 @@ public class ShopManager : MonoBehaviour
                 SpawnEnemies spawnEnemies = spawnEnemiesobj.GetComponent<SpawnEnemies>();
                 if (spawnEnemies != null)
                 {
-                    if (0.1f<spawnEnemies.spawnInterval)
+                    if (0.1f < spawnEnemies.spawnInterval)
                     {
                         if (player.gold >= MonUpgradeGold)
                         {
@@ -1043,9 +1060,9 @@ public class ShopManager : MonoBehaviour
                             NotEnoughUpgradeMoney.gameObject.SetActive(true);
                             StartCoroutine(NotEnoughGoldCo());
                         }
-                        
+
                     }
-                    else if (spawnEnemies.spawnInterval<= 0.1f)
+                    else if (spawnEnemies.spawnInterval <= 0.1f)
                     {
                         NoMoreUpgrade.gameObject.SetActive(true);
                         StartCoroutine(NoMoreUpgradeCo());
@@ -1060,20 +1077,32 @@ public class ShopManager : MonoBehaviour
     {
         if (BtnCooltime <= 0f)
         {
-            if(player.gold>=BossSpawnGold)
+            if (Boss1.gameObject.activeSelf == false)
             {
-                player.gold -= BossSpawnGold;
-                Boss = Instantiate(BossPrefab, BossSpawnPoint.position, transform.rotation);
-                bossSpawn = true;
+                if (player.gold >= BossSpawnGold)
+                {
+                    Boss1.gameObject.SetActive(true);
+                    maxBosscount++;
+                    bossSpawn = true;
+                    player.gold -= BossSpawnGold;
+                }
+
+                else if (player.gold < BossSpawnGold)
+                {
+                    NotEnoughUpgradeMoney.gameObject.SetActive(true);
+                    StartCoroutine(NotEnoughGoldCo());
+                }
             }
 
-            else if(player.gold<BossSpawnGold)
+            else if (Boss1.gameObject.activeSelf == true)
             {
-                NotEnoughUpgradeMoney.gameObject.SetActive(true);
-                StartCoroutine(NotEnoughGoldCo());
+                NoMoreSpawnBoss.gameObject.SetActive(true);
+                StartCoroutine(NoMoreBossCo());
             }
             BtnCooltime = 1.3f;
+            return;
         }
+
     }
 
     public void onLottoclick1() // 로또 1 클릭
@@ -1118,6 +1147,7 @@ public class ShopManager : MonoBehaviour
                 {
                     player.gold += Lotto2 * 10;
                     Successlotto.gameObject.SetActive(true);
+                    StartCoroutine(LottoTextCo());
                 }
                 else
                 {
@@ -1146,6 +1176,7 @@ public class ShopManager : MonoBehaviour
                 {
                     player.gold += Lotto3 * 100;
                     Successlotto.gameObject.SetActive(true);
+                    StartCoroutine(LottoTextCo());
                 }
                 else
                 {
@@ -1175,6 +1206,7 @@ public class ShopManager : MonoBehaviour
                 {
                     player.gold += Lotto4 * 1000;
                     Successlotto.gameObject.SetActive(true);
+                    StartCoroutine(LottoTextCo());
                 }
                 else
                 {
@@ -1201,5 +1233,10 @@ public class ShopManager : MonoBehaviour
         EnemyUI.SetActive(false);
         LottoUI.SetActive(false);
         shopopen = false;
+    }
+
+    public Slider BossHPSlider()
+    {
+        return Boss1;
     }
 }

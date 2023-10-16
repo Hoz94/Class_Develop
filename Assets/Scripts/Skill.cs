@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Skill : MonoBehaviour
@@ -9,13 +7,13 @@ public class Skill : MonoBehaviour
     public Transform skillpos; // 스킬이 나가는 위치
     public GameObject SkillInput; // 인스턴스한것을 저장하는 오브젝트
 
-    [Header ("각 직업별 필살기 프리팹")]
+    [Header("각 직업별 필살기 프리팹")]
     public GameObject SoldierSpecialSkillPrefab;
     public GameObject WorriorSpecialSkillPrefab;
     public GameObject FireMagicianSpecialSkillPrefab;
     public GameObject WaterMagicianSpecialSkillPrefab;
     public GameObject WindMagicianSpecialSkillPrefab;
-    [Header ("군인 1번 액티브스킬 프리팹")]
+    [Header("군인 1번 액티브스킬 프리팹")]
     public GameObject SoldierSkill1Prefab1;
     public GameObject SoldierSkill1Prefab2;
     public GameObject SoldierSkill1Prefab3;
@@ -76,7 +74,7 @@ public class Skill : MonoBehaviour
     public GameObject WindMagicianSkill3Prefab2;
     public GameObject WindMagicianSkill3Prefab3;
 
-    [Header ("스킬 쿨타임")]
+    [Header("스킬 쿨타임")]
     public float SpecialSkillCool = 30f; // 필살기 쿨타임
     public float SpecialSkillTime = 30f;
     public float Skill1Cool = 5f; // 1번스킬 쿨타임
@@ -93,7 +91,7 @@ public class Skill : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player= GetComponent<Player>();
+        player = GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -122,7 +120,7 @@ public class Skill : MonoBehaviour
                 SkillInput = Instantiate(SoldierSpecialSkillPrefab, transform.position, transform.rotation);
                 SkillInput.GetComponent<Rigidbody>().AddForce(transform.forward * 500f);
                 Destroy(SkillInput, 15f);
-                
+
             }
         }
 
@@ -170,25 +168,25 @@ public class Skill : MonoBehaviour
                 Destroy(SkillInput, 15f);
             }
         }
-        
+
     }
 
 
     void ActiveSkill()
     {
         // 1번 스킬
-        if (Input.GetKeyDown(KeyCode.Alpha1)&&Skill1Cool==Skill1Time&& shopManager.Skill1IsOpen) 
+        if (Input.GetKeyDown(KeyCode.Alpha1) && Skill1Cool == Skill1Time && shopManager.Skill1IsOpen)
         {
             // 군인 
             if (player.tag == "Soldier")
             {
-                if(shopManager.SoldierSkill1==1)
+                if (shopManager.SoldierSkill1 == 1)
                 {
-                    SkillInput=Instantiate(SoldierSkill1Prefab1, transform.position, transform.rotation);
+                    SkillInput = Instantiate(SoldierSkill1Prefab1, transform.position, transform.rotation);
                     Destroy(SkillInput, Skill1DeleteTime);
                 }
 
-                if(shopManager.SoldierSkill1==2)
+                if (shopManager.SoldierSkill1 == 2)
                 {
                     SkillInput = Instantiate(SoldierSkill1Prefab2, transform.position, transform.rotation);
                     Destroy(SkillInput, Skill1DeleteTime);
@@ -300,7 +298,7 @@ public class Skill : MonoBehaviour
         } // 1번 스킬
 
         // 2번 스킬
-        if (Input.GetKeyDown(KeyCode.Alpha2) && Skill2Cool == Skill2Time && shopManager.Skill2IsOpen) 
+        if (Input.GetKeyDown(KeyCode.Alpha2) && Skill2Cool == Skill2Time && shopManager.Skill2IsOpen)
         {
             // 군인
             if (player.tag == "Soldier")
@@ -321,7 +319,7 @@ public class Skill : MonoBehaviour
                 {
                     SkillInput = Instantiate(SoldierSkill2Prefab3, skillpos.transform.position, SoldierSkill2Prefab3.transform.rotation);
                     Destroy(SkillInput, Skill2DeleteTime);
-                    
+
                 }
                 Skill2Time = 0f;
             }
@@ -361,7 +359,7 @@ public class Skill : MonoBehaviour
                 if (shopManager.FireMagicianSkill2 == 2)
                 {
                     SkillInput = Instantiate(FireMagicianSkill2Prefab2, transform.position, transform.rotation);
-                    
+
                     Destroy(SkillInput, 2f);
                 }
 
@@ -423,7 +421,7 @@ public class Skill : MonoBehaviour
         }// 2번 스킬
 
         // 3번 스킬
-        if (Input.GetKeyDown(KeyCode.Alpha3) && Skill3Cool == Skill3Time && shopManager.Skill3IsOpen) 
+        if (Input.GetKeyDown(KeyCode.Alpha3) && Skill3Cool == Skill3Time && shopManager.Skill3IsOpen)
         {
             // 군인
             if (player.tag == "Soldier")
@@ -543,7 +541,7 @@ public class Skill : MonoBehaviour
                 }
                 Skill3Time = 0f;
             }
-            
+
         }
     }
 
@@ -560,13 +558,13 @@ public class Skill : MonoBehaviour
             SpecialSkillTime = SpecialSkillCool;
         }
 
-        if (Skill1Time<=Skill1Cool)
+        if (Skill1Time <= Skill1Cool)
         {
             Skill1Time += Time.deltaTime;
-        
+
         }
 
-        if(Skill1Time>=Skill1Cool)
+        if (Skill1Time >= Skill1Cool)
         {
             Skill1Time = Skill1Cool;
         }

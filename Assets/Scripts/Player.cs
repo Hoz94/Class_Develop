@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -30,7 +26,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+
     }
 
     private void LateUpdate()
@@ -41,10 +37,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-/*        if(this.gameObject.tag!="Untagged")
-        {
-            Cursor.visible = false;
-        }*/
+        /*        if(this.gameObject.tag!="Untagged")
+                {
+                    Cursor.visible = false;
+                }*/
         Move();
     }
 
@@ -66,12 +62,12 @@ public class Player : MonoBehaviour
         Vector2 mouseInput = new Vector2(Input.GetAxis("Mouse X"), 0);
 
         xRotation -= (mouseInput.y * Time.fixedDeltaTime) * turnSpeed; // 
-        xRotation = Mathf.Clamp(xRotation,0,0);
+        xRotation = Mathf.Clamp(xRotation, 0, 0);
         transform.Rotate(0f, mouseInput.x * Time.fixedDeltaTime * turnSpeed, 0f);
     }
 
     public void GetGold(long getgold)
     {
-        gold += getgold+Addmoney;
+        gold += getgold + Addmoney;
     }
 }

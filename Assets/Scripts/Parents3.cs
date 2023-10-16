@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Parents3 : MonoBehaviour
@@ -51,14 +50,14 @@ public class Parents3 : MonoBehaviour
                 SD = parentsSkills.GetComponent<SkillDamage>();
             }*/
             enemy.OnHit(SD.SkillDMG);
-            
+
         }
     }
 
     IEnumerator BossCo(Boss boss)
     {
         yield return new WaitForSeconds(0.1f);
-        if (boss != null) 
+        if (boss != null)
         {
             boss.OnHit(SD.SkillDMG);
         }

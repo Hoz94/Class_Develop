@@ -1,9 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
-using Unity.VisualScripting;
-using UnityEngine.AI;
 
 public class PoolingManager : MonoBehaviour
 {
@@ -30,7 +26,7 @@ public class PoolingManager : MonoBehaviour
     int MaxSword = 20;
 
 
-    public int AddHp=0;
+    public int AddHp = 0;
     public float AddSpeed = 0f;
     private void Awake()
     {
@@ -49,8 +45,8 @@ public class PoolingManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
+
+
     }
 
     public void SwordPooling()
@@ -70,7 +66,7 @@ public class PoolingManager : MonoBehaviour
     {
         GameObject BulletPools = new GameObject("BulletPools");
 
-        for(int i=0; i<MaxBull; i++)
+        for (int i = 0; i < MaxBull; i++)
         {
             var obj = Instantiate(BulletPrefab, BulletPools.transform);
             obj.name = "Bullet_" + i.ToString("00");
@@ -95,8 +91,8 @@ public class PoolingManager : MonoBehaviour
     public void EnemyPooling()
     {
         GameObject Enemypools = new GameObject("EnemyPools");
-        
-        for (int i=0; i< MaxEnemies; i++) 
+
+        for (int i = 0; i < MaxEnemies; i++)
         {
             var obj = Instantiate(EnemyPrefab, Enemypools.transform);
             obj.name = "Enemy_" + i.ToString("00");
@@ -107,12 +103,12 @@ public class PoolingManager : MonoBehaviour
 
     public GameObject GetEnemies()
     {
-        for (int i=0; i<Enemypool.Count;i++)
+        for (int i = 0; i < Enemypool.Count; i++)
         {
-            if (Enemypool[i].activeSelf==false)
+            if (Enemypool[i].activeSelf == false)
             {
                 Enemy enemy = Enemypool[i].GetComponent<Enemy>();
-                if(enemy != null)
+                if (enemy != null)
                 {
                     enemy.SetHealth(AddHp);
                     enemy.SetSpeed(AddSpeed);

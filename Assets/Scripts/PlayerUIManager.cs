@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.UI;
 public class PlayerUIManager : MonoBehaviour
 {
@@ -16,21 +13,15 @@ public class PlayerUIManager : MonoBehaviour
     public Image Skill2;
     public Image Skill3;
     public Image SpecialSkill;
-    public Slider Boss1Slider;
-    public Slider Boss2Slider;
     // Start is called before the first frame update
     void Start()
     {
         HPslider.value = 1;
-        Boss1Slider.value = 1;
-        Boss2Slider.value = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Boss1Slider.value: " + Boss1Slider.value);
-        Debug.Log("Boss2Slider.value: " + Boss2Slider.value);
         printGold();
         if (Time.timeScale == 1)
         {
@@ -57,7 +48,7 @@ public class PlayerUIManager : MonoBehaviour
             HandleSkill3();
         }
 
-        if(player!=null)
+        if (player != null)
         {
             SpecialSkill.gameObject.SetActive(true);
             Skill skill = player.gameObject.GetComponent<Skill>();
@@ -86,7 +77,7 @@ public class PlayerUIManager : MonoBehaviour
 
     void HandleSkill1()
     {
-        Skill skill=player.gameObject.GetComponent<Skill>();
+        Skill skill = player.gameObject.GetComponent<Skill>();
         Skill1.fillAmount = skill.Skill1Time / skill.Skill1Cool;
     }
 
@@ -101,5 +92,4 @@ public class PlayerUIManager : MonoBehaviour
         Skill skill = player.gameObject.GetComponent<Skill>();
         Skill3.fillAmount = skill.Skill3Time / skill.Skill3Cool;
     }
-
 }

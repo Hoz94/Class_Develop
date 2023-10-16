@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnEnemies : MonoBehaviour
@@ -9,7 +7,7 @@ public class SpawnEnemies : MonoBehaviour
     public Transform[] spawnPoints; // 몬스터를 스폰할 위치 배열
     public float spawnInterval = 1f; // 몬스터 스폰 간격
 
-    private float spawnTimer = 1f; 
+    private float spawnTimer = 1f;
 
     void Update()
     {

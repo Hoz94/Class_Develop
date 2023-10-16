@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Select : MonoBehaviour
@@ -9,13 +7,13 @@ public class Select : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void SoldierSelect() // 군인 선택
@@ -30,12 +28,12 @@ public class Select : MonoBehaviour
 
     public void WorriorSelect() // 검사 선택
     {
-        player.tag ="Worrior";
+        player.tag = "Worrior";
         Status stat = player.GetComponent<Status>();
         StatusManager._instance.Worrior(stat);
         this.gameObject.SetActive(false);
         Time.timeScale = 1;
-        
+
 
     }
 
