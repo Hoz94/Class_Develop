@@ -8,11 +8,13 @@ public class PlayerUIManager : MonoBehaviour
     public Slider HPslider;
     public Canvas PlayerUICanvas;
     public Slider GoalSlider;
-    float GoalGold = 5000000;
+    float GoalGold = 10000000;
     public Image Skill1;
     public Image Skill2;
     public Image Skill3;
     public Image SpecialSkill;
+    public Text CurPlayTimeText;
+    public float CurPlayTime = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,12 +24,14 @@ public class PlayerUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CurPlayTime += Time.deltaTime;
         printGold();
         if (Time.timeScale == 1)
         {
             PlayerUICanvas.gameObject.SetActive(true);
             HandleHP();
             printGoalValue();
+            HandlePlayTime();
         }
 
         if (ShopManager.Skill1IsOpen)
@@ -67,6 +71,11 @@ public class PlayerUIManager : MonoBehaviour
         float gold = player.gold;
 
         goldText.text = "모은 골드 : " + gold.ToString("N0");
+    }
+
+    void HandlePlayTime()
+    {
+        CurPlayTimeText.text = "플레이 타임 : "+((float)CurPlayTime / (float)60).ToString("N0")+"분 " + ((float)CurPlayTime % (float)60).ToString("N0")+"초";
     }
 
     void HandleHP()

@@ -33,8 +33,6 @@ public class Select : MonoBehaviour
         StatusManager._instance.Worrior(stat);
         this.gameObject.SetActive(false);
         Time.timeScale = 1;
-
-
     }
 
     public void ElementsSelect() // 마법사 속성 선택

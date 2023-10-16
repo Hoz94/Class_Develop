@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
+    public static ShopManager _instance;
+
     public Enemy enemy;
     public Player player;
     public PlayerUIManager playerUI;
@@ -29,7 +31,6 @@ public class ShopManager : MonoBehaviour
     public GameObject ShopUI;
     public GameObject BossPrefab;
     public GameObject Boss;
-
     public Slider Boss1;
 
     public Transform BossSpawnPoint;
@@ -74,6 +75,11 @@ public class ShopManager : MonoBehaviour
     public int SkillUpgradeGold = 3000; // 스킬 업그레이드 비용
     public int MonUpgradeGold = 3000; // 몬스터 업그레이드 비용
     public int BossSpawnGold = 100000; // 보스 스폰 비용
+
+    private void Start()
+    {
+        _instance = this;
+    }
 
     // Update is called once per frame
     void Update()

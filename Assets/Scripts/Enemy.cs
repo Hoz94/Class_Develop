@@ -5,27 +5,28 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    public static Enemy _Instance;
     [SerializeField]
     SkillDamage SD;
     Status status;
     Transform player;
-    public int MaxHP = 50;
-    public int HP = 50;
-    public float Atk = 1f;
+    int MaxHP;
+    int HP;
+    float Atk;
     public NavMeshAgent nvAgent;
-    public float nowSpeed = 4.5f;
+    float nowSpeed;
     private Vector3 dir;
     Animator _ani;
     public float dist;
-    public float Attackdist = 2f;
-    public int minGold = 50;
-    public int MidGold = 100;
-    public int MaxGold = 150;
+    float Attackdist;
+    int minGold;
+    int MidGold;
+    int MaxGold;
     bool isDead;
     bool isAttack;
     CapsuleCollider cc;
 
-    public int EnemyDeathCount = 0;
+    public int EnemyDeathCount;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +35,18 @@ public class Enemy : MonoBehaviour
         _ani = GetComponent<Animator>();
         status = player.GetComponent<Status>();
         cc = GetComponent<CapsuleCollider>();
+        _Instance = this;
+        MaxHP = 50;
+        HP = 50;
+        Atk = 1f;
+        nowSpeed = 4.5f;
+        isDead = false;
+        isAttack = false;
+        Attackdist = 2f;
+        EnemyDeathCount = 0;
+        minGold = 50;
+        MidGold = 100;
+        MaxGold = 150;
     }
 
     // Update is called once per frame
@@ -102,7 +115,7 @@ public class Enemy : MonoBehaviour
 
     void Death()
     {
-        EnemyDeathCount++;
+        GameManager._Instance.KillEnemyCountMethod();
         isDead = true;
         StartCoroutine(DeathCo());
         int Ran = Random.Range(0, 10);

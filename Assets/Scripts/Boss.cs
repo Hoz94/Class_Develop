@@ -6,17 +6,17 @@ using UnityEngine.UI;
 public class Boss : MonoBehaviour
 {
     Status status;
-    const float firstpaze = 250000f;
-    public float MaxHp = 500000f;
-    public float Hp = 500000f;
+    const float firstpaze=250000f;
+    public float MaxHp;
+    public float Hp;
     int DropGold = 300000;
     NavMeshAgent nvAgent;
     Transform player;
-    public float Atk = 80f;
-    public float JumpAtk = 100f;
+    public float Atk;
+    public float JumpAtk;
     private Vector3 dir;
     public float dist;
-    public float Attackdist = 2.5f;
+    public float Attackdist;
     bool isDead;
     bool isAttack;
     bool isJumpAttack;
@@ -33,6 +33,12 @@ public class Boss : MonoBehaviour
         cc = GetComponent<CapsuleCollider>();
         nvAgent = GetComponent<NavMeshAgent>();
         ani = GetComponent<Animator>();
+        MaxHp = 500000f;
+        Hp = 500000f;
+        DropGold = 300000;
+        Atk = 80f;
+        JumpAtk = 100f;
+        Attackdist = 2.5f;
     }
 
     // Update is called once per frame
@@ -173,6 +179,7 @@ public class Boss : MonoBehaviour
         Hp -= status.Atk;
         if (Hp <= 0)
         {
+            ShopManager._instance.Boss1.value = 0f;
             Death();
         }
     }
@@ -182,6 +189,7 @@ public class Boss : MonoBehaviour
         Hp -= skilldamage;
         if (Hp <= 0)
         {
+            ShopManager._instance.Boss1.value = 0f;
             Death();
         }
     }

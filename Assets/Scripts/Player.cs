@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public long gold;
     public int Addmoney = 0;
 
+
     private void Awake()
     {
 
@@ -17,7 +18,7 @@ public class Player : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    { 
         status = GetComponent<Status>();
         myRigid = GetComponent<Rigidbody>();
         gold = 0;
