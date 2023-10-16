@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public Text MyAtk; // 현재 공격력
     public Text MySpd; // 현재 이동속도
     public Text MyMaxHp; // 현재 최대체력
+    public Text MyCurHp; // 현재 체력
     public Text GameTimeText; // 현재까지 게임시간
     public Text KillEnemyCount; // 현재까지 죽인 일반몹 수
     public Image MyOptionDetail;
@@ -56,7 +57,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Option()
+    void Option() // 옵션창 열기
     {
         Pause.SetActive(true);
         Time.timeScale = 0;
@@ -68,7 +69,8 @@ public class GameManager : MonoBehaviour
         MyOptionDetail.gameObject.SetActive(true);
         MyAtk.text = "현재 공격력 : " + stat.Atk.ToString("N0");
         MySpd.text = "현재 이동속도 : " + stat.Spd.ToString("N0");
-        MyMaxHp.text = "최대 생명력 : " + stat.MaxHp.ToString("N0");
+        MyMaxHp.text = "최대 체력 : " + stat.MaxHp.ToString("N0");
+        MyCurHp.text = "현재 체력 : " + stat.CurHp.ToString("N0");
         GameTimeText.text = "게임이용시간 : " + ((float)Gametime/(float)60).ToString("N0")+"분 "+ ((float)Gametime % (float)60).ToString("N0") + "초";
         KillEnemyCount.text = "죽인 적의 수(일반몬스터) : " + killedEnemyCount.ToString("N0") + " 마리";
     }
@@ -76,7 +78,8 @@ public class GameManager : MonoBehaviour
 
     public void OnNewClassChoiceBtn() // 직업 재선택
     {
-        player.transform.position = PlayerSpawnPoint.position;
+
+        Lobby._instance.GameStart();
         
     }
 
