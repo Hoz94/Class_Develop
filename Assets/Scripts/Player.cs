@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     {
         status = GetComponent<Status>();
         myRigid = GetComponent<Rigidbody>();
+        gold = 0;
+        Addmoney = 0;
     }
 
     private void FixedUpdate()

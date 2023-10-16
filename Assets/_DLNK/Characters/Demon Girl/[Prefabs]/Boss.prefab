@@ -2037,7 +2037,7 @@ GameObject:
   - component: {fileID: 124073087254820732}
   - component: {fileID: 3335553576869305680}
   m_Layer: 0
-  m_Name: DemonGirl
+  m_Name: Boss
   m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

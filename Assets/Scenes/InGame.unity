@@ -3194,7 +3194,6 @@ MonoBehaviour:
   Skill2: {fileID: 277093000}
   Skill3: {fileID: 239526253}
   SpecialSkill: {fileID: 497237882}
-  boss: {fileID: 8643247058772963541, guid: 28fce92923d67c2449f9c3d295c70aef, type: 3}
   Boss1Slider: {fileID: 1287904107}
   Boss2Slider: {fileID: 1017686109}
 --- !u!4 &451626873
@@ -5767,8 +5766,6 @@ RectTransform:
   - {fileID: 277092999}
   - {fileID: 239526252}
   - {fileID: 2085997592}
-  - {fileID: 1287904106}
-  - {fileID: 1017686108}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -6718,15 +6715,15 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017686107}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 869071248}
   - {fileID: 540741152}
   - {fileID: 1389077506}
-  m_Father: {fileID: 910162577}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -8568,15 +8565,15 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1287904105}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 158972869}
   - {fileID: 1340750228}
   - {fileID: 1849655382}
-  m_Father: {fileID: 910162577}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -15018,3 +15015,5 @@ SceneRoots:
   - {fileID: 883019633}
   - {fileID: 1518044705}
   - {fileID: 1476438097}
+  - {fileID: 1287904106}
+  - {fileID: 1017686108}
