@@ -158,6 +158,7 @@ public class ShopManager : MonoBehaviour
 
     }
 
+    
     public void onclickGamebleButton() // 도박 탭
     {
         StatsUI.SetActive(false);

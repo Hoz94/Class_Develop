@@ -44,9 +44,9 @@ public class Enemy : MonoBehaviour
         isAttack = false;
         Attackdist = 2f;
         EnemyDeathCount = 0;
-        minGold = 50;
-        MidGold = 100;
-        MaxGold = 150;
+        minGold = 100;
+        MidGold = 300;
+        MaxGold = 700;
     }
 
     // Update is called once per frame

@@ -1,7 +1,8 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
+    public static Player _instance;
     [SerializeField] Status status;
     float turnSpeed = 50f;
     float xRotation;
@@ -18,7 +19,8 @@ public class Player : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    { 
+    {
+        _instance = this;
         status = GetComponent<Status>();
         myRigid = GetComponent<Rigidbody>();
         gold = 0;

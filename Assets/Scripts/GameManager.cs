@@ -2,10 +2,13 @@ using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System.Collections;
+
 public class GameManager : MonoBehaviour
 {
+    Status status;
     public static GameManager _Instance;
-    public Transform PlayerSpawnPoint;
     public GameObject player;
     public Player pr;
     public GameObject Pause;
@@ -17,8 +20,11 @@ public class GameManager : MonoBehaviour
     public Text KillEnemyCount; // 현재까지 죽인 일반몹 수
     public Image MyOptionDetail;
     public int killedEnemyCount = 0;
-
-    public float Gametime; 
+    public Image WinImage;
+    public Image GameOverImage;
+    public float Gametime;
+    float FillAmount;
+    public float MaxAmount = 1f;
     void Awake()
     {
 
@@ -26,13 +32,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerSpawnPoint=GetComponent<Transform>();
+        status = player.GetComponent<Status>();
         Time.timeScale = 0;
         _Instance = this;
         pr = GetComponent<Player>();
         player.tag = "Untagged";
         Gametime = 0;
-        
+        FillAmount = 0f;
     }
 
 
@@ -55,12 +61,36 @@ public class GameManager : MonoBehaviour
         {
             Option();    
         }
+        
+        if(Player._instance.gold>=10000000)
+        {
+            FillAmount += Time.deltaTime;
+            WinGame();   
+        }
+        if(status.CurHp<0)
+        {
+            FillAmount += Time.deltaTime;
+            GameOver();
+        }
+
     }
 
     void Option() // 옵션창 열기
     {
         Pause.SetActive(true);
         Time.timeScale = 0;
+    }
+
+    void WinGame()
+    {
+        WinImage.gameObject.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    void GameOver()
+    {
+        GameOverImage.fillAmount = FillAmount / MaxAmount;
+        StartCoroutine(GameOverCo());   
     }
 
     public void OnGameInfoBtn() // 게임정보
@@ -74,12 +104,13 @@ public class GameManager : MonoBehaviour
         GameTimeText.text = "게임이용시간 : " + ((float)Gametime/(float)60).ToString("N0")+"분 "+ ((float)Gametime % (float)60).ToString("N0") + "초";
         KillEnemyCount.text = "죽인 적의 수(일반몬스터) : " + killedEnemyCount.ToString("N0") + " 마리";
     }
-
+    
+    
 
     public void OnNewClassChoiceBtn() // 직업 재선택
     {
-
-        Lobby._instance.GameStart();
+        SceneManager.LoadScene(0);
+        
         
     }
 
@@ -93,12 +124,24 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void OnBackBtn()
+    {
+        MyOptionDetail.gameObject.SetActive(false);
+        Option();
+    }
 
-    public void KillEnemyCountMethod()
+    public void KillEnemyCountMethod() // 킬 몹 수 관리
     {
         killedEnemyCount++;
-
     }
+
+    IEnumerator GameOverCo()
+    {
+        yield return new WaitForSeconds(1f);
+        GameOverImage.gameObject.SetActive(true);
+        Time.timeScale = 0;
+    }
+
 
 
 }
