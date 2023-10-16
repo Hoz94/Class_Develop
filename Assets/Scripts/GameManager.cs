@@ -89,8 +89,8 @@ public class GameManager : MonoBehaviour
 
     void GameOver()
     {
-        GameOverImage.fillAmount = FillAmount / MaxAmount;
-        StartCoroutine(GameOverCo());   
+        StartCoroutine(GameOverCo());
+        
     }
 
     public void OnGameInfoBtn() // 게임정보

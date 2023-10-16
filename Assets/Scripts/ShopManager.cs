@@ -32,7 +32,7 @@ public class ShopManager : MonoBehaviour
     public GameObject BossPrefab;
     public GameObject Boss;
     public Slider Boss1;
-
+    public Image WinGameImg;
     public Transform BossSpawnPoint;
 
 
@@ -1214,6 +1214,7 @@ public class ShopManager : MonoBehaviour
                     player.gold += Lotto4 * 1000;
                     Successlotto.gameObject.SetActive(true);
                     StartCoroutine(LottoTextCo());
+                    WinGameImg.gameObject.SetActive(true);
                 }
                 else
                 {
