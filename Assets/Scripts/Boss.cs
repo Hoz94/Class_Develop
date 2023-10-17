@@ -55,18 +55,15 @@ public class Boss : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!isDead)
+        if (!isDead&&!isAttack)
         {
-            if (!isAttack && dist != 0)
+            if (firstpaze <= Hp)
             {
-                if (firstpaze <= Hp)
-                {
-                    Trace();
-                }
-                else if (Hp < firstpaze)
-                {
-                    Run();
-                }
+                Trace();
+            }
+            else if (Hp < firstpaze)
+            {
+                Run();
             }
         }
     }
@@ -81,7 +78,7 @@ public class Boss : MonoBehaviour
         nvAgent.speed = 14f;
         dir = player.position;
         nvAgent.SetDestination(dir);
-        if (dist <= Attackdist && Jumpcooltime < 15f&&!isJumpAttack)
+        if (dist <= Attackdist && Jumpcooltime < 15f)
         {
             isAttack = true;
             transform.LookAt(dir);
