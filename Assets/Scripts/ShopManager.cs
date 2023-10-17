@@ -1205,7 +1205,7 @@ public class ShopManager : MonoBehaviour
             if (player.gold >= Lotto4)
             {
                 player.gold -= Lotto4;
-                int a = Random.Range(0, 1000);
+                int a = Random.Range(0, 100);
                 if (a == 0)
                 {
                     ShopUI.gameObject.SetActive(false);

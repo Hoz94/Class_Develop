@@ -7428,8 +7428,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBAAC\uC2A4\uD130 \uC0DD\uC131 \n\uC18D\uB3C4 \uC0C1\uC2B9\n(\uCD5C\uB300
-    9\uBC88 \uC5C5\uADF8\uB808\uC774\uB4DC \uAC00\uB2A5)\n- 3,000 G"
+  m_Text: "\uBAAC\uC2A4\uD130 \uC0DD\uC131 \n\uC18D\uB3C4 \uC0C1\uC2B9\n\n\n- 3,000
+    G"
 --- !u!222 &943503978
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9064,8 +9064,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uCD5C\uB300\uCCB4\uB825 \uC99D\uAC00\n1\uC5C5\uAE00 = +MaxHp100\n(\uCD5C\uB300
-    1000\uAE4C\uC9C0 \uC99D\uAC00)\n\n- 5,000 G"
+  m_Text: "\uCD5C\uB300\uCCB4\uB825 \uC99D\uAC00\nMaxHp100 + 100\n(\uCD5C\uB300 1000\uAE4C\uC9C0
+    \uC99D\uAC00)\n\n- 5,000 G"
 --- !u!222 &1108563527
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10106,7 +10106,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC774\uB3D9\uC18D\uB3C4 \uC99D\uAC00\n\n(\uCD5C\uB300 15\uAE4C\uC9C0
+  m_Text: "\uC774\uB3D9\uC18D\uB3C4 \uC99D\uAC00\nSpd + 1\n(\uCD5C\uB300 15\uAE4C\uC9C0
     \uC99D\uAC00)\n\n- 3,000 G"
 --- !u!222 &1214573021
 CanvasRenderer:
@@ -12335,7 +12335,7 @@ MonoBehaviour:
   BossPrefab: {fileID: 1639818050706832, guid: 28fce92923d67c2449f9c3d295c70aef, type: 3}
   Boss: {fileID: 0}
   Boss1: {fileID: 135062473}
-  WinGameImg: {fileID: 0}
+  WinGameImg: {fileID: 892896971}
   BossSpawnPoint: {fileID: 883019633}
   NotEnoughTipText: {fileID: 47098504}
   EnoughTipText: {fileID: 1182481984}
@@ -15660,9 +15660,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBCF4\uC2A4 \uBAAC\uC2A4\uD130 \uC0DD\uC131\n\uB300\uB7C9\uC758  \uACE8\uB4DC
-    \uD68D\uB4DD\n(\uCC98\uCE58 \uC2DC 100\uB9CC \uACE8\uB4DC)\n\uB9E4\uC6B0 \uC324\n-
-    100,000 G"
+  m_Text: "\uBCF4\uC2A4 \uBAAC\uC2A4\uD130 \uC0DD\uC131\n\uB9E4\uC6B0 \uC324\n(\uCC98\uCE58
+    \uC2DC  +100\uB9CC \uACE8\uB4DC)\n\n- 100,000 G"
 --- !u!222 &1926597922
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15852,8 +15851,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uACF5\uACA9\uB825 \uC99D\uAC00\n\n(\uCD5C\uB300 300\uAE4C\uC9C0 \uC99D\uAC00)\n\n-
-    3,000 G"
+  m_Text: "\uACF5\uACA9\uB825 \uC99D\uAC00\nAtk + 10\n(\uCD5C\uB300 300\uAE4C\uC9C0
+    \uC99D\uAC00)\n\n- 3,000 G"
 --- !u!222 &1940488382
 CanvasRenderer:
   m_ObjectHideFlags: 0
