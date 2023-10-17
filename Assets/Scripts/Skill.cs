@@ -153,7 +153,7 @@ public class Skill : MonoBehaviour
             {
                 SpecialSkillTime = 0f;
                 SkillInput = Instantiate(WaterMagicianSpecialSkillPrefab, transform.position, transform.rotation);
-                SkillInput.GetComponent<Rigidbody>().AddForce(transform.forward * 1000f);
+                SkillInput.GetComponent<Rigidbody>().AddForce(transform.forward * 2000f);
                 Destroy(SkillInput, 15f);
             }
         }
@@ -194,7 +194,7 @@ public class Skill : MonoBehaviour
 
                 if (shopManager.SoldierSkill1 == 3)
                 {
-                    SkillInput = Instantiate(SoldierSkill1Prefab3, transform.position, transform.rotation);
+                    SkillInput = Instantiate(SoldierSkill1Prefab3, transform.position, transform.rotation,transform);
                     Destroy(SkillInput, Skill1DeleteTime);
                 }
                 Skill1Time = 0f;
@@ -259,14 +259,14 @@ public class Skill : MonoBehaviour
                 if (shopManager.WaterMagicianSkill1 == 2)
                 {
                     SkillInput = Instantiate(WaterMagicianSkill1Prefab2, transform.position, transform.rotation);
-                    SkillInput.GetComponent<Rigidbody>().AddForce(transform.forward * 1000f);
+                    SkillInput.GetComponent<Rigidbody>().AddForce(transform.forward * 2000f);
                     Destroy(SkillInput, Skill1DeleteTime);
                 }
 
                 if (shopManager.WaterMagicianSkill1 == 3)
                 {
                     SkillInput = Instantiate(WaterMagicianSkill1Prefab3, transform.position, transform.rotation);
-                    SkillInput.GetComponent<Rigidbody>().AddForce(transform.forward * 1000f);
+                    SkillInput.GetComponent<Rigidbody>().AddForce(transform.forward * 2000f);
                     Destroy(SkillInput, Skill1DeleteTime);
                 }
                 Skill1Time = 0f;
@@ -429,7 +429,7 @@ public class Skill : MonoBehaviour
                 if (shopManager.SoldierSkill3 == 1)
                 {
                     SkillInput = Instantiate(SoldierSkill3Prefab1, transform.position, transform.rotation);
-                    SkillInput.GetComponent<Rigidbody>().AddForce(transform.forward * 200f);
+                    SkillInput.GetComponent<Rigidbody>().AddForce(transform.forward * 100f);
                     Destroy(SkillInput, Skill3DeleteTime);
 
                 }

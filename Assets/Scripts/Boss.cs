@@ -19,7 +19,7 @@ public class Boss : MonoBehaviour
     public float Attackdist;
     bool isDead;
     bool isAttack;
-    bool isJumpAttack;
+    public bool isJumpAttack;
     CapsuleCollider cc;
     Animator ani;
     float Jumpcooltime;
@@ -81,7 +81,7 @@ public class Boss : MonoBehaviour
         nvAgent.speed = 14f;
         dir = player.position;
         nvAgent.SetDestination(dir);
-        if (dist <= Attackdist && Jumpcooltime < 15f)
+        if (dist <= Attackdist && Jumpcooltime < 15f&&!isJumpAttack)
         {
             isAttack = true;
             transform.LookAt(dir);

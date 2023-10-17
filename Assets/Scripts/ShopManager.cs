@@ -137,7 +137,6 @@ public class ShopManager : MonoBehaviour
         SKillsUI.SetActive(false);
         EnemyUI.SetActive(false);
         LottoUI.SetActive(false);
-
     }
 
     public void onclickSkillsButton() // 스킬 탭
@@ -146,7 +145,6 @@ public class ShopManager : MonoBehaviour
         SKillsUI.SetActive(true);
         EnemyUI.SetActive(false);
         LottoUI.SetActive(false);
-
     }
 
     public void onclickEnemyButton() // 적 탭
@@ -155,7 +153,6 @@ public class ShopManager : MonoBehaviour
         SKillsUI.SetActive(false);
         EnemyUI.SetActive(true);
         LottoUI.SetActive(false);
-
     }
 
     
@@ -165,7 +162,6 @@ public class ShopManager : MonoBehaviour
         SKillsUI.SetActive(false);
         EnemyUI.SetActive(false);
         LottoUI.SetActive(true);
-
     }
 
     public void onclickTipButton() // 팁 탭
@@ -226,6 +222,7 @@ public class ShopManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(1f);
         CantUseHpPotion.gameObject.SetActive(false);
     }
+
     IEnumerator LottoTextCo() // 로또 꽝 or 당첨 텍스트 없애는 쿨타임
     {
         yield return new WaitForSecondsRealtime(1f);
@@ -257,7 +254,7 @@ public class ShopManager : MonoBehaviour
         NotEnoughUpgradeMoney.gameObject.SetActive(false);
     }
 
-    IEnumerator NoMoreBossCo()
+    IEnumerator NoMoreBossCo() // 보스 생성 되어있을 때 더 이상 생성 안된다는 텍스트
     {
         yield return new WaitForSecondsRealtime(1f);
         NoMoreSpawnBoss.gameObject.SetActive(false);
@@ -1208,13 +1205,12 @@ public class ShopManager : MonoBehaviour
             if (player.gold >= Lotto4)
             {
                 player.gold -= Lotto4;
-                int a = Random.Range(1, 1000);
-                if (a <= 1)
+                int a = Random.Range(0, 1000);
+                if (a == 0)
                 {
-                    player.gold += Lotto4 * 1000;
-                    Successlotto.gameObject.SetActive(true);
-                    StartCoroutine(LottoTextCo());
+                    ShopUI.gameObject.SetActive(false);
                     WinGameImg.gameObject.SetActive(true);
+                    Time.timeScale = 0;
                 }
                 else
                 {

@@ -2,12 +2,11 @@ using UnityEngine;
 
 public class Lobby : MonoBehaviour
 {
-    public static Lobby _instance;
     public Canvas Selectcanvas;
     // Start is called before the first frame update
     void Start()
     {
-        _instance = this;
+
     }
 
     // Update is called once per frame
