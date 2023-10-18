@@ -130,7 +130,7 @@ public class Skill : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 SpecialSkillTime = 0f;
-                SkillInput = Instantiate(WorriorSpecialSkillPrefab, transform.position, transform.rotation);
+                SkillInput = Instantiate(WorriorSpecialSkillPrefab, transform.position, transform.rotation,transform);
                 Destroy(SkillInput, 15f);
             }
         }
@@ -182,13 +182,13 @@ public class Skill : MonoBehaviour
             {
                 if (shopManager.SoldierSkill1 == 1)
                 {
-                    SkillInput = Instantiate(SoldierSkill1Prefab1, transform.position, transform.rotation);
+                    SkillInput = Instantiate(SoldierSkill1Prefab1, transform.position, transform.rotation,transform);
                     Destroy(SkillInput, Skill1DeleteTime);
                 }
 
                 if (shopManager.SoldierSkill1 == 2)
                 {
-                    SkillInput = Instantiate(SoldierSkill1Prefab2, transform.position, transform.rotation);
+                    SkillInput = Instantiate(SoldierSkill1Prefab2, transform.position, transform.rotation, transform);
                     Destroy(SkillInput, Skill1DeleteTime);
                 }
 
@@ -229,7 +229,7 @@ public class Skill : MonoBehaviour
             {
                 if (shopManager.FireMagicianSkill1 == 1)
                 {
-                    SkillInput = Instantiate(FireMagicianSkill1Prefab1, transform.position, transform.rotation);
+                    SkillInput = Instantiate(FireMagicianSkill1Prefab1, transform.position, transform.rotation, transform);
                     Destroy(SkillInput, Skill1DeleteTime);
                 }
 
@@ -241,7 +241,7 @@ public class Skill : MonoBehaviour
 
                 if (shopManager.FireMagicianSkill1 == 3)
                 {
-                    SkillInput = Instantiate(FireMagicianSkill1Prefab3, transform.position, transform.rotation);
+                    SkillInput = Instantiate(FireMagicianSkill1Prefab3, transform.position, transform.rotation, transform);
                     Destroy(SkillInput, Skill1DeleteTime);
                 }
                 Skill1Time = 0f;
@@ -252,7 +252,7 @@ public class Skill : MonoBehaviour
             {
                 if (shopManager.WaterMagicianSkill1 == 1)
                 {
-                    SkillInput = Instantiate(WaterMagicianSkill1Prefab1, transform.position, transform.rotation);
+                    SkillInput = Instantiate(WaterMagicianSkill1Prefab1, transform.position, transform.rotation, transform);
                     Destroy(SkillInput, Skill1DeleteTime);
                 }
 
@@ -311,13 +311,13 @@ public class Skill : MonoBehaviour
 
                 if (shopManager.SoldierSkill2 == 2)
                 {
-                    SkillInput = Instantiate(SoldierSkill2Prefab2, transform.position, transform.rotation);
+                    SkillInput = Instantiate(SoldierSkill2Prefab2, transform.position, transform.rotation, transform);
                     Destroy(SkillInput, Skill2DeleteTime);
                 }
 
                 if (shopManager.SoldierSkill2 == 3)
                 {
-                    SkillInput = Instantiate(SoldierSkill2Prefab3, skillpos.transform.position, SoldierSkill2Prefab3.transform.rotation);
+                    SkillInput = Instantiate(SoldierSkill2Prefab3, skillpos.transform.position, SoldierSkill2Prefab3.transform.rotation,transform);
                     Destroy(SkillInput, Skill2DeleteTime);
 
                 }

@@ -29,14 +29,28 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-
+        Move();
+        PhoneMove();
+        PhoneScreenMove();
     }
+
 
     private void LateUpdate()
     {
         MouseRotation();
     }
+#if UNITY_ANDROID
+    void PhoneMove()
+    {
 
+    }
+
+    void PhoneScreenMove()
+    {
+
+    }
+
+#endif
     // Update is called once per frame
     void Update()
     {
@@ -44,7 +58,7 @@ public class Player : MonoBehaviour
                 {
                     Cursor.visible = false;
                 }*/
-        Move();
+        
     }
 
 
