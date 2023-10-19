@@ -44,8 +44,7 @@ GameObject:
   - component: {fileID: 5395673653923826353}
   - component: {fileID: 5395673653923826350}
   - component: {fileID: 5395673653923826351}
-  - component: {fileID: 986408449118778827}
-  - component: {fileID: 5467450732677822401}
+  - component: {fileID: 6834508217866235536}
   m_Layer: 0
   m_Name: Effect_11_Slash
   m_TagString: Untagged
@@ -3703,9 +3702,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -3886,7 +3885,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -4924,7 +4923,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &986408449118778827
+--- !u!114 &6834508217866235536
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4933,32 +4932,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5395673653923826348}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d68aa466c91acf149878d0b931924c93, type: 3}
+  m_Script: {fileID: 11500000, guid: 1459add48d7bb4d4298d7b3a36b67f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!136 &5467450732677822401
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5395673653923826348}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 16.983438
-  m_Height: 33.966877
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  parentsSkills: {fileID: 0}
 --- !u!1 &5395673654257387284
 GameObject:
   m_ObjectHideFlags: 0
@@ -4970,8 +4947,7 @@ GameObject:
   - component: {fileID: 5395673654257387289}
   - component: {fileID: 5395673654257387286}
   - component: {fileID: 5395673654257387287}
-  - component: {fileID: 6330952116314579369}
-  - component: {fileID: 1628853485649623513}
+  - component: {fileID: 3881366907811765390}
   m_Layer: 0
   m_Name: Effect_11_Slash_2
   m_TagString: Untagged
@@ -8629,9 +8605,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -8812,7 +8788,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -9850,7 +9826,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &6330952116314579369
+--- !u!114 &3881366907811765390
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9859,29 +9835,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5395673654257387284}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d68aa466c91acf149878d0b931924c93, type: 3}
+  m_Script: {fileID: 11500000, guid: 1459add48d7bb4d4298d7b3a36b67f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!136 &1628853485649623513
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5395673654257387284}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 16.983438
-  m_Height: 33.966877
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  parentsSkills: {fileID: 0}

@@ -44,8 +44,7 @@ GameObject:
   - component: {fileID: 4102873450170011157}
   - component: {fileID: 4102873450170011159}
   - component: {fileID: 4102873450170011156}
-  - component: {fileID: 5775851308025054541}
-  - component: {fileID: 1906683196792222449}
+  - component: {fileID: 3974822955205115039}
   m_Layer: 0
   m_Name: Effect_11_Particle
   m_TagString: Untagged
@@ -3712,9 +3711,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -4934,7 +4933,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &5775851308025054541
+--- !u!114 &3974822955205115039
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4943,32 +4942,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4102873450170011154}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d68aa466c91acf149878d0b931924c93, type: 3}
+  m_Script: {fileID: 11500000, guid: 1459add48d7bb4d4298d7b3a36b67f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!136 &1906683196792222449
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4102873450170011154}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.00001
-  m_Height: 0.00002
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  parentsSkills: {fileID: 0}
 --- !u!1 &4102873451191612050
 GameObject:
   m_ObjectHideFlags: 0
@@ -4980,8 +4957,7 @@ GameObject:
   - component: {fileID: 4102873451191612053}
   - component: {fileID: 4102873451191612055}
   - component: {fileID: 4102873451191612052}
-  - component: {fileID: 4640370848938399640}
-  - component: {fileID: 5708434807124443145}
+  - component: {fileID: 222496373573212403}
   m_Layer: 0
   m_Name: Effect_11_Particle_2
   m_TagString: Untagged
@@ -8648,9 +8624,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -9870,7 +9846,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &4640370848938399640
+--- !u!114 &222496373573212403
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9879,29 +9855,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4102873451191612050}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d68aa466c91acf149878d0b931924c93, type: 3}
+  m_Script: {fileID: 11500000, guid: 1459add48d7bb4d4298d7b3a36b67f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!136 &5708434807124443145
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4102873451191612050}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.00001
-  m_Height: 0.00002
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  parentsSkills: {fileID: 0}
