@@ -30,8 +30,8 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-        PhoneMove();
-        PhoneScreenMove();
+        //PhoneMove();
+        //PhoneScreenMove();
     }
 
 
